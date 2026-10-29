@@ -1,0 +1,112 @@
+import Link from "next/link";
+import { cities, footerGuides, footerSolutions } from "@/content/navigation";
+import { hasDirectContact, phoneHref, siteConfig, whatsappHref } from "@/lib/site-config";
+
+export function SiteFooter() {
+  const tel = phoneHref();
+  const whatsapp = whatsappHref("Bonjour Terrastore, je souhaite étudier un projet.");
+
+  return (
+    <footer className="border-t border-line bg-paper">
+      <div className="mx-auto grid max-w-[1200px] gap-10 px-5 py-14 md:grid-cols-2 lg:grid-cols-4">
+        <div>
+          <p className="text-sm tracking-[0.18em]">TERRASTORE</p>
+          <p className="mt-4 max-w-[28ch] text-sm leading-6 text-muted">
+            Protection solaire et aménagement sur mesure. Étude, configuration et installation pour les maisons et les projets professionnels au Maroc.
+          </p>
+          <Link href="/contact" className="btn inline-flex btn-secondary mt-6" data-track="quote_cta">
+            Étudier mon projet
+          </Link>
+        </div>
+        <div>
+          <p className="text-xs tracking-[0.14em] text-accent uppercase">Solutions</p>
+          <ul className="mt-3 space-y-1">
+            {footerSolutions.map((item) => (
+              <li key={item.href}>
+                <Link href={item.href} className="inline-flex min-h-10 items-center text-sm hover:underline">
+                  {item.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <p className="text-xs tracking-[0.14em] text-accent uppercase">Comprendre</p>
+          <ul className="mt-3 space-y-1">
+            {footerGuides.map((item) => (
+              <li key={item.href}>
+                <Link href={item.href} className="inline-flex min-h-10 items-center text-sm hover:underline">
+                  {item.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <p className="text-xs tracking-[0.14em] text-accent uppercase">Intervention</p>
+          <p className="mt-3 text-sm">Partout au Maroc</p>
+          <ul className="mt-2 flex flex-wrap gap-x-3">
+            {cities.map((city) => (
+              <li key={city.href}>
+                <Link href={city.href} className="inline-flex min-h-10 items-center text-sm hover:underline">
+                  {city.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+          {hasDirectContact() ? (
+            <ul className="mt-4 space-y-1 text-sm">
+              {tel && siteConfig.phone ? (
+                <li>
+                  <a className="inline-flex min-h-10 items-center hover:underline" href={tel} data-track="phone_click">
+                    {siteConfig.phone}
+                  </a>
+                </li>
+              ) : null}
+              {whatsapp ? (
+                <li>
+                  <a className="inline-flex min-h-10 items-center hover:underline" href={whatsapp} data-track="whatsapp_click">
+                    WhatsApp
+                  </a>
+                </li>
+              ) : null}
+              {siteConfig.email ? (
+                <li>
+                  <a className="inline-flex min-h-10 items-center hover:underline" href={`mailto:${siteConfig.email}`}>
+                    {siteConfig.email}
+                  </a>
+                </li>
+              ) : null}
+            </ul>
+          ) : (
+            <p className="mt-4 text-sm text-muted">
+              Les coordonnées directes seront publiées dès validation.
+            </p>
+          )}
+        </div>
+      </div>
+      <div className="border-t border-line">
+        <div className="mx-auto flex max-w-[1200px] flex-col gap-3 px-5 py-5 text-sm text-muted sm:flex-row sm:items-center sm:justify-between">
+          <p>© 2026 Terrastore</p>
+          <ul className="flex flex-wrap gap-x-4">
+            <li>
+              <Link className="inline-flex min-h-11 items-center hover:underline" href="/mentions-legales">
+                Mentions légales
+              </Link>
+            </li>
+            <li>
+              <Link className="inline-flex min-h-11 items-center hover:underline" href="/politique-confidentialite">
+                Confidentialité
+              </Link>
+            </li>
+            <li>
+              <Link className="inline-flex min-h-11 items-center hover:underline" href="/contact">
+                Contact
+              </Link>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+  );
+}
