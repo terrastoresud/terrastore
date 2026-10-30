@@ -78,7 +78,7 @@ function HomeContact({
   className: string;
 }) {
   return (
-    <p className={className}>
+    <div className={`flex flex-wrap items-center gap-x-4 gap-y-1 ${className}`}>
       {tel && siteConfig.phone ? (
         <a className="inline-flex min-h-11 items-center gap-2 underline" href={tel} data-track="phone_click">
           <Icon name="phone" />
@@ -86,17 +86,13 @@ function HomeContact({
         </a>
       ) : null}
       {whatsapp ? (
-        <>
-          <span aria-hidden="true"> · </span>
-          <a className="inline-flex min-h-11 items-center gap-2 underline" href={whatsapp} data-track="whatsapp_click">
-            <Icon name="chat" />
-            WhatsApp
-          </a>
-        </>
+        <a className="inline-flex min-h-11 items-center gap-2 underline" href={whatsapp} data-track="whatsapp_click">
+          <Icon name="chat" />
+          WhatsApp
+        </a>
       ) : null}
-      <span aria-hidden="true"> · </span>
-      Siège à Agadir, intervention partout au Maroc.
-    </p>
+      <span>Siège à Agadir, intervention partout au Maroc.</span>
+    </div>
   );
 }
 
@@ -116,18 +112,18 @@ export default function HomePage() {
                   <span className="rule" aria-hidden="true" />
                   Protection solaire
                 </p>
-                <h1 className="display mt-4 max-w-[12ch] text-[2.6rem] leading-[1.02] font-medium sm:text-5xl md:max-w-none lg:max-w-[12ch] lg:text-6xl">
+                <h1 className="display mt-4 text-balance text-[2.05rem] leading-[1.08] font-medium sm:text-5xl lg:max-w-[12ch] lg:text-6xl">
                   Carports, parasols et stores sur mesure au Maroc
                 </h1>
               </div>
-              <div className="mt-6 md:mt-0 lg:mt-6">
-                <p className="settle-up max-w-[42rem] text-lg leading-8 text-muted">
+              <div className="mt-5 md:mt-0 lg:mt-6">
+                <p className="settle-up max-w-[42rem] text-base leading-7 text-muted sm:text-lg sm:leading-8">
                   {frTypo(
                     "Terrastore étudie, configure et installe des solutions d’ombrage et d’aménagement extérieur pour les maisons et les projets professionnels, partout au Maroc. Le point de départ est le lieu : exposition, dimensions, usage et architecture existante.",
                   )}
                 </p>
-                <div className="mt-8 flex flex-wrap gap-3">
-                  <Link href="/contact" className="btn inline-flex btn-primary" data-track="quote_cta">
+                <div className="mt-7 flex flex-wrap gap-3">
+                  <Link href="/contact" className="btn inline-flex w-full justify-center btn-primary sm:w-auto" data-track="quote_cta">
                     Demander une étude
                   </Link>
                   <Link href="/solutions" className="btn inline-flex btn-secondary max-md:hidden">
@@ -143,8 +139,8 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="rise mt-8 min-w-0 md:mt-32" aria-labelledby="focus">
-          <h2 id="focus" className="text-3xl font-medium md:text-4xl">
+        <section className="rise mt-14 min-w-0 md:mt-32" aria-labelledby="focus">
+          <h2 id="focus" className="text-[1.7rem] leading-[1.15] font-medium md:text-4xl">
             Quatre familles, un ordre clair
           </h2>
           <div className="family-rail">
@@ -154,7 +150,7 @@ export default function HomePage() {
                 <Link key={item.href} href={item.href} className="group min-w-0">
                   <div className={flip ? "order-2 min-w-0 md:order-none lg:col-span-4 lg:col-start-9" : "order-2 min-w-0 md:order-none lg:col-span-4"}>
                     <p className="num">{item.n}</p>
-                    <h3 className="mt-4 flex items-center gap-3 text-3xl font-medium transition-colors group-hover:text-accent">
+                    <h3 className="mt-2 flex items-center gap-3 text-[1.65rem] font-medium transition-colors group-hover:text-accent md:mt-4 md:text-3xl">
                       <Icon name={item.icon} className="size-8" />
                       {item.title}
                     </h3>
@@ -171,37 +167,38 @@ export default function HomePage() {
                       id={item.image}
                       plate={index % 2 === 0}
                       className={index % 2 === 1 ? "quiet" : undefined}
-                      sizes="(min-width: 1024px) 760px, (min-width: 768px) 50vw, 86vw"
+                      sizes="(min-width: 1024px) 760px, (min-width: 768px) 50vw, 100vw"
                     />
                   </div>
                 </Link>
               );
             })}
           </div>
-          <Link href="/solutions" className="btn mt-6 inline-flex btn-secondary md:hidden">
+          <Link href="/solutions" className="btn mt-6 inline-flex w-full justify-center btn-secondary sm:w-auto md:hidden">
             Découvrir nos solutions
           </Link>
           <HomeContact tel={tel} whatsapp={whatsapp} className="mt-4 text-sm leading-6 text-muted md:hidden" />
-          <p className="mt-6 text-sm text-muted">
-            Également :{" "}
-            <Link href="/voile-ombrage" className="underline">
-              voile d’ombrage
-            </Link>
-            ,{" "}
-            <Link href="/stores-interieurs" className="underline">
-              stores intérieurs
-            </Link>
-            .
-          </p>
+          <ul className="mt-4 flex flex-col text-sm sm:flex-row sm:gap-6">
+            <li>
+              <Link href="/voile-ombrage" className="inline-flex min-h-11 items-center underline">
+                Voile d’ombrage
+              </Link>
+            </li>
+            <li>
+              <Link href="/stores-interieurs" className="inline-flex min-h-11 items-center underline">
+                Stores intérieurs
+              </Link>
+            </li>
+          </ul>
         </section>
 
         <section className="rise mt-24 md:mt-32" aria-labelledby="approche">
-          <h2 id="approche" className="text-3xl font-medium md:text-4xl">
+          <h2 id="approche" className="text-[1.7rem] leading-[1.15] font-medium md:text-4xl">
             Comment un projet avance
           </h2>
-          <ol className="track mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <ol className="mt-6 grid gap-0 sm:mt-8 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">
             {steps.map((step, index) => (
-              <li key={step.title} className="pt-6">
+              <li key={step.title} className="border-t border-line py-5 sm:pt-6">
                 <p className="text-xs tracking-[0.14em] text-accent">0{index + 1}</p>
                 <p className="mt-3 text-xl font-medium">{step.title}</p>
                 <p className="mt-2 leading-7 text-muted">{frTypo(step.text)}</p>
@@ -214,7 +211,7 @@ export default function HomePage() {
           <Media id="carport-double" plate sizes="(min-width: 768px) 50vw, 100vw" />
           <div>
             <p className="text-xs tracking-[0.16em] text-accent uppercase">Carport</p>
-            <h2 id="spot-carport" className="mt-3 text-4xl leading-tight font-medium">
+            <h2 id="spot-carport" className="mt-3 text-[1.7rem] leading-[1.15] font-medium md:text-4xl">
               Protéger la voiture sans fermer un garage
             </h2>
             <p className="mt-4 leading-8 text-muted">
@@ -234,7 +231,7 @@ export default function HomePage() {
           </div>
           <div>
             <p className="text-xs tracking-[0.16em] text-accent uppercase">Parasols</p>
-            <h2 id="spot-parasol" className="mt-3 text-4xl leading-tight font-medium">
+            <h2 id="spot-parasol" className="mt-3 text-[1.7rem] leading-[1.15] font-medium md:text-4xl">
               Un ombrage de terrasse, pas un accessoire
             </h2>
             <p className="mt-4 leading-8 text-muted">
@@ -252,7 +249,7 @@ export default function HomePage() {
         </section>
 
         <section className="rise mt-20 md:mt-28" aria-labelledby="spot-stores">
-          <h2 id="spot-stores" className="text-4xl font-medium">
+          <h2 id="spot-stores" className="text-[1.7rem] leading-[1.15] font-medium md:text-4xl">
             Stores : dehors et dedans
           </h2>
           <div className="mt-8 grid gap-8 md:grid-cols-2">
@@ -263,7 +260,7 @@ export default function HomePage() {
                 Le store banne projette l’ombre sur la terrasse. Le store ZIP descend devant le vitrage ou le côté d’une pergola, là où le soleil rase.
               </p>
               <Media id="store-zip" className="quiet mt-6" sizes="(min-width: 768px) 46vw, 100vw" />
-              <Link href="/stores-exterieurs" className="inline-flex min-h-11 items-center underline">
+              <Link href="/stores-exterieurs" className="mt-1 inline-flex min-h-11 items-center underline">
                 Stores extérieurs
               </Link>
             </div>
@@ -274,7 +271,7 @@ export default function HomePage() {
                 Enrouleur, vénitien, jour et nuit : on dose l’éblouissement et le vis-à-vis une fois la lumière entrée. La chaleur, elle, se traite de préférence avant la vitre.
               </p>
               <Media id="store-interior" plate className="mt-6" sizes="(min-width: 768px) 46vw, 100vw" />
-              <Link href="/stores-interieurs" className="inline-flex min-h-11 items-center underline">
+              <Link href="/stores-interieurs" className="mt-1 inline-flex min-h-11 items-center underline">
                 Stores intérieurs
               </Link>
             </div>
@@ -283,7 +280,7 @@ export default function HomePage() {
 
         <section className="rise mt-20 grid gap-8 md:mt-28 md:grid-cols-2" aria-labelledby="publics">
           <div className="panel bg-sand p-6 md:p-8">
-            <h2 id="publics" className="text-3xl font-medium">
+            <h2 id="publics" className="text-[1.7rem] leading-[1.15] font-medium md:text-3xl">
               Maisons
             </h2>
             <p className="mt-4 leading-7 text-muted">
@@ -294,7 +291,7 @@ export default function HomePage() {
             </Link>
           </div>
           <div className="panel border border-line p-6 md:p-8">
-            <h2 className="text-3xl font-medium">Projets professionnels</h2>
+            <h2 className="text-[1.7rem] leading-[1.15] font-medium md:text-3xl">Projets professionnels</h2>
             <p className="mt-4 leading-7 text-muted">
               Architectes, chantiers, hôtels, riads, restaurants, bureaux. L’étude porte sur les cotes, les supports et la séquence de pose.
             </p>
@@ -305,7 +302,7 @@ export default function HomePage() {
         </section>
 
         <section className="rise mt-24 md:mt-32" aria-labelledby="guides">
-          <h2 id="guides" className="text-3xl font-medium">
+          <h2 id="guides" className="text-[1.7rem] leading-[1.15] font-medium md:text-4xl">
             Décider avant de demander
           </h2>
           <ul className="mt-6 divide-y divide-line border-y border-line">
@@ -324,16 +321,16 @@ export default function HomePage() {
         </section>
 
         <section className="rise mt-20 border-t border-line pt-10 md:mt-28" aria-labelledby="geo">
-          <h2 id="geo" className="text-4xl font-medium">
+          <h2 id="geo" className="text-[1.7rem] leading-[1.15] font-medium md:text-4xl">
             Intervention partout au Maroc
           </h2>
           <p className="measure mt-4 leading-8 text-muted">
             Les projets sont étudiés sur l’ensemble du pays. Agadir, Marrakech, Casablanca, Rabat, Tanger et Essaouira reviennent souvent, chacun avec son exposition. Ces pages décrivent un contexte. Elles n’ouvrent pas une agence.
           </p>
-          <ul className="mt-6 flex flex-wrap gap-3">
+          <ul className="mt-6 grid grid-cols-2 gap-2 sm:flex sm:flex-wrap sm:gap-3">
             {cities.map((city) => (
               <li key={city.href}>
-                <Link href={city.href} className="btn inline-flex btn-secondary">
+                <Link href={city.href} className="btn inline-flex w-full justify-center btn-secondary sm:w-auto">
                   {city.label}
                 </Link>
               </li>

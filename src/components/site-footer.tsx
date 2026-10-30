@@ -11,19 +11,12 @@ export function SiteFooter() {
 
   return (
     <footer className="colophon colophon-mark relative overflow-hidden border-t border-line">
-      <div className="relative overflow-hidden">
-        <p
-          aria-hidden="true"
-          className="pointer-events-none absolute right-0 bottom-0 text-[clamp(3.4rem,15vw,8rem)] leading-none font-medium tracking-[-0.055em] text-ink select-none"
-          style={{ opacity: 0.055 }}
-        >
-          Terrastore
-        </p>
-        <div className="relative mx-auto grid max-w-[1200px] gap-10 px-5 py-16 sm:px-8 md:grid-cols-2 md:gap-x-12 lg:grid-cols-4 lg:px-10 lg:py-20">
+      <div className="relative">
+        <div className="relative mx-auto grid max-w-[1200px] gap-10 px-5 py-14 sm:px-8 md:grid-cols-2 md:gap-x-12 lg:grid-cols-4 lg:px-10 lg:py-20">
         <div>
-          <p className="flex items-center gap-3 text-sm tracking-[0.18em]">
+          <p className="index">
             <span className="rule" aria-hidden="true" />
-            TERRASTORE
+            Siège
           </p>
           <p className="mt-4 max-w-[28ch] text-sm leading-6 text-muted">
             Protection solaire et aménagement sur mesure. Étude, configuration et installation pour les maisons et les projets professionnels au Maroc.
