@@ -112,6 +112,7 @@ export function QuoteForm({ deliveryEnabled }: { deliveryEnabled: boolean }) {
         </p>
       ) : null}
 
+      <div className="grid gap-5 lg:grid-cols-2">
       <Field id="name" label="Nom" error={errors.name}>
         <input
           id="name"
@@ -135,6 +136,8 @@ export function QuoteForm({ deliveryEnabled }: { deliveryEnabled: boolean }) {
           required
         />
       </Field>
+      </div>
+      <div className="grid gap-5 lg:grid-cols-2">
       <Field id="city" label="Ville du projet" error={errors.city}>
         <input
           id="city"
@@ -163,6 +166,7 @@ export function QuoteForm({ deliveryEnabled }: { deliveryEnabled: boolean }) {
           ))}
         </select>
       </Field>
+      </div>
       <Field id="dimensions" label="Dimensions approximatives (facultatif)" error={errors.dimensions}>
         <input
           id="dimensions"

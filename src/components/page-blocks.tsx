@@ -9,11 +9,11 @@ export { MobileCta } from "@/components/mobile-cta";
 export function RelatedLinks({ items, title = "Pour aller plus loin" }: { items: RelatedLink[]; title?: string }) {
   if (!items.length) return null;
   return (
-    <section aria-labelledby="liens-utiles">
+    <section className="border-t border-line pt-10" aria-labelledby="liens-utiles">
       <h2 id="liens-utiles" className="text-3xl font-medium">
         {title}
       </h2>
-      <ul className="mt-6 grid gap-4 md:grid-cols-3">
+      <ul className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {items.map((item) => (
           <li key={item.href} className="border-t border-line pt-4">
             <Link href={item.href} className="text-lg font-medium underline-offset-4 hover:underline">
@@ -32,8 +32,8 @@ export function CtaBand({ title, text }: { title: string; text: string }) {
   const whatsapp = whatsappHref("Bonjour Terrastore, je souhaite étudier un projet.");
 
   return (
-    <section className="relative overflow-hidden bg-ink text-inverse" aria-labelledby="cta-final">
-      <p aria-hidden="true" className="pointer-events-none absolute -top-4 right-4 hidden text-[7.5rem] leading-none font-medium tracking-[-0.05em] text-inverse lg:block" style={{ opacity: 0.08 }}>
+    <section className="band relative overflow-hidden bg-ink text-inverse" aria-labelledby="cta-final">
+      <p aria-hidden="true" className="pointer-events-none absolute -bottom-3 right-0 hidden text-[clamp(4.25rem,12vw,7.5rem)] leading-none font-medium tracking-[-0.05em] text-inverse md:block" style={{ opacity: 0.08 }}>
         Terrastore
       </p>
       <div className="relative mx-auto flex max-w-[1200px] flex-col gap-8 px-5 py-16 sm:px-8 md:flex-row md:items-end md:justify-between md:py-20 lg:px-10 lg:py-24">

@@ -41,11 +41,14 @@ export function DocumentPage({ page, path }: { page: PageDoc; path: string }) {
       <JsonLd data={graph(nodes)} />
       <article className="mx-auto max-w-[1200px] px-5 pt-8 pb-16 sm:px-8 sm:pb-8 lg:px-10">
         <Breadcrumbs items={crumbs} />
-        <header className="mt-8 grid items-end gap-8 lg:grid-cols-12 lg:gap-10">
-          <div className="order-2 lg:order-1 lg:col-span-7">
-            <p className="text-xs tracking-[0.16em] text-accent uppercase">{page.eyebrow}</p>
-            <h1 className="display mt-3 max-w-[16ch] text-4xl leading-[1.05] font-medium md:text-6xl">{frTypo(page.h1)}</h1>
-            <p className="measure mt-6 text-lg leading-8 text-muted">{frTypo(page.lede)}</p>
+        <header className="mt-8 grid items-start gap-8 md:grid-cols-2 md:gap-10 lg:grid-cols-12 lg:gap-14">
+          <div className={page.imageId ? "order-2 min-w-0 md:order-1 lg:col-span-7" : "min-w-0 lg:col-span-12"}>
+            <p className="index">
+              <span className="rule" aria-hidden="true" />
+              {page.eyebrow}
+            </p>
+            <h1 className="display mt-4 max-w-[18ch] text-4xl leading-[1.05] font-medium md:text-5xl lg:max-w-[16ch] lg:text-6xl">{frTypo(page.h1)}</h1>
+            <p className="settle-up measure mt-6 text-lg leading-8 text-muted">{frTypo(page.lede)}</p>
             {page.kind !== "legal" ? (
               <div className="mt-8 flex flex-wrap gap-3">
                 <Link href="/contact" className="btn inline-flex btn-primary" data-track="quote_cta">
@@ -58,16 +61,22 @@ export function DocumentPage({ page, path }: { page: PageDoc; path: string }) {
             ) : null}
           </div>
           {page.imageId ? (
-            <div className="order-1 lg:order-2 lg:sticky lg:top-28 lg:col-span-5">
-              <Media id={page.imageId} className="hero-still" plate sizes="(min-width: 1024px) 480px, 100vw" />
+            <div className="order-1 min-w-0 md:sticky md:top-24 md:order-2 md:self-start lg:col-span-5">
+              <Media
+                id={page.imageId}
+                className="hero-still"
+                plate
+                priority
+                sizes="(min-width: 1024px) 480px, (min-width: 768px) 50vw, 100vw"
+              />
             </div>
           ) : null}
         </header>
-        <div className="mt-20 md:mt-28">
+        <div className="mt-16 md:mt-24">
           <Sections sections={page.sections} />
         </div>
         {page.faqs?.length ? (
-          <section className="rise mt-20 md:mt-28" aria-labelledby="faq-titre">
+          <section className="mt-16 border-t border-line pt-10 md:mt-24" aria-labelledby="faq-titre">
             <h2 id="faq-titre" className="text-3xl font-medium md:text-4xl">
               Questions fréquentes
             </h2>
@@ -115,10 +124,15 @@ export function GuideArticle({
       />
       <article className="mx-auto max-w-[1200px] px-5 pt-8 pb-16 sm:px-8 lg:px-10">
         <Breadcrumbs items={crumbs} />
-        <header className="mt-8 max-w-[46rem]">
-          <p className="text-xs tracking-[0.16em] text-accent uppercase">Conseil</p>
-          <h1 className="display mt-3 text-4xl leading-tight font-medium md:text-5xl">{frTypo(guide.h1)}</h1>
-          <p className="mt-6 text-lg leading-8 text-muted">{frTypo(guide.lede)}</p>
+        <header className="mt-8 md:grid md:grid-cols-12 md:items-end md:gap-10">
+          <div className="md:col-span-7">
+            <p className="index">
+              <span className="rule" aria-hidden="true" />
+              Conseil
+            </p>
+            <h1 className="display mt-4 text-4xl leading-tight font-medium lg:text-5xl">{frTypo(guide.h1)}</h1>
+          </div>
+          <p className="settle-up mt-6 text-lg leading-8 text-muted md:col-span-5 md:mt-0">{frTypo(guide.lede)}</p>
         </header>
         <div className="mt-12">
           <Sections sections={guide.sections} />

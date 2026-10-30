@@ -2,8 +2,18 @@
 
 import Link from "next/link";
 import { useEffect, useId, useState } from "react";
+import { createPortal } from "react-dom";
+import { Icon, type IconName } from "@/components/icon";
 import { primaryNav, solutionGroups, type NavLink } from "@/content/navigation";
 import { phoneHref, siteConfig, whatsappHref } from "@/lib/site-config";
+
+function groupIcon(title: string): IconName | null {
+  if (title.startsWith("Carport")) return "carport";
+  if (title.startsWith("Parasol")) return "parasol";
+  if (title.startsWith("Store")) return "store";
+  if (title.startsWith("Pergola")) return "pergola";
+  return null;
+}
 
 export function MobileNav({ cta }: { cta: NavLink }) {
   const [open, setOpen] = useState(false);
@@ -15,6 +25,7 @@ export function MobileNav({ cta }: { cta: NavLink }) {
     if (!open) return;
     const previous = document.body.style.overflow;
     document.body.style.overflow = "hidden";
+    document.querySelector("header")?.setAttribute("inert", "");
     document.getElementById("contenu")?.setAttribute("inert", "");
     document.querySelector("footer")?.setAttribute("inert", "");
     function onKey(event: KeyboardEvent) {
@@ -23,6 +34,7 @@ export function MobileNav({ cta }: { cta: NavLink }) {
     window.addEventListener("keydown", onKey);
     return () => {
       document.body.style.overflow = previous;
+      document.querySelector("header")?.removeAttribute("inert");
       document.getElementById("contenu")?.removeAttribute("inert");
       document.querySelector("footer")?.removeAttribute("inert");
       window.removeEventListener("keydown", onKey);
@@ -33,14 +45,15 @@ export function MobileNav({ cta }: { cta: NavLink }) {
     <div className="xl:hidden">
       <button
         type="button"
-        className="inline-flex min-h-11 min-w-11 items-center justify-center px-3 text-sm"
+        className="inline-flex min-h-11 min-w-11 items-center justify-center border border-line px-3 text-sm"
         aria-expanded={open}
         aria-controls="menu-mobile"
         onClick={() => setOpen((value) => !value)}
       >
         {open ? "Fermer" : "Menu"}
       </button>
-      {open ? (
+      {open
+        ? createPortal(
         <div
           id="menu-mobile"
           role="dialog"
@@ -49,7 +62,8 @@ export function MobileNav({ cta }: { cta: NavLink }) {
           className="menu-sheet fixed inset-0 z-50 flex flex-col bg-paper"
         >
           <div className="flex items-center justify-between border-b border-line px-5 py-4">
-            <p id={titleId} className="text-sm tracking-[0.16em]">
+            <p id={titleId} className="flex items-center gap-3 text-sm tracking-[0.16em]">
+              <span className="rule" aria-hidden="true" />
               TERRASTORE
             </p>
             <button
@@ -62,22 +76,28 @@ export function MobileNav({ cta }: { cta: NavLink }) {
           </div>
           <div className="flex-1 overflow-y-auto px-5 py-6">
             <ul className="menu-links space-y-1">
-              {primaryNav.map((item) => (
+              {primaryNav.map((item, index) => (
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="flex min-h-12 items-center text-2xl"
+                    className="flex min-h-12 items-baseline gap-4 text-2xl"
                     onClick={() => setOpen(false)}
                   >
+                    <span aria-hidden="true" className="w-8 text-sm tracking-[0.14em] text-accent">0{index + 1}</span>
                     {item.label}
                   </Link>
                 </li>
               ))}
             </ul>
             <div className="mt-8 space-y-6 border-t border-line pt-6">
-              {solutionGroups.map((group) => (
+              {solutionGroups.map((group) => {
+                const icon = groupIcon(group.title);
+                return (
                 <div key={group.title}>
-                  <p className="text-xs tracking-[0.14em] text-accent uppercase">{group.title}</p>
+                  <p className="flex items-center gap-2 text-xs tracking-[0.14em] text-accent uppercase">
+                    {icon ? <Icon name={icon} /> : null}
+                    {group.title}
+                  </p>
                   <ul className="mt-2">
                     {group.links.map((item) => (
                       <li key={item.href}>
@@ -92,7 +112,8 @@ export function MobileNav({ cta }: { cta: NavLink }) {
                     ))}
                   </ul>
                 </div>
-              ))}
+                );
+              })}
             </div>
           </div>
           <div className="border-t border-line p-4">
@@ -112,8 +133,10 @@ export function MobileNav({ cta }: { cta: NavLink }) {
               {cta.label}
             </Link>
           </div>
-        </div>
-      ) : null}
+        </div>,
+          document.body,
+        )
+        : null}
     </div>
   );
 }

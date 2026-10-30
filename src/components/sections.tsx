@@ -79,27 +79,53 @@ function Block({ block }: { block: ContentBlock }) {
 }
 
 export function Sections({ sections }: { sections: PageSection[] }) {
+  let imageOrdinal = 0;
   return (
-    <div className="space-y-20 md:space-y-28">
-      {sections.map((section) => (
-        <section key={section.id} aria-labelledby={section.id} className="rise grid gap-8 lg:grid-cols-12 lg:gap-12">
-          <div className={section.imageId ? "min-w-0 lg:col-span-7" : "min-w-0 lg:col-span-12"}>
-            <h2 id={section.id} className="max-w-[22ch] text-3xl leading-tight font-medium md:text-4xl">
-              {frTypo(section.heading)}
-            </h2>
-            <div className="mt-6 space-y-6">
-              {section.blocks.map((block, index) => (
-                <Block key={`${section.id}-${index}`} block={block} />
-              ))}
+    <div className="space-y-14 md:space-y-20">
+      {sections.map((section, index) => {
+        const hasImage = Boolean(section.imageId);
+        const flip = hasImage ? imageOrdinal++ % 2 === 0 : false;
+        const textClass = hasImage
+          ? flip
+            ? "min-w-0 lg:col-span-7 lg:col-start-6"
+            : "min-w-0 lg:col-span-7"
+          : "min-w-0 md:col-span-2 lg:col-span-12";
+        const imageClass = flip
+          ? "min-w-0 md:order-first lg:order-none lg:col-span-5 lg:col-start-1 lg:row-start-1 lg:sticky lg:top-28 lg:self-start"
+          : "min-w-0 lg:col-span-5 lg:sticky lg:top-28 lg:self-start";
+        return (
+          <section
+            key={section.id}
+            aria-labelledby={section.id}
+            className="rise grid gap-8 border-t border-line pt-10 md:grid-cols-2 md:items-start md:gap-10 md:pt-12 lg:grid-cols-12 lg:gap-14"
+          >
+            <div className={textClass}>
+              <p className="index">
+                <span className="rule" aria-hidden="true" />
+                {String(index + 1).padStart(2, "0")}
+              </p>
+              <h2 id={section.id} className="mt-4 max-w-[22ch] text-3xl leading-tight font-medium md:text-4xl">
+                {frTypo(section.heading)}
+              </h2>
+              <div className="mt-6 space-y-6">
+                {section.blocks.map((block, blockIndex) => (
+                  <Block key={`${section.id}-${blockIndex}`} block={block} />
+                ))}
+              </div>
             </div>
-          </div>
-          {section.imageId ? (
-            <div className="lg:sticky lg:top-28 lg:col-span-5 lg:self-start">
-              <Media id={section.imageId} sizes="(min-width: 1024px) 420px, 100vw" />
-            </div>
-          ) : null}
-        </section>
-      ))}
+            {section.imageId ? (
+              <div className={imageClass}>
+                <Media
+                  id={section.imageId}
+                  plate={!flip}
+                  className={flip ? "quiet" : undefined}
+                  sizes="(min-width: 1024px) 460px, (min-width: 768px) 46vw, 100vw"
+                />
+              </div>
+            ) : null}
+          </section>
+        );
+      })}
     </div>
   );
 }
