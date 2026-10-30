@@ -15,9 +15,9 @@ export const metadata: Metadata = pageMetadata({
 export default function GuidesPage() {
   return (
     <>
-      <div className="mx-auto max-w-[1200px] px-5 pt-8 pb-28">
+      <div className="mx-auto max-w-[1200px] px-5 pt-8 pb-28 sm:px-8 lg:px-10">
         <Breadcrumbs items={[{ name: "Accueil", href: "/" }, { name: "Conseils", href: "/conseils" }]} />
-        <h1 className="mt-6 max-w-[16ch] text-4xl font-medium md:text-6xl">Conseils pour décider</h1>
+        <h1 className="display mt-6 max-w-[16ch] text-4xl font-medium md:text-6xl">Conseils pour décider</h1>
         <p className="measure mt-6 text-lg leading-8 text-muted">
           Ces textes servent un choix concret. Ils renvoient aux pages de solutions. Ils ne remplacent pas le relevé.
         </p>

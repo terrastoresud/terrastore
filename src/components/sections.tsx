@@ -80,9 +80,9 @@ function Block({ block }: { block: ContentBlock }) {
 
 export function Sections({ sections }: { sections: PageSection[] }) {
   return (
-    <div className="space-y-16">
+    <div className="space-y-20 md:space-y-28">
       {sections.map((section) => (
-        <section key={section.id} aria-labelledby={section.id} className="grid gap-8 lg:grid-cols-12">
+        <section key={section.id} aria-labelledby={section.id} className="rise grid gap-8 lg:grid-cols-12 lg:gap-12">
           <div className={section.imageId ? "min-w-0 lg:col-span-7" : "min-w-0 lg:col-span-12"}>
             <h2 id={section.id} className="max-w-[22ch] text-3xl leading-tight font-medium md:text-4xl">
               {frTypo(section.heading)}
@@ -94,7 +94,7 @@ export function Sections({ sections }: { sections: PageSection[] }) {
             </div>
           </div>
           {section.imageId ? (
-            <div className="lg:col-span-5">
+            <div className="lg:sticky lg:top-28 lg:col-span-5 lg:self-start">
               <Media id={section.imageId} sizes="(min-width: 1024px) 420px, 100vw" />
             </div>
           ) : null}

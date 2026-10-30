@@ -3,10 +3,13 @@
 import Link from "next/link";
 import { useEffect, useId, useState } from "react";
 import { primaryNav, solutionGroups, type NavLink } from "@/content/navigation";
+import { phoneHref, siteConfig, whatsappHref } from "@/lib/site-config";
 
 export function MobileNav({ cta }: { cta: NavLink }) {
   const [open, setOpen] = useState(false);
   const titleId = useId();
+  const tel = phoneHref();
+  const whatsapp = whatsappHref("Bonjour Terrastore, je souhaite étudier un projet.");
 
   useEffect(() => {
     if (!open) return;
@@ -43,7 +46,7 @@ export function MobileNav({ cta }: { cta: NavLink }) {
           role="dialog"
           aria-modal="true"
           aria-labelledby={titleId}
-          className="fixed inset-0 z-50 flex flex-col bg-paper"
+          className="menu-sheet fixed inset-0 z-50 flex flex-col bg-paper"
         >
           <div className="flex items-center justify-between border-b border-line px-5 py-4">
             <p id={titleId} className="text-sm tracking-[0.16em]">
@@ -93,6 +96,18 @@ export function MobileNav({ cta }: { cta: NavLink }) {
             </div>
           </div>
           <div className="border-t border-line p-4">
+            <div className="mb-3 flex items-center justify-between gap-4 text-sm">
+              {tel && siteConfig.phone ? (
+                <a className="inline-flex min-h-11 items-center underline" href={tel} data-track="phone_click">
+                  {siteConfig.phone}
+                </a>
+              ) : null}
+              {whatsapp ? (
+                <a className="inline-flex min-h-11 items-center underline" href={whatsapp} data-track="whatsapp_click">
+                  WhatsApp
+                </a>
+              ) : null}
+            </div>
             <Link href={cta.href} className="btn inline-flex btn-primary w-full" data-track="quote_cta" onClick={() => setOpen(false)}>
               {cta.label}
             </Link>

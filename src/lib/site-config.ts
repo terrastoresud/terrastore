@@ -12,15 +12,17 @@ function pub(name: string): string | null {
 export const siteConfig = {
   brandName: "Terrastore",
   legalName: null as string | null,
+  legalForm: "SARL à associé unique",
+  tradeRegister: "Agadir n° 58317",
   tagline: "Protection solaire et aménagement sur mesure",
   locale: "fr-MA",
   htmlLang: "fr",
   siteUrl: pub("NEXT_PUBLIC_SITE_URL")?.replace(/\/$/, "") ?? null,
-  phone: pub("NEXT_PUBLIC_PHONE"),
-  whatsapp: pub("NEXT_PUBLIC_WHATSAPP"),
+  phone: pub("NEXT_PUBLIC_PHONE") ?? "+212 661-232722",
+  whatsapp: pub("NEXT_PUBLIC_WHATSAPP") ?? "+212 661-232722",
   email: pub("NEXT_PUBLIC_CONTACT_EMAIL"),
-  streetAddress: null as string | null,
-  locality: null as string | null,
+  streetAddress: "N° 264, Rue Tafoukt, Bloc 1, Cité Lagouira",
+  locality: "Agadir",
   region: null as string | null,
   postalCode: null as string | null,
   country: "MA",
@@ -61,4 +63,15 @@ export function phoneHref(): string | null {
   const compact = siteConfig.phone.replace(/[^\d+]/g, "");
   if (compact.length < 8) return null;
   return `tel:${compact}`;
+}
+
+export function formatAddress(): string | null {
+  if (!siteConfig.streetAddress || !siteConfig.locality) return null;
+  return `${siteConfig.streetAddress}, ${siteConfig.locality}, ${siteConfig.countryName}`;
+}
+
+export function mapHref(): string | null {
+  const address = formatAddress();
+  if (!address) return null;
+  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
 }

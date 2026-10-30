@@ -25,11 +25,20 @@ export function pageMetadata(input: {
       locale: "fr_MA",
       type: "website",
       siteName: siteConfig.brandName,
+      images: [
+        {
+          url: "/images/terrastore-carport-autoportant.jpg",
+          width: 1024,
+          height: 682,
+          alt: "Carport aluminium autoportant à couverture translucide, deux véhicules dans une cour de villa.",
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title: input.title,
       description: input.description,
+      images: ["/images/terrastore-carport-autoportant.jpg"],
     },
   };
 }
@@ -56,6 +65,27 @@ export function organizationNode() {
     },
     ...(siteConfig.email ? { email: siteConfig.email } : {}),
     ...(siteConfig.phone ? { telephone: siteConfig.phone } : {}),
+    ...(siteConfig.streetAddress
+      ? {
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: siteConfig.streetAddress,
+            addressLocality: siteConfig.locality,
+            addressCountry: siteConfig.country,
+          },
+        }
+      : {}),
+    ...(siteConfig.phone
+      ? {
+          contactPoint: {
+            "@type": "ContactPoint",
+            telephone: siteConfig.phone,
+            contactType: "customer service",
+            areaServed: "MA",
+            availableLanguage: "French",
+          },
+        }
+      : {}),
   };
 }
 
@@ -137,6 +167,21 @@ export function graph(nodes: Record<string, unknown>[]) {
   return {
     "@context": "https://schema.org",
     "@graph": nodes,
+  };
+}
+
+export function faqNode(items: { question: string; answer: string }[], path: string) {
+  return {
+    "@type": "FAQPage",
+    url: absoluteUrl(path),
+    mainEntity: items.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
   };
 }
 

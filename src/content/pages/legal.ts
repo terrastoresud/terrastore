@@ -5,10 +5,11 @@ export const legalPages: PageDoc[] = [
     slug: "mentions-legales",
     kind: "legal",
     title: "Mentions légales | Terrastore",
-    description: "Mentions légales du site Terrastore. Les informations d'immatriculation et d'adresse ne sont publiées qu'une fois confirmées.",
+    description:
+      "Mentions légales de Terrastore : SARL à associé unique, RC Agadir n° 58317, siège à Cité Lagouira, Agadir.",
     h1: "Mentions légales",
     eyebrow: "Information",
-    lede: "Le site présente la marque Terrastore, spécialisée dans la protection solaire et l'aménagement sur mesure au Maroc. Les données légales manquantes ne sont pas inventées.",
+    lede: "Le site présente la marque Terrastore, protection solaire et aménagement sur mesure au Maroc. Les mentions ci-dessous reprennent les informations confirmées pour publication.",
     primaryQuery: "mentions légales Terrastore",
     serviceType: "Information légale",
     ctaTitle: "Une question sur un projet",
@@ -26,8 +27,9 @@ export const legalPages: PageDoc[] = [
           {
             type: "paragraphs",
             items: [
-              ["Le site est édité sous la marque Terrastore. La raison sociale, la forme juridique, le numéro RC, l'ICE, l'identifiant fiscal et l'adresse du siège ne sont pas affichés tant qu'ils n'ont pas été confirmés pour publication par le responsable du site."],
-              ["Directeur de la publication : non communiqué."],
+              ["Le site est édité sous la marque Terrastore, exploitée par une société à responsabilité limitée à associé unique, immatriculée au registre du commerce d'Agadir sous le numéro 58317."],
+              ["Siège : N° 264, Rue Tafoukt, Bloc 1, Cité Lagouira, Agadir, Maroc."],
+              ["Le nom du gérant n'est pas affiché. L'ICE et l'identifiant fiscal ne sont pas publiés sur cette page."],
             ],
           },
         ],
@@ -39,7 +41,7 @@ export const legalPages: PageDoc[] = [
           {
             type: "paragraphs",
             items: [
-              ["Lorsqu'un téléphone, un WhatsApp ou un e-mail est renseigné dans la configuration du site, il apparaît dans le pied de page et sur la page contact. En l'absence de ces coordonnées, seule la demande en ligne est proposée, et uniquement si l'envoi est activé."],
+              ["Téléphone et WhatsApp : +212 661-232722. Ces coordonnées figurent aussi dans le pied de page et sur la page contact. Aucun e-mail public n'est affiché."],
             ],
           },
         ],
@@ -51,7 +53,7 @@ export const legalPages: PageDoc[] = [
           {
             type: "paragraphs",
             items: [
-              ["L'hébergeur de production sera indiqué ici au moment de la mise en ligne définitive. Tant que le site est servi depuis un environnement de prévisualisation, cette mention reste ouverte."],
+              ["Le site est hébergé par Vercel Inc., vercel.com."],
             ],
           },
         ],
@@ -63,7 +65,7 @@ export const legalPages: PageDoc[] = [
           {
             type: "paragraphs",
             items: [
-              ["Les textes, la structure des pages et les schémas d'intention sont protégés. Les schémas ne représentent pas des chantiers réalisés. Les photographies de projets seront créditées lorsqu'elles remplaceront ces schémas."],
+              ["Les textes et la structure des pages sont protégés. Les photographies montrent des configurations d'ouvrages. Elles ne sont pas présentées comme des chantiers nominatifs, ni rattachées à une ville ou à un client."],
               ["Les marques citées pour expliquer un usage — sans être présentées comme des partenaires — restent la propriété de leurs titulaires. Terrastore ne revendique pas de partenariat qui n'aurait pas été établi."],
             ],
           },
@@ -85,7 +87,7 @@ export const legalPages: PageDoc[] = [
     ctaTitle: "Revenir au projet",
     ctaText: "La demande d'étude reste le seul formulaire du site.",
     breadcrumbs: [{ name: "Confidentialité", href: "/politique-confidentialite" }],
-    related: [{ href: "/mentions-legales", label: "Mentions légales", text: "Éditeur et informations encore ouvertes." }],
+    related: [{ href: "/mentions-legales", label: "Mentions légales", text: "Éditeur, siège et registre du commerce." }],
     sections: [
       {
         id: "qui",
@@ -94,7 +96,7 @@ export const legalPages: PageDoc[] = [
           {
             type: "paragraphs",
             items: [
-              ["Le responsable du traitement est l'éditeur du site Terrastore. Son identité légale complète sera publiée dans les mentions légales dès confirmation. En attendant, aucune donnée n'est conservée par le formulaire si l'envoi n'est pas activé."],
+              ["Le responsable du traitement est l'éditeur du site : la société à responsabilité limitée à associé unique immatriculée au registre du commerce d'Agadir sous le numéro 58317, siège N° 264, Rue Tafoukt, Bloc 1, Cité Lagouira, Agadir. Tant que l'envoi du formulaire n'est pas activé, ce formulaire n'enregistre pas le message."],
             ],
           },
         ],
@@ -121,7 +123,7 @@ export const legalPages: PageDoc[] = [
             type: "paragraphs",
             items: [
               ["La demande est envoyée avec votre accord, recueilli par la case du formulaire. Le cadre applicable est la loi marocaine 09-08 relative à la protection des personnes physiques à l'égard du traitement des données à caractère personnel. Une déclaration auprès de la CNDP, si elle est requise pour le traitement définitif, sera référencée lorsqu'elle existera. Le site ne prétend pas qu'elle est déjà faite."],
-              ["Vous pouvez demander l'accès, la rectification ou la suppression des messages vous concernant dès qu'un canal de contact publié existe. Sans e-mail publié, cette demande pourra être faite par le moyen de contact qui sera affiché."],
+              ["Vous pouvez demander l'accès, la rectification ou la suppression des messages vous concernant par téléphone ou WhatsApp au +212 661-232722."],
             ],
           },
         ],

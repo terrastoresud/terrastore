@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { RelatedLink } from "@/content/types";
+import { phoneHref, whatsappHref } from "@/lib/site-config";
 import { frTypo } from "@/lib/typography";
 
 export { MobileCta } from "@/components/mobile-cta";
@@ -26,18 +27,33 @@ export function RelatedLinks({ items, title = "Pour aller plus loin" }: { items:
 }
 
 export function CtaBand({ title, text }: { title: string; text: string }) {
+  const tel = phoneHref();
+  const whatsapp = whatsappHref("Bonjour Terrastore, je souhaite étudier un projet.");
+
   return (
     <section className="bg-ink text-inverse" aria-labelledby="cta-final">
-      <div className="mx-auto flex max-w-[1200px] flex-col gap-6 px-5 py-16 md:flex-row md:items-end md:justify-between">
+      <div className="mx-auto flex max-w-[1200px] flex-col gap-8 px-5 py-16 sm:px-8 md:flex-row md:items-end md:justify-between md:py-20 lg:px-10 lg:py-24">
         <div>
           <h2 id="cta-final" className="max-w-[16ch] text-4xl leading-tight font-medium">
             {frTypo(title)}
           </h2>
           <p className="mt-4 max-w-[46ch] leading-7 text-[#ddd6cc]">{frTypo(text)}</p>
         </div>
-        <Link href="/contact" className="btn inline-flex bg-inverse text-ink hover:bg-sand" data-track="quote_cta">
-          Étudier mon projet
-        </Link>
+        <div className="flex flex-wrap gap-3">
+          {whatsapp ? (
+            <a className="btn inline-flex bg-inverse text-ink hover:bg-sand" href={whatsapp} data-track="whatsapp_click">
+              WhatsApp
+            </a>
+          ) : null}
+          {tel ? (
+            <a className="btn inline-flex border border-inverse text-inverse hover:bg-inverse hover:text-ink" href={tel} data-track="phone_click">
+              Appeler
+            </a>
+          ) : null}
+          <Link href="/contact" className="btn inline-flex border border-inverse text-inverse hover:bg-inverse hover:text-ink" data-track="quote_cta">
+            Étudier mon projet
+          </Link>
+        </div>
       </div>
     </section>
   );

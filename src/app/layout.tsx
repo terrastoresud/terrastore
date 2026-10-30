@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Manrope } from "next/font/google";
 import { Analytics } from "@/components/analytics";
 import { SiteFooter } from "@/components/site-footer";
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     template: "%s",
   },
   description:
-    "Terrastore étudie et installe des carports, parasols et stores sur mesure pour les maisons et les projets professionnels au Maroc.",
+    "Terrastore, siège à Agadir, étudie, configure et installe des carports aluminium, des parasols, des stores et des pergolas, partout au Maroc.",
   applicationName: "Terrastore",
   authors: [{ name: "Terrastore" }],
   robots: robotsDirective(),
@@ -32,12 +32,29 @@ export const metadata: Metadata = {
     siteName: "Terrastore",
     title: "Carports, parasols et stores sur mesure au Maroc | Terrastore",
     description:
-      "Terrastore étudie et installe des carports, parasols et stores sur mesure pour les maisons et les projets professionnels au Maroc.",
+      "Terrastore, siège à Agadir, étudie, configure et installe des carports aluminium, des parasols, des stores et des pergolas, partout au Maroc.",
+    images: [
+      {
+        url: "/images/terrastore-carport-autoportant.jpg",
+        width: 1024,
+        height: 682,
+        alt: "Carport aluminium autoportant à couverture translucide, deux véhicules dans une cour de villa.",
+      },
+    ],
   },
-  twitter: { card: "summary_large_image" },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/images/terrastore-carport-autoportant.jpg"],
+  },
   verification: siteConfig.googleSiteVerification
     ? { google: siteConfig.googleSiteVerification }
     : undefined,
+};
+
+export const viewport: Viewport = {
+  themeColor: "#f3f0ea",
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

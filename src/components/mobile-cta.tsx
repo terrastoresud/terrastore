@@ -1,7 +1,7 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useState } from "react";
+import { phoneHref, whatsappHref } from "@/lib/site-config";
 
 export function MobileCta() {
   const [visible, setVisible] = useState(false);
@@ -23,11 +23,23 @@ export function MobileCta() {
 
   if (!visible) return null;
 
+  const tel = phoneHref();
+  const whatsapp = whatsappHref("Bonjour Terrastore, je souhaite étudier un projet.");
+
   return (
     <div className="fixed inset-x-0 bottom-0 z-30 border-t border-line bg-paper p-3 sm:hidden">
-      <Link href="/contact" className="btn inline-flex btn-primary w-full" data-track="quote_cta">
-        Demander une étude
-      </Link>
+      <div className="grid grid-cols-2 gap-2">
+        {tel ? (
+          <a href={tel} className="btn inline-flex btn-secondary" data-track="phone_click">
+            Appeler
+          </a>
+        ) : null}
+        {whatsapp ? (
+          <a href={whatsapp} className="btn inline-flex btn-primary" data-track="whatsapp_click">
+            WhatsApp
+          </a>
+        ) : null}
+      </div>
     </div>
   );
 }

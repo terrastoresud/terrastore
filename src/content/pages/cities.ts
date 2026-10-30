@@ -19,7 +19,7 @@ export const cityPages: PageDoc[] = [
     area: "Agadir",
     title: "Carports, parasols et stores à Agadir | Terrastore",
     description:
-      "Terrastore intervient à Agadir pour les carports, parasols, stores et pergolas. Villas, terrasses et lieux exposés au littoral, sans prétendre à une agence de quartier.",
+      "Terrastore intervient à Agadir pour les carports, parasols, stores et pergolas. Le siège est à Cité Lagouira. L'étude se fait sur le lieu du projet.",
     h1: "Protection solaire à Agadir",
     eyebrow: "Souss",
     lede: "Terrastore intervient à Agadir pour les villas, les terrasses et les lieux d'hospitalité. Le littoral change les priorités : soleil long, air marin, et vent qui traverse les parcelles ouvertes.",
@@ -31,7 +31,7 @@ export const cityPages: PageDoc[] = [
       { href: "/parasol-professionnel", label: "Parasols professionnels", text: "Cafés et restaurants qui ouvrent la toile chaque service." },
     ],
     faqs: [
-      { question: "Avez-vous une agence ouverte au public à Agadir ?", answer: "Le site ne publie pas d'adresse de showroom. Une immatriculation ou un déplacement d'équipe ne sont pas une boutique. Les coordonnées de visite ne seront affichées que lorsqu'elles seront confirmées." },
+      { question: "Avez-vous une agence ouverte au public à Agadir ?", answer: "Le siège est au N° 264, Rue Tafoukt, Bloc 1, Cité Lagouira, Agadir. Ce n'est pas un showroom à visiter sans rendez-vous. L'étude se fait sur le lieu du projet. Le téléphone et le WhatsApp sont le +212 661-232722." },
       { question: "Le bord de mer change-t-il le projet ?", answer: "Oui pour l'ancrage, le choix entre toile légère et structure, et la fréquence de fermeture des parasols et stores. Non pour inventer une classe de résistance identique à toutes les parcelles d'Agadir." },
     ],
     sections: [

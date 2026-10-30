@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { projectTypes } from "@/content/navigation";
 import { emptyContact, validateContact, type ContactInput, type FieldErrors } from "@/lib/contact";
+import { phoneHref, siteConfig, whatsappHref } from "@/lib/site-config";
 
 function track(name: string) {
   const gtag = (window as Window & { gtag?: (...args: unknown[]) => void }).gtag;
@@ -66,7 +67,21 @@ export function QuoteForm({ deliveryEnabled }: { deliveryEnabled: boolean }) {
     <form onSubmit={onSubmit} onFocus={onFocus} noValidate className="space-y-5">
       {!deliveryEnabled ? (
         <p className="border-l-2 border-mark bg-sand px-4 py-3 text-sm leading-6" role="status">
-          L’envoi en ligne n’est pas encore relié. Vous pouvez vérifier le formulaire : tant que la connexion n’est pas en place, aucun message n’est transmis ni enregistré.
+          L’envoi en ligne n’est pas encore relié : ce formulaire n’enregistre rien. Pour une réponse, appelez au{" "}
+          {phoneHref() && siteConfig.phone ? (
+            <a className="underline" href={phoneHref() ?? undefined}>
+              {siteConfig.phone}
+            </a>
+          ) : null}{" "}
+          ou écrivez sur{" "}
+          {whatsappHref() ? (
+            <a className="underline" href={whatsappHref() ?? undefined}>
+              WhatsApp
+            </a>
+          ) : (
+            "WhatsApp"
+          )}
+          .
         </p>
       ) : null}
       {errorEntries.length ? (

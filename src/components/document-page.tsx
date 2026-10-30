@@ -9,6 +9,7 @@ import type { PageDoc } from "@/content/types";
 import {
   articleNode,
   breadcrumbNode,
+  faqNode,
   graph,
   organizationNode,
   serviceNode,
@@ -23,6 +24,7 @@ export function DocumentPage({ page, path }: { page: PageDoc; path: string }) {
     webPageNode({ name: page.h1, description: page.description, path }),
     breadcrumbNode(crumbs),
   ];
+  if (page.faqs?.length) nodes.push(faqNode(page.faqs, path));
   if (page.kind !== "legal") {
     nodes.push(
       serviceNode({
@@ -37,12 +39,12 @@ export function DocumentPage({ page, path }: { page: PageDoc; path: string }) {
   return (
     <>
       <JsonLd data={graph(nodes)} />
-      <article className="mx-auto max-w-[1200px] px-5 pt-8 pb-16 sm:pb-8">
+      <article className="mx-auto max-w-[1200px] px-5 pt-8 pb-16 sm:px-8 sm:pb-8 lg:px-10">
         <Breadcrumbs items={crumbs} />
-        <header className="mt-6 grid items-end gap-8 lg:grid-cols-12">
+        <header className="mt-8 grid items-end gap-10 lg:grid-cols-12">
           <div className="lg:col-span-7">
             <p className="text-xs tracking-[0.16em] text-accent uppercase">{page.eyebrow}</p>
-            <h1 className="mt-3 max-w-[16ch] text-4xl leading-[1.05] font-medium md:text-6xl">{frTypo(page.h1)}</h1>
+            <h1 className="display mt-3 max-w-[16ch] text-4xl leading-[1.05] font-medium md:text-6xl">{frTypo(page.h1)}</h1>
             <p className="measure mt-6 text-lg leading-8 text-muted">{frTypo(page.lede)}</p>
             {page.kind !== "legal" ? (
               <div className="mt-8 flex flex-wrap gap-3">
@@ -56,17 +58,17 @@ export function DocumentPage({ page, path }: { page: PageDoc; path: string }) {
             ) : null}
           </div>
           {page.imageId ? (
-            <div className="lg:col-span-5">
+            <div className="lg:sticky lg:top-28 lg:col-span-5">
               <Media id={page.imageId} sizes="(min-width: 1024px) 480px, 100vw" />
             </div>
           ) : null}
         </header>
-        <div className="mt-16">
+        <div className="mt-20 md:mt-28">
           <Sections sections={page.sections} />
         </div>
         {page.faqs?.length ? (
-          <section className="mt-16" aria-labelledby="faq-titre">
-            <h2 id="faq-titre" className="text-3xl font-medium">
+          <section className="rise mt-20 md:mt-28" aria-labelledby="faq-titre">
+            <h2 id="faq-titre" className="text-3xl font-medium md:text-4xl">
               Questions fréquentes
             </h2>
             <div className="mt-6">
@@ -111,11 +113,11 @@ export function GuideArticle({
           breadcrumbNode(crumbs),
         ])}
       />
-      <article className="mx-auto max-w-[1200px] px-5 pt-8 pb-16">
+      <article className="mx-auto max-w-[1200px] px-5 pt-8 pb-16 sm:px-8 lg:px-10">
         <Breadcrumbs items={crumbs} />
-        <header className="mt-6 max-w-[46rem]">
+        <header className="mt-8 max-w-[46rem]">
           <p className="text-xs tracking-[0.16em] text-accent uppercase">Conseil</p>
-          <h1 className="mt-3 text-4xl leading-tight font-medium md:text-5xl">{frTypo(guide.h1)}</h1>
+          <h1 className="display mt-3 text-4xl leading-tight font-medium md:text-5xl">{frTypo(guide.h1)}</h1>
           <p className="mt-6 text-lg leading-8 text-muted">{frTypo(guide.lede)}</p>
         </header>
         <div className="mt-12">

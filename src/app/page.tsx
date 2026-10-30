@@ -7,12 +7,13 @@ import { cities } from "@/content/navigation";
 import { guides } from "@/content/guides";
 import { homeGraph } from "@/lib/seo";
 import { pageMetadata } from "@/lib/seo";
+import { phoneHref, siteConfig, whatsappHref } from "@/lib/site-config";
 import { frTypo } from "@/lib/typography";
 
 export const metadata: Metadata = pageMetadata({
   title: "Carports, parasols et stores sur mesure au Maroc | Terrastore",
   description:
-    "Terrastore étudie, configure et installe des carports aluminium, des parasols et des stores pour les maisons et les projets professionnels, partout au Maroc.",
+    "Terrastore, siège à Agadir, étudie, configure et installe des carports aluminium, des parasols, des stores et des pergolas pour les maisons et les projets professionnels, partout au Maroc.",
   path: "/",
 });
 
@@ -24,14 +25,17 @@ const steps = [
 ];
 
 export default function HomePage() {
+  const tel = phoneHref();
+  const whatsapp = whatsappHref("Bonjour Terrastore, je souhaite étudier un projet.");
+
   return (
     <>
       <JsonLd data={homeGraph()} />
-      <div className="mx-auto max-w-[1200px] px-5 pt-10 pb-8 lg:pt-16">
-        <section className="grid items-end gap-10 lg:grid-cols-12">
-          <div className="lg:col-span-6">
+      <div className="mx-auto max-w-[1200px] px-5 pt-10 pb-8 sm:px-8 lg:px-10 lg:pt-16">
+        <section className="grid items-end gap-10 md:gap-14 lg:grid-cols-12">
+          <div className="lg:col-span-5">
             <p className="text-xs tracking-[0.16em] text-accent uppercase">Protection solaire</p>
-            <h1 className="mt-4 max-w-[12ch] text-[2.6rem] leading-[1.02] font-medium md:text-6xl">
+            <h1 className="display mt-4 max-w-[12ch] text-[2.6rem] leading-[1.02] font-medium sm:text-5xl md:text-6xl">
               Carports, parasols et stores sur mesure au Maroc
             </h1>
             <p className="mt-6 max-w-[42rem] text-lg leading-8 text-muted">
@@ -47,17 +51,34 @@ export default function HomePage() {
                 Découvrir nos solutions
               </Link>
             </div>
+            <p className="mt-6 text-sm leading-6 text-muted">
+              {tel && siteConfig.phone ? (
+                <a className="underline" href={tel} data-track="phone_click">
+                  {siteConfig.phone}
+                </a>
+              ) : null}
+              {whatsapp ? (
+                <>
+                  <span aria-hidden="true"> · </span>
+                  <a className="underline" href={whatsapp} data-track="whatsapp_click">
+                    WhatsApp
+                  </a>
+                </>
+              ) : null}
+              <span aria-hidden="true"> · </span>
+              Siège à Agadir, intervention partout au Maroc.
+            </p>
           </div>
-          <div className="lg:col-span-6">
-            <Media id="home-hero" priority sizes="(min-width: 1024px) 560px, 100vw" />
+          <div className="lg:col-span-7">
+            <Media id="home-hero" priority sizes="(min-width: 1024px) 720px, 100vw" />
           </div>
         </section>
 
-        <section className="mt-20" aria-labelledby="focus">
+        <section className="rise mt-24 md:mt-32" aria-labelledby="focus">
           <h2 id="focus" className="text-3xl font-medium md:text-4xl">
             Quatre familles, un ordre clair
           </h2>
-          <div className="mt-8 grid gap-4 lg:grid-cols-12">
+          <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-12">
             <Link href="/carport-aluminium" className="group border-t border-ink pt-4 lg:col-span-7">
               <p className="text-xs tracking-[0.14em] text-accent uppercase">01</p>
               <p className="mt-3 text-3xl font-medium">Carports</p>
@@ -66,7 +87,7 @@ export default function HomePage() {
               </p>
               <Media id="carport-hero" className="mt-6" sizes="(min-width: 1024px) 640px, 100vw" />
             </Link>
-            <Link href="/parasols" className="border-t border-ink pt-4 lg:col-span-5">
+            <Link href="/parasols" className="group border-t border-ink pt-4 lg:col-span-5">
               <p className="text-xs tracking-[0.14em] text-accent uppercase">02</p>
               <p className="mt-3 text-3xl font-medium">Parasols</p>
               <p className="mt-3 leading-7 text-muted">
@@ -74,7 +95,7 @@ export default function HomePage() {
               </p>
               <Media id="home-parasol" className="mt-6" sizes="(min-width: 1024px) 460px, 100vw" />
             </Link>
-            <Link href="/stores" className="border-t border-line pt-4 lg:col-span-7">
+            <Link href="/stores" className="group border-t border-line pt-4 lg:col-span-7">
               <p className="text-xs tracking-[0.14em] text-accent uppercase">03</p>
               <p className="mt-3 text-3xl font-medium">Stores</p>
               <p className="mt-3 max-w-[46ch] leading-7 text-muted">
@@ -82,7 +103,7 @@ export default function HomePage() {
               </p>
               <Media id="home-store" className="mt-6" sizes="(min-width: 1024px) 640px, 100vw" />
             </Link>
-            <Link href="/pergola-bioclimatique" className="border-t border-line pt-4 lg:col-span-5">
+            <Link href="/pergola-bioclimatique" className="group border-t border-line pt-4 lg:col-span-5">
               <p className="text-xs tracking-[0.14em] text-muted uppercase">04</p>
               <p className="mt-3 text-2xl font-medium">Pergolas</p>
               <p className="mt-3 leading-7 text-muted">
@@ -104,11 +125,11 @@ export default function HomePage() {
           </p>
         </section>
 
-        <section className="mt-20" aria-labelledby="approche">
+        <section className="rise mt-24 md:mt-32" aria-labelledby="approche">
           <h2 id="approche" className="text-3xl font-medium md:text-4xl">
             Comment un projet avance
           </h2>
-          <ol className="mt-8 grid gap-6 md:grid-cols-4">
+          <ol className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {steps.map((step, index) => (
               <li key={step.title} className="border-t border-line pt-4">
                 <p className="text-xs tracking-[0.14em] text-accent">0{index + 1}</p>
@@ -119,7 +140,7 @@ export default function HomePage() {
           </ol>
         </section>
 
-        <section className="mt-20 grid items-center gap-10 lg:grid-cols-2" aria-labelledby="spot-carport">
+        <section className="rise mt-24 md:mt-32 grid items-center gap-10 lg:grid-cols-2" aria-labelledby="spot-carport">
           <Media id="carport-double" sizes="(min-width: 1024px) 560px, 100vw" />
           <div>
             <p className="text-xs tracking-[0.16em] text-accent uppercase">Carport</p>
@@ -137,7 +158,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="mt-20 grid items-center gap-10 lg:grid-cols-2" aria-labelledby="spot-parasol">
+        <section className="rise mt-24 md:mt-32 grid items-center gap-10 lg:grid-cols-2" aria-labelledby="spot-parasol">
           <div className="lg:order-2">
             <Media id="home-parasol" sizes="(min-width: 1024px) 560px, 100vw" />
           </div>
@@ -160,7 +181,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="mt-20" aria-labelledby="spot-stores">
+        <section className="rise mt-24 md:mt-32" aria-labelledby="spot-stores">
           <h2 id="spot-stores" className="text-4xl font-medium">
             Stores : dehors et dedans
           </h2>
@@ -188,7 +209,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="mt-20 grid gap-8 md:grid-cols-2" aria-labelledby="publics">
+        <section className="rise mt-24 md:mt-32 grid gap-8 md:grid-cols-2" aria-labelledby="publics">
           <div className="bg-sand p-6 md:p-8">
             <h2 id="publics" className="text-3xl font-medium">
               Maisons
@@ -211,7 +232,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="mt-20" aria-labelledby="guides">
+        <section className="rise mt-24 md:mt-32" aria-labelledby="guides">
           <h2 id="guides" className="text-3xl font-medium">
             Décider avant de demander
           </h2>
@@ -230,7 +251,7 @@ export default function HomePage() {
           </Link>
         </section>
 
-        <section className="mt-20" aria-labelledby="geo">
+        <section className="rise mt-24 md:mt-32" aria-labelledby="geo">
           <h2 id="geo" className="text-4xl font-medium">
             Intervention partout au Maroc
           </h2>

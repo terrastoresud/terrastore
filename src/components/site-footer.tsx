@@ -1,18 +1,36 @@
 import Link from "next/link";
 import { cities, footerGuides, footerSolutions } from "@/content/navigation";
-import { hasDirectContact, phoneHref, siteConfig, whatsappHref } from "@/lib/site-config";
+import { formatAddress, hasDirectContact, mapHref, phoneHref, siteConfig, whatsappHref } from "@/lib/site-config";
 
 export function SiteFooter() {
   const tel = phoneHref();
   const whatsapp = whatsappHref("Bonjour Terrastore, je souhaite étudier un projet.");
+  const address = formatAddress();
+  const map = mapHref();
 
   return (
     <footer className="border-t border-line bg-paper">
-      <div className="mx-auto grid max-w-[1200px] gap-10 px-5 py-14 md:grid-cols-2 lg:grid-cols-4">
+      <div className="mx-auto grid max-w-[1200px] gap-10 px-5 py-16 sm:px-8 md:grid-cols-2 lg:grid-cols-4 lg:px-10 lg:py-20">
         <div>
           <p className="text-sm tracking-[0.18em]">TERRASTORE</p>
           <p className="mt-4 max-w-[28ch] text-sm leading-6 text-muted">
             Protection solaire et aménagement sur mesure. Étude, configuration et installation pour les maisons et les projets professionnels au Maroc.
+          </p>
+          {address ? (
+            <p className="mt-4 max-w-[32ch] text-sm leading-6">
+              {map ? (
+                <a className="hover:underline" href={map} target="_blank" rel="noopener noreferrer">
+                  {address}
+                </a>
+              ) : (
+                address
+              )}
+            </p>
+          ) : null}
+          <p className="mt-2 text-sm text-muted">
+            {siteConfig.legalForm}
+            <span aria-hidden="true"> · </span>
+            RC {siteConfig.tradeRegister}
           </p>
           <Link href="/contact" className="btn inline-flex btn-secondary mt-6" data-track="quote_cta">
             Étudier mon projet
@@ -79,9 +97,7 @@ export function SiteFooter() {
               ) : null}
             </ul>
           ) : (
-            <p className="mt-4 text-sm text-muted">
-              Les coordonnées directes seront publiées dès validation.
-            </p>
+            <p className="mt-4 text-sm text-muted">Siège à Agadir. Intervention partout au Maroc.</p>
           )}
         </div>
       </div>

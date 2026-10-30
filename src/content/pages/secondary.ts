@@ -256,7 +256,7 @@ export const secondaryPages: PageDoc[] = [
       "Terrastore étudie et installe des carports, parasols, stores et pergolas sur mesure pour les projets résidentiels et professionnels au Maroc.",
     h1: "Terrastore, protection solaire au Maroc",
     eyebrow: "La maison",
-    lede: "Terrastore configure et installe des solutions d'ombrage et d'aménagement extérieur pour les maisons et les projets professionnels, sur l'ensemble du Maroc. La marque visible est Terrastore. La raison sociale n'est affichée que lorsqu'elle est confirmée pour publication.",
+    lede: "Terrastore configure et installe des solutions d'ombrage et d'aménagement extérieur pour les maisons et les projets professionnels, sur l'ensemble du Maroc. La marque visible est Terrastore. La société est une SARL à associé unique, immatriculée au registre du commerce d'Agadir sous le numéro 58317. Le siège est à Cité Lagouira.",
     primaryQuery: "Terrastore Maroc",
     serviceType: "Protection solaire",
     ctaTitle: "Parler d'un projet",
@@ -297,7 +297,7 @@ export const secondaryPages: PageDoc[] = [
             type: "paragraphs",
             items: [
               ["Les priorités sont le carport aluminium, les parasols contemporains et les stores, extérieurs comme intérieurs. Les pergolas et les voiles d'ombrage complètent l'offre lorsque le lieu les justifie."],
-              ["L'intervention est nationale. Les pages d'Agadir, Marrakech, Casablanca, Rabat, Tanger et Essaouira décrivent des contextes de projet. Elles ne sont pas des adresses d'agences."],
+              ["L'intervention est nationale. Le siège est à Agadir, Cité Lagouira. Les pages de Marrakech, Casablanca, Rabat, Tanger et Essaouira décrivent un contexte de projet. Elles ne sont pas des adresses d'agences."],
             ],
           },
         ],

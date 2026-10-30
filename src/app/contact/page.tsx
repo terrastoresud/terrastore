@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import { QuoteForm } from "@/components/quote-form";
 import { Breadcrumbs } from "@/components/breadcrumbs";
-import { hasDirectContact, phoneHref, siteConfig, whatsappHref } from "@/lib/site-config";
+import { formatAddress, mapHref, phoneHref, siteConfig, whatsappHref } from "@/lib/site-config";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
   title: "Demander une étude | Terrastore",
   description:
-    "Décrivez votre projet de carport, parasol, store ou pergola au Maroc. Ville, téléphone et quelques lignes suffisent.",
+    "Appelez ou écrivez sur WhatsApp au +212 661-232722. Siège à Cité Lagouira, Agadir. Intervention partout au Maroc.",
   path: "/contact",
 });
 
@@ -15,12 +15,14 @@ export default function ContactPage() {
   const deliveryEnabled = Boolean(process.env.CONTACT_API_URL && process.env.CONTACT_API_KEY);
   const tel = phoneHref();
   const whatsapp = whatsappHref("Bonjour Terrastore, je souhaite étudier un projet.");
+  const address = formatAddress();
+  const map = mapHref();
 
   return (
-    <div className="mx-auto grid max-w-[1200px] gap-12 px-5 pt-8 pb-16 lg:grid-cols-12">
+    <div className="mx-auto grid max-w-[1200px] gap-12 px-5 pt-8 pb-16 sm:px-8 lg:grid-cols-12 lg:gap-16 lg:px-10 lg:pt-12">
       <div className="lg:col-span-5">
         <Breadcrumbs items={[{ name: "Accueil", href: "/" }, { name: "Contact", href: "/contact" }]} />
-        <h1 className="mt-6 text-4xl font-medium md:text-5xl">Étudier un projet</h1>
+        <h1 className="display mt-6 text-4xl font-medium md:text-5xl">Étudier un projet</h1>
         <p className="mt-5 leading-8 text-muted">
           Indiquez la ville, le type d’ouvrage et ce que vous voulez protéger. Une dimension approximative et le contexte — villa, café, hôtel, bureau — aident déjà.
         </p>
@@ -29,35 +31,31 @@ export default function ContactPage() {
           <li>le nombre de véhicules, de tables ou de baies</li>
           <li>une photo, que vous pouvez décrire en attendant de l’envoyer</li>
         </ul>
-        {hasDirectContact() ? (
-          <ul className="mt-8 space-y-2">
-            {tel && siteConfig.phone ? (
-              <li>
-                <a className="underline" href={tel} data-track="phone_click">
-                  {siteConfig.phone}
-                </a>
-              </li>
-            ) : null}
-            {whatsapp ? (
-              <li>
-                <a className="underline" href={whatsapp} data-track="whatsapp_click">
-                  Écrire sur WhatsApp
-                </a>
-              </li>
-            ) : null}
-            {siteConfig.email ? (
-              <li>
-                <a className="underline" href={`mailto:${siteConfig.email}`}>
-                  {siteConfig.email}
-                </a>
-              </li>
-            ) : null}
-          </ul>
-        ) : (
-          <p className="mt-8 text-sm leading-6 text-muted">
-            Téléphone, WhatsApp et e-mail seront affichés ici dès qu’ils seront confirmés. Aucun numéro provisoire n’est montré.
+        <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+          {tel && siteConfig.phone ? (
+            <a className="btn inline-flex btn-primary" href={tel} data-track="phone_click">
+              Appeler {siteConfig.phone}
+            </a>
+          ) : null}
+          {whatsapp ? (
+            <a className="btn inline-flex btn-secondary" href={whatsapp} data-track="whatsapp_click">
+              WhatsApp
+            </a>
+          ) : null}
+        </div>
+        {address ? (
+          <p className="mt-6 text-sm leading-6 text-muted">
+            Siège :{" "}
+            {map ? (
+              <a className="underline" href={map} target="_blank" rel="noopener noreferrer">
+                {address}
+              </a>
+            ) : (
+              address
+            )}
+            . {siteConfig.legalForm}, RC {siteConfig.tradeRegister}. L’étude se fait sur le lieu du projet, partout au Maroc.
           </p>
-        )}
+        ) : null}
       </div>
       <div className="lg:col-span-7">
         <QuoteForm deliveryEnabled={deliveryEnabled} />

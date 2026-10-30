@@ -17,7 +17,7 @@ export function Media({
   if (image.src) {
     return (
       <figure className={className}>
-        <div className="relative" style={{ aspectRatio: `${image.width} / ${image.height}` }}>
+        <div className="frame relative" style={{ aspectRatio: `${image.width} / ${image.height}` }}>
           <Image
             src={image.src}
             alt={image.alt}
@@ -29,7 +29,7 @@ export function Media({
           />
         </div>
         {image.caption ? (
-          <figcaption className="px-1 py-3 text-sm text-muted">{image.caption}</figcaption>
+          <figcaption className="px-1 py-3 text-[0.82rem] leading-5 tracking-wide text-muted">{image.caption}</figcaption>
         ) : null}
       </figure>
     );

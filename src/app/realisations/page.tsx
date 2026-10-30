@@ -14,8 +14,8 @@ export const metadata: Metadata = {
 export default function ProjectsPage() {
   const visible = projectsArePublic();
   return (
-    <div className="mx-auto max-w-[800px] px-5 py-16">
-      <h1 className="text-4xl font-medium">Réalisations</h1>
+    <div className="mx-auto max-w-[800px] px-5 py-16 sm:px-8">
+      <h1 className="display text-4xl font-medium">Réalisations</h1>
       {visible ? (
         <ul className="mt-8 space-y-8">
           {projects.map((project) => (
