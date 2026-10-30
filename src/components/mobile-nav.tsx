@@ -94,8 +94,8 @@ export function MobileNav({ cta }: { cta: NavLink }) {
                 const icon = groupIcon(group.title);
                 return (
                 <div key={group.title}>
-                  <p className="flex items-center gap-2 text-xs tracking-[0.14em] text-accent uppercase">
-                    {icon ? <Icon name={icon} /> : null}
+                  <p className="flex items-center gap-2.5 text-xs tracking-[0.14em] text-accent uppercase">
+                    {icon ? <Icon name={icon} className="size-8 text-ink" /> : null}
                     {group.title}
                   </p>
                   <ul className="mt-2">

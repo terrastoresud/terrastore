@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { QuoteForm } from "@/components/quote-form";
 import { Breadcrumbs } from "@/components/breadcrumbs";
-import { Icon } from "@/components/icon";
 import { formatAddress, mapHref, phoneHref, siteConfig, whatsappHref } from "@/lib/site-config";
 import { pageMetadata } from "@/lib/seo";
 
@@ -38,14 +37,12 @@ export default function ContactPage() {
         </ul>
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
           {tel && siteConfig.phone ? (
-            <a className="btn inline-flex gap-2 btn-primary" href={tel} data-track="phone_click">
-              <Icon name="phone" />
+            <a className="btn inline-flex btn-primary" href={tel} data-track="phone_click">
               Appeler {siteConfig.phone}
             </a>
           ) : null}
           {whatsapp ? (
-            <a className="btn inline-flex gap-2 btn-secondary" href={whatsapp} data-track="whatsapp_click">
-              <Icon name="chat" />
+            <a className="btn inline-flex btn-secondary" href={whatsapp} data-track="whatsapp_click">
               WhatsApp
             </a>
           ) : null}
