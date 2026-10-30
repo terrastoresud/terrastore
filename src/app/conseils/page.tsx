@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { MobileCta } from "@/components/page-blocks";
+import { CtaBand } from "@/components/page-blocks";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { guides } from "@/content/guides";
 import { pageMetadata } from "@/lib/seo";
@@ -15,22 +15,24 @@ export const metadata: Metadata = pageMetadata({
 export default function GuidesPage() {
   return (
     <>
-      <div className="mx-auto max-w-[1200px] px-5 pt-8 pb-28 sm:px-8 lg:px-10">
+      <div className="mx-auto max-w-[1200px] px-5 pt-8 pb-16 sm:px-8 lg:px-10">
         <Breadcrumbs items={[{ name: "Accueil", href: "/" }, { name: "Conseils", href: "/conseils" }]} />
-        <p className="index mt-6">
-          <span className="rule" aria-hidden="true" />
-          Guides
-        </p>
-        <header className="mt-4 md:grid md:grid-cols-12 md:items-end md:gap-10">
-          <h1 className="display max-w-[16ch] text-4xl font-medium md:col-span-7 lg:text-6xl">Conseils pour décider</h1>
-          <p className="measure mt-6 text-lg leading-8 text-muted md:col-span-5 md:mt-0">
+        <header className="mt-8 lg:grid lg:grid-cols-12 lg:items-end lg:gap-16">
+          <div className="lg:col-span-7">
+            <p className="index">
+              <span className="rule" aria-hidden="true" />
+              Guides
+            </p>
+            <h1 className="display mt-4 text-balance text-[2.05rem] leading-[1.08] font-medium sm:text-5xl lg:text-6xl">Conseils pour décider</h1>
+          </div>
+          <p className="mt-6 max-w-[42rem] text-base leading-7 text-muted sm:text-lg sm:leading-8 lg:col-span-5 lg:mt-0">
             Ces textes servent un choix concret. Ils renvoient aux pages de solutions. Ils ne remplacent pas le relevé.
           </p>
         </header>
         <ul className="mt-10 divide-y divide-line border-y border-line">
           {guides.map((guide, index) => (
             <li key={guide.slug} className="py-6">
-              <p className="text-xs tracking-[0.14em] text-accent">{String(index + 1).padStart(2, "0")}</p>
+              <p className="text-[0.68rem] font-medium tracking-[0.18em] text-accent">{String(index + 1).padStart(2, "0")}</p>
               <Link href={`/conseils/${guide.slug}`} className="mt-2 block max-w-full text-2xl font-medium underline-offset-4 hover:underline">
                 {guide.h1}
               </Link>
@@ -39,7 +41,11 @@ export default function GuidesPage() {
           ))}
         </ul>
       </div>
-      <MobileCta />
+      <CtaBand
+        contact={false}
+        title="Un choix se confirme sur place"
+        text="Ces guides préparent la conversation. L’étude part de la ville, de photos et du lieu."
+      />
     </>
   );
 }

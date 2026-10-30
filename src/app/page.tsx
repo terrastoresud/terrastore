@@ -140,14 +140,14 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="rise mt-24 md:mt-32" aria-labelledby="approche">
+        <section className="rise mt-16 border-t border-line pt-10 md:mt-24 md:pt-14" aria-labelledby="approche">
           <h2 id="approche" className="text-[1.7rem] leading-[1.15] font-medium md:text-4xl">
             Comment un projet avance
           </h2>
-          <ol className="mt-6 grid gap-0 sm:mt-8 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">
+          <ol className="mt-8 grid gap-x-8 gap-y-8 sm:grid-cols-2 lg:grid-cols-4">
             {steps.map((step, index) => (
-              <li key={step.title} className="border-t border-line py-5 sm:pt-6">
-                <p className="text-xs tracking-[0.14em] text-accent">0{index + 1}</p>
+              <li key={step.title}>
+                <p className="text-[0.68rem] font-medium tracking-[0.18em] text-accent">0{index + 1}</p>
                 <p className="mt-3 text-xl font-medium">{step.title}</p>
                 <p className="mt-2 leading-7 text-muted">{frTypo(step.text)}</p>
               </li>
@@ -155,11 +155,16 @@ export default function HomePage() {
           </ol>
         </section>
 
-        <section className="rise mt-20 grid items-center gap-8 md:mt-28 md:grid-cols-2 md:gap-12" aria-labelledby="spot-carport">
-          <Media id="carport-double" plate sizes="(min-width: 768px) 50vw, 100vw" />
-          <div>
-            <p className="text-xs tracking-[0.16em] text-accent uppercase">Carport</p>
-            <h2 id="spot-carport" className="mt-3 text-[1.7rem] leading-[1.15] font-medium md:text-4xl">
+        <section className="rise mt-16 grid items-center gap-8 border-t border-line pt-10 md:mt-24 md:grid-cols-12 md:gap-12 md:pt-14" aria-labelledby="spot-carport">
+          <div className="min-w-0 md:col-span-7">
+            <Media id="carport-double" plate sizes="(min-width: 768px) 58vw, 100vw" />
+          </div>
+          <div className="md:col-span-5">
+            <p className="index">
+              <span className="rule" aria-hidden="true" />
+              Carport
+            </p>
+            <h2 id="spot-carport" className="mt-4 text-[1.7rem] leading-[1.15] font-medium md:text-4xl">
               Protéger la voiture sans fermer un garage
             </h2>
             <p className="mt-4 leading-8 text-muted">
@@ -167,66 +172,81 @@ export default function HomePage() {
                 "Le carport aluminium se lit comme un plan devant la villa. Simple ou double, il se cale sur le nombre de véhicules présents en même temps, sur le sens du portail et sur la place des poteaux — hors du débattement des portières.",
               )}
             </p>
-            <Link href="/carport-aluminium" className="mt-6 inline-flex min-h-11 items-center underline">
+            <Link href="/carport-aluminium" className="mt-6 inline-flex min-h-11 items-center underline underline-offset-4">
               Étudier un carport aluminium
             </Link>
           </div>
         </section>
 
-        <section className="rise mt-20 md:mt-28" aria-labelledby="spot-stores">
+        <section className="rise mt-16 border-t border-line pt-10 md:mt-24 md:pt-14" aria-labelledby="spot-stores">
           <h2 id="spot-stores" className="text-[1.7rem] leading-[1.15] font-medium md:text-4xl">
             Stores : dehors et dedans
           </h2>
-          <div className="mt-8 grid gap-8 md:grid-cols-2">
-            <div className="min-w-0 border-t border-line pt-4">
-              <p className="index">Dehors</p>
+          <div className="mt-8 grid gap-12 md:grid-cols-2 md:gap-10">
+            <div className="min-w-0">
+              <Media id="store-zip" className="quiet" sizes="(min-width: 768px) 46vw, 100vw" />
+              <p className="index mt-5">
+                <span className="rule" aria-hidden="true" />
+                Dehors
+              </p>
               <h3 className="mt-3 text-2xl font-medium">Extérieur</h3>
               <p className="mt-3 leading-7 text-muted">
                 Le store banne projette l’ombre sur la terrasse. Le store ZIP descend devant le vitrage ou le côté d’une pergola, là où le soleil rase.
               </p>
-              <Media id="store-zip" className="quiet mt-6" sizes="(min-width: 768px) 46vw, 100vw" />
-              <Link href="/stores-exterieurs" className="mt-1 inline-flex min-h-11 items-center underline">
+              <Link href="/stores-exterieurs" className="mt-4 inline-flex min-h-11 items-center underline underline-offset-4">
                 Stores extérieurs
               </Link>
             </div>
-            <div className="min-w-0 border-t border-line pt-4">
-              <p className="index">Dedans</p>
+            <div className="min-w-0">
+              <Media id="store-interior" plate sizes="(min-width: 768px) 46vw, 100vw" />
+              <p className="index mt-5">
+                <span className="rule" aria-hidden="true" />
+                Dedans
+              </p>
               <h3 className="mt-3 text-2xl font-medium">Intérieur</h3>
               <p className="mt-3 leading-7 text-muted">
                 Enrouleur, vénitien, jour et nuit : on dose l’éblouissement et le vis-à-vis une fois la lumière entrée. La chaleur, elle, se traite de préférence avant la vitre.
               </p>
-              <Media id="store-interior" plate className="mt-6" sizes="(min-width: 768px) 46vw, 100vw" />
-              <Link href="/stores-interieurs" className="mt-1 inline-flex min-h-11 items-center underline">
+              <Link href="/stores-interieurs" className="mt-4 inline-flex min-h-11 items-center underline underline-offset-4">
                 Stores intérieurs
               </Link>
             </div>
           </div>
         </section>
 
-        <section className="rise mt-20 grid gap-8 md:mt-28 md:grid-cols-2" aria-labelledby="publics">
-          <div className="panel bg-sand p-6 md:p-8">
-            <h2 id="publics" className="text-[1.7rem] leading-[1.15] font-medium md:text-3xl">
-              Maisons
-            </h2>
-            <p className="mt-4 leading-7 text-muted">
-              Villas, terrasses, piscines, allées. Le carport, le store de façade et le parasol de table se décident avec la façon dont vous vivez dehors, pas avec une collection.
-            </p>
-            <Link href="/carport-aluminium" className="mt-6 inline-flex min-h-11 items-center underline">
-              Commencer par le lieu
-            </Link>
-          </div>
-          <div className="panel border border-line p-6 md:p-8">
-            <h2 className="text-[1.7rem] leading-[1.15] font-medium md:text-3xl">Projets professionnels</h2>
-            <p className="mt-4 leading-7 text-muted">
-              Architectes, chantiers, hôtels, riads, restaurants, bureaux. L’étude porte sur les cotes, les supports et la séquence de pose.
-            </p>
-            <Link href="/professionnels" className="mt-6 inline-flex min-h-11 items-center underline">
-              Parler d’un projet professionnel
-            </Link>
+        <section className="rise mt-16 border-t border-line pt-10 md:mt-24 md:pt-14" aria-labelledby="publics">
+          <h2 id="publics" className="text-[1.7rem] leading-[1.15] font-medium md:text-4xl">
+            Maisons et projets professionnels
+          </h2>
+          <div className="mt-8 grid gap-10 md:grid-cols-2 md:gap-0">
+            <div className="md:pr-12">
+              <p className="index">
+                <span className="rule" aria-hidden="true" />
+                Maisons
+              </p>
+              <p className="mt-4 max-w-[42ch] leading-7 text-muted">
+                Villas, terrasses, piscines, allées. Le carport, le store de façade et le parasol de table se décident avec la façon dont vous vivez dehors, pas avec une collection.
+              </p>
+              <Link href="/carport-aluminium" className="mt-5 inline-flex min-h-11 items-center underline underline-offset-4">
+                Commencer par le lieu
+              </Link>
+            </div>
+            <div className="border-t border-line pt-8 md:border-t-0 md:border-l md:pt-0 md:pl-12">
+              <p className="index">
+                <span className="rule" aria-hidden="true" />
+                Professionnels
+              </p>
+              <p className="mt-4 max-w-[42ch] leading-7 text-muted">
+                Architectes, chantiers, hôtels, riads, restaurants, bureaux. L’étude porte sur les cotes, les supports et la séquence de pose.
+              </p>
+              <Link href="/professionnels" className="mt-5 inline-flex min-h-11 items-center underline underline-offset-4">
+                Parler d’un projet professionnel
+              </Link>
+            </div>
           </div>
         </section>
 
-        <section className="rise mt-24 md:mt-32" aria-labelledby="guides">
+        <section className="rise mt-16 border-t border-line pt-10 md:mt-24 md:pt-14" aria-labelledby="guides">
           <h2 id="guides" className="text-[1.7rem] leading-[1.15] font-medium md:text-4xl">
             Décider avant de demander
           </h2>
@@ -235,27 +255,29 @@ export default function HomePage() {
               <li key={guide.slug}>
                 <Link href={`/conseils/${guide.slug}`} className="group flex min-h-16 items-center justify-between gap-4 py-3">
                   <span className="min-w-0 text-lg">{guide.h1.replace(/\s*\?$/, "")}</span>
-                  <span aria-hidden="true" className="shrink-0 transition-transform duration-200 group-hover:translate-x-1">→</span>
+                  <span aria-hidden="true" className="shrink-0 text-muted transition-transform duration-200 group-hover:translate-x-1">
+                    →
+                  </span>
                 </Link>
               </li>
             ))}
           </ul>
-          <Link href="/conseils" className="mt-4 inline-flex min-h-11 items-center underline">
+          <Link href="/conseils" className="mt-4 inline-flex min-h-11 items-center underline underline-offset-4">
             Tous les conseils
           </Link>
         </section>
 
-        <section className="rise mt-20 border-t border-line pt-10 md:mt-28" aria-labelledby="geo">
-          <h2 id="geo" className="text-[1.7rem] leading-[1.15] font-medium md:text-4xl">
+        <section className="rise mt-16 border-t border-line pt-10 md:mt-24 md:pt-14" aria-labelledby="geo">
+          <h2 id="geo" className="text-2xl font-medium">
             Intervention partout au Maroc
           </h2>
-          <p className="measure mt-4 leading-8 text-muted">
+          <p className="mt-4 max-w-[62ch] leading-8 text-muted">
             Les projets sont étudiés sur l’ensemble du pays. Agadir, Marrakech, Casablanca, Rabat, Tanger et Essaouira reviennent souvent, chacun avec son exposition. Ces pages décrivent un contexte. Elles n’ouvrent pas une agence.
           </p>
-          <ul className="mt-6 flex flex-wrap gap-x-5 gap-y-1">
+          <ul className="mt-4 flex flex-wrap gap-x-5">
             {cities.map((city) => (
               <li key={city.href}>
-                <Link href={city.href} className="inline-flex min-h-11 items-center underline decoration-line underline-offset-4">
+                <Link href={city.href} className="inline-flex min-h-11 items-center text-sm underline decoration-line underline-offset-4">
                   {city.label}
                 </Link>
               </li>

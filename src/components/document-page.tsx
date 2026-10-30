@@ -3,7 +3,7 @@ import { Breadcrumbs } from "@/components/breadcrumbs";
 import { FaqList } from "@/components/faq-list";
 import { JsonLd } from "@/components/json-ld";
 import { Media } from "@/components/media";
-import { CtaBand, MobileCta, RelatedLinks, SolutionFigures } from "@/components/page-blocks";
+import { CtaBand, RelatedLinks, SolutionFigures } from "@/components/page-blocks";
 import { Sections } from "@/components/sections";
 import type { PageDoc } from "@/content/types";
 import {
@@ -39,46 +39,43 @@ export function DocumentPage({ page, path }: { page: PageDoc; path: string }) {
   return (
     <>
       <JsonLd data={graph(nodes)} />
-      <article className="mx-auto max-w-[1200px] px-5 pt-8 pb-16 sm:px-8 sm:pb-8 lg:px-10">
+      <article className="mx-auto max-w-[1200px] px-5 pt-8 pb-16 sm:px-8 lg:px-10">
         <Breadcrumbs items={crumbs} />
-        <header className="mt-8 grid items-start gap-8 md:grid-cols-2 md:gap-10 lg:grid-cols-12 lg:gap-14">
-          <div className={page.imageId ? "order-2 min-w-0 md:order-1 lg:col-span-7" : "min-w-0 lg:col-span-12"}>
+        <header className="mt-8 grid items-center gap-8 lg:grid-cols-12 lg:gap-16">
+          <div className={page.imageId ? "order-2 min-w-0 lg:order-1 lg:col-span-6" : "min-w-0 lg:col-span-8"}>
             <p className="index">
               <span className="rule" aria-hidden="true" />
               {page.eyebrow}
             </p>
-            <h1 className="display mt-4 max-w-[18ch] text-4xl leading-[1.05] font-medium md:text-5xl lg:max-w-[16ch] lg:text-6xl">{frTypo(page.h1)}</h1>
-            <p className="settle-up measure mt-6 text-lg leading-8 text-muted">{frTypo(page.lede)}</p>
+            <h1 className="display mt-4 text-balance text-[2.05rem] leading-[1.08] font-medium sm:text-5xl lg:text-6xl">{frTypo(page.h1)}</h1>
+            <p className="settle-up mt-6 max-w-[42rem] text-base leading-7 text-muted sm:text-lg sm:leading-8">{frTypo(page.lede)}</p>
             {page.kind !== "legal" ? (
-              <div className="mt-8 flex flex-wrap gap-3">
-                <Link href="/contact" className="btn inline-flex btn-primary" data-track="quote_cta">
+              <div className="mt-7">
+                <Link href="/contact" className="btn inline-flex w-full justify-center btn-primary sm:w-auto" data-track="quote_cta">
                   Demander une étude
-                </Link>
-                <Link href="/solutions" className="btn inline-flex btn-secondary">
-                  Toutes les solutions
                 </Link>
               </div>
             ) : null}
           </div>
           {page.imageId ? (
-            <div className="order-1 min-w-0 md:sticky md:top-24 md:order-2 md:self-start lg:col-span-5">
+            <div className="order-1 min-w-0 lg:col-span-6">
               <Media
                 id={page.imageId}
                 className="hero-still"
                 plate
                 priority
-                sizes="(min-width: 1024px) 480px, (min-width: 768px) 50vw, 100vw"
+                sizes="(min-width: 1024px) 560px, 100vw"
               />
             </div>
           ) : null}
         </header>
         {page.figures?.length ? <SolutionFigures title={page.figuresTitle ?? "En images"} items={page.figures} /> : null}
-        <div className="mt-16 md:mt-24">
+        <div className="mt-12 md:mt-16">
           <Sections sections={page.sections} />
         </div>
         {page.faqs?.length ? (
-          <section className="mt-16 border-t border-line pt-10 md:mt-24" aria-labelledby="faq-titre">
-            <h2 id="faq-titre" className="text-3xl font-medium md:text-4xl">
+          <section className="border-t border-line py-12 md:py-16" aria-labelledby="faq-titre">
+            <h2 id="faq-titre" className="text-[1.7rem] leading-[1.15] font-medium md:text-4xl">
               Questions fréquentes
             </h2>
             <div className="mt-6">
@@ -86,12 +83,9 @@ export function DocumentPage({ page, path }: { page: PageDoc; path: string }) {
             </div>
           </section>
         ) : null}
-        <div className="mt-16">
-          <RelatedLinks items={page.related} />
-        </div>
+        <RelatedLinks items={page.related} />
       </article>
-      {page.kind !== "legal" ? <CtaBand title={page.ctaTitle} text={page.ctaText} /> : null}
-      <MobileCta />
+      {page.kind !== "legal" ? <CtaBand contact={false} title={page.ctaTitle} text={page.ctaText} /> : null}
     </>
   );
 }
@@ -125,24 +119,26 @@ export function GuideArticle({
       />
       <article className="mx-auto max-w-[1200px] px-5 pt-8 pb-16 sm:px-8 lg:px-10">
         <Breadcrumbs items={crumbs} />
-        <header className="mt-8 md:grid md:grid-cols-12 md:items-end md:gap-10">
-          <div className="md:col-span-7">
+        <header className="mt-8 lg:grid lg:grid-cols-12 lg:items-end lg:gap-16">
+          <div className="lg:col-span-7">
             <p className="index">
               <span className="rule" aria-hidden="true" />
               Conseil
             </p>
-            <h1 className="display mt-4 text-4xl leading-tight font-medium lg:text-5xl">{frTypo(guide.h1)}</h1>
+            <h1 className="display mt-4 text-balance text-[2.05rem] leading-[1.08] font-medium sm:text-5xl">{frTypo(guide.h1)}</h1>
           </div>
-          <p className="settle-up mt-6 text-lg leading-8 text-muted md:col-span-5 md:mt-0">{frTypo(guide.lede)}</p>
+          <p className="settle-up mt-6 max-w-[42rem] text-base leading-7 text-muted sm:text-lg sm:leading-8 lg:col-span-5 lg:mt-0">{frTypo(guide.lede)}</p>
         </header>
-        <div className="mt-12">
+        <div className="mt-12 md:mt-16">
           <Sections sections={guide.sections} />
         </div>
-        <div className="mt-16">
-          <RelatedLinks items={guide.related} />
-        </div>
+        <RelatedLinks items={guide.related} />
       </article>
-      <MobileCta />
+      <CtaBand
+        contact={false}
+        title="Étudier ce choix sur votre lieu"
+        text="Le guide pose les questions. La configuration se décide avec l’exposition, les cotes et l’architecture déjà là."
+      />
     </>
   );
 }

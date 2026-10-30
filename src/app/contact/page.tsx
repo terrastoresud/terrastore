@@ -26,23 +26,23 @@ export default function ContactPage() {
           <span className="rule" aria-hidden="true" />
           Contact
         </p>
-        <h1 className="display mt-4 text-4xl font-medium md:text-5xl">Étudier un projet</h1>
-        <p className="settle-up mt-5 leading-8 text-muted">
+        <h1 className="display mt-4 text-balance text-[2.05rem] leading-[1.08] font-medium sm:text-5xl">Étudier un projet</h1>
+        <p className="settle-up mt-5 max-w-[42ch] leading-8 text-muted">
           Indiquez la ville, le type d’ouvrage et ce que vous voulez protéger. Une dimension approximative et le contexte — villa, café, hôtel, bureau — aident déjà.
         </p>
-        <ul className="mt-6 list-disc space-y-2 pl-5 text-muted">
-          <li>la ville</li>
-          <li>le nombre de véhicules, de tables ou de baies</li>
-          <li>une photo, que vous pouvez décrire en attendant de l’envoyer</li>
+        <ul className="mt-8 divide-y divide-line border-y border-line text-sm">
+          <li className="py-3">La ville</li>
+          <li className="py-3">Le nombre de véhicules, de tables ou de baies</li>
+          <li className="py-3">Une photo, que vous pouvez décrire en attendant de l’envoyer</li>
         </ul>
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
           {tel && siteConfig.phone ? (
-            <a className="btn inline-flex btn-primary" href={tel} data-track="phone_click">
+            <a className="btn inline-flex w-full justify-center btn-primary sm:w-auto" href={tel} data-track="phone_click">
               Appeler {siteConfig.phone}
             </a>
           ) : null}
           {whatsapp ? (
-            <a className="btn inline-flex btn-secondary" href={whatsapp} data-track="whatsapp_click">
+            <a className="btn inline-flex w-full justify-center btn-secondary sm:w-auto" href={whatsapp} data-track="whatsapp_click">
               WhatsApp
             </a>
           ) : null}

@@ -37,9 +37,9 @@ function Block({ block }: { block: ContentBlock }) {
   }
   if (block.type === "points") {
     return (
-      <ul className="grid gap-6 sm:grid-cols-2">
+      <ul className="grid gap-x-10 gap-y-6 sm:grid-cols-2">
         {block.items.map((item) => (
-          <li key={item.title} className="border-t border-line pt-4">
+          <li key={item.title}>
             <p className="font-medium">{frTypo(item.title)}</p>
             <p className="mt-2 leading-7 text-muted">{frTypo(item.text)}</p>
           </li>
@@ -59,17 +59,17 @@ function Block({ block }: { block: ContentBlock }) {
   if (block.type === "comparison") return <ComparisonTable table={block} />;
   if (block.type === "note") {
     return (
-      <aside className="border-l-2 border-mark bg-sand px-5 py-4">
+      <aside className="border-l border-mark pl-5">
         <p className="font-medium">{frTypo(block.title)}</p>
         <p className="mt-2 leading-7 text-muted">{frTypo(block.text)}</p>
       </aside>
     );
   }
   return (
-    <ol className="grid gap-5 md:grid-cols-2">
+    <ol className="grid gap-x-10 gap-y-6 md:grid-cols-2">
       {block.items.map((step, index) => (
-        <li key={step.title} className="border-t border-line pt-4">
-          <p className="text-xs tracking-[0.14em] text-accent">0{index + 1}</p>
+        <li key={step.title}>
+          <p className="text-[0.68rem] font-medium tracking-[0.18em] text-accent">0{index + 1}</p>
           <p className="mt-2 font-medium">{frTypo(step.title)}</p>
           <p className="mt-2 leading-7 text-muted">{frTypo(step.text)}</p>
         </li>
@@ -81,7 +81,7 @@ function Block({ block }: { block: ContentBlock }) {
 export function Sections({ sections }: { sections: PageSection[] }) {
   let imageOrdinal = 0;
   return (
-    <div className="space-y-14 md:space-y-20">
+    <div>
       {sections.map((section, index) => {
         const hasImage = Boolean(section.imageId);
         const flip = hasImage ? imageOrdinal++ % 2 === 0 : false;
@@ -97,14 +97,14 @@ export function Sections({ sections }: { sections: PageSection[] }) {
           <section
             key={section.id}
             aria-labelledby={section.id}
-            className="rise grid gap-8 border-t border-line pt-10 md:grid-cols-2 md:items-start md:gap-10 md:pt-12 lg:grid-cols-12 lg:gap-14"
+            className="rise grid gap-8 border-t border-line py-12 md:grid-cols-2 md:items-start md:gap-10 md:py-16 lg:grid-cols-12 lg:gap-16"
           >
             <div className={textClass}>
               <p className="index">
                 <span className="rule" aria-hidden="true" />
                 {String(index + 1).padStart(2, "0")}
               </p>
-              <h2 id={section.id} className="mt-4 max-w-[22ch] text-3xl leading-tight font-medium md:text-4xl">
+              <h2 id={section.id} className="mt-4 max-w-[22ch] text-[1.7rem] leading-[1.15] font-medium md:text-4xl">
                 {frTypo(section.heading)}
               </h2>
               <div className="mt-6 space-y-6">

@@ -45,22 +45,17 @@ export const solutionGroups: { title: string; links: NavLink[] }[] = [
 ];
 
 export const footerSolutions: NavLink[] = [
-  { href: "/solutions", label: "Toutes les solutions" },
+  { href: "/solutions", label: "Toutes" },
   { href: "/carport-aluminium", label: "Carports" },
   { href: "/parasols", label: "Parasols" },
-  { href: "/store-banne", label: "Store banne" },
-  { href: "/store-zip", label: "Store ZIP" },
-  { href: "/stores-interieurs", label: "Stores intérieurs" },
-  { href: "/pergola-bioclimatique", label: "Pergola bioclimatique" },
-  { href: "/voile-ombrage", label: "Voile d'ombrage" },
+  { href: "/stores", label: "Stores" },
+  { href: "/pergola-bioclimatique", label: "Pergolas" },
+  { href: "/voile-ombrage", label: "Voile" },
 ];
 
 export const footerGuides: NavLink[] = [
-  { href: "/conseils", label: "Tous les conseils" },
-  { href: "/conseils/comment-choisir-un-carport-aluminium", label: "Choisir un carport" },
-  { href: "/conseils/parasol-deporte-ou-mat-central", label: "Parasol déporté ou central" },
-  { href: "/conseils/store-banne-ou-store-zip", label: "Store banne ou ZIP" },
-  { href: "/professionnels", label: "Projets professionnels" },
+  { href: "/conseils", label: "Guides" },
+  { href: "/professionnels", label: "Professionnels" },
   { href: "/a-propos", label: "À propos" },
 ];
 

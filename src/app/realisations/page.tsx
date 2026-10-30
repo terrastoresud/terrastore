@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { CtaBand } from "@/components/page-blocks";
 import { projects, projectsArePublic } from "@/content/registry";
 import { pageMetadata } from "@/lib/seo";
 
@@ -14,12 +15,13 @@ export const metadata: Metadata = {
 export default function ProjectsPage() {
   const visible = projectsArePublic();
   return (
-    <div className="mx-auto max-w-[800px] px-5 py-16 sm:px-8">
-      <p className="index">
+    <>
+    <div className="mx-auto max-w-[800px] px-5 pt-8 pb-16 sm:px-8">
+      <p className="index mt-8">
         <span className="rule" aria-hidden="true" />
         Chantiers
       </p>
-      <h1 className="display mt-4 text-4xl font-medium">Réalisations</h1>
+      <h1 className="display mt-4 text-balance text-[2.05rem] leading-[1.08] font-medium sm:text-5xl">Réalisations</h1>
       {visible ? (
         <ul className="mt-8 space-y-8">
           {projects.map((project) => (
@@ -38,5 +40,11 @@ export default function ProjectsPage() {
         </p>
       )}
     </div>
+    <CtaBand
+      contact={false}
+      title="Parlons de votre projet"
+      text="Ville, photos, usage. Nous revenons vers vous pour préciser la configuration, sans vous demander un dossier complet."
+    />
+    </>
   );
 }

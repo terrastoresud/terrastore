@@ -66,7 +66,7 @@ export function QuoteForm({ deliveryEnabled }: { deliveryEnabled: boolean }) {
   return (
     <form onSubmit={onSubmit} onFocus={onFocus} noValidate className="space-y-5">
       {!deliveryEnabled ? (
-        <p className="border-l-2 border-mark bg-sand px-4 py-3 text-sm leading-6" role="status">
+        <p className="border-l border-mark pl-4 text-sm leading-6" role="status">
           L’envoi en ligne n’est pas encore relié : ce formulaire n’enregistre rien. Pour une réponse, appelez au{" "}
           {phoneHref() && siteConfig.phone ? (
             <a className="underline" href={phoneHref() ?? undefined}>

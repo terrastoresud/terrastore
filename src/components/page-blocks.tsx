@@ -8,16 +8,16 @@ import { frTypo } from "@/lib/typography";
 export function SolutionFigures({ title, items }: { title: string; items: FigureLink[] }) {
   if (!items.length) return null;
   return (
-    <section className="mt-16 md:mt-24" aria-labelledby="figures-titre">
-      <h2 id="figures-titre" className="text-3xl font-medium md:text-4xl">
+    <section className="mt-16 border-t border-line pt-10 md:mt-24 md:pt-14" aria-labelledby="figures-titre">
+      <h2 id="figures-titre" className="text-[1.7rem] leading-[1.15] font-medium md:text-4xl">
         {frTypo(title)}
       </h2>
-      <ul className="mt-8 grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+      <ul className="mt-8 grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
         {items.map((item) => (
           <li key={`${item.href}-${item.imageId}`}>
             <Link href={item.href} className="group block">
+              <p className="mb-3 text-sm font-medium tracking-wide underline-offset-4 group-hover:underline">{frTypo(item.label)}</p>
               <Media id={item.imageId} sizes="(min-width: 1024px) 360px, (min-width: 640px) 46vw, 100vw" />
-              <p className="text-lg font-medium underline-offset-4 group-hover:underline">{frTypo(item.label)}</p>
             </Link>
           </li>
         ))}
@@ -31,17 +31,17 @@ export { MobileCta } from "@/components/mobile-cta";
 export function RelatedLinks({ items, title = "Pour aller plus loin" }: { items: RelatedLink[]; title?: string }) {
   if (!items.length) return null;
   return (
-    <section className="border-t border-line pt-10" aria-labelledby="liens-utiles">
-      <h2 id="liens-utiles" className="text-3xl font-medium">
+    <section className="border-t border-line pt-10 md:pt-14" aria-labelledby="liens-utiles">
+      <h2 id="liens-utiles" className="text-[1.7rem] leading-[1.15] font-medium md:text-4xl">
         {title}
       </h2>
-      <ul className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <ul className="mt-6 divide-y divide-line border-y border-line">
         {items.map((item) => (
-          <li key={item.href} className="border-t border-line pt-4">
-            <Link href={item.href} className="text-lg font-medium underline-offset-4 hover:underline">
-              {frTypo(item.label)}
+          <li key={item.href}>
+            <Link href={item.href} className="group grid gap-1 py-5 sm:grid-cols-[minmax(0,16rem)_1fr] sm:items-baseline sm:gap-8">
+              <span className="text-lg font-medium underline-offset-4 group-hover:underline">{frTypo(item.label)}</span>
+              <span className="text-sm leading-6 text-muted">{frTypo(item.text)}</span>
             </Link>
-            <p className="mt-2 text-sm leading-6 text-muted">{frTypo(item.text)}</p>
           </li>
         ))}
       </ul>
@@ -55,7 +55,7 @@ export function CtaBand({ title, text, contact = true }: { title: string; text: 
 
   return (
     <section className="band relative overflow-hidden bg-ink text-inverse" aria-labelledby="cta-final">
-      <div className="relative mx-auto flex max-w-[1200px] flex-col gap-8 px-5 py-16 sm:px-8 md:flex-row md:items-end md:justify-between md:py-20 lg:px-10 lg:py-24">
+      <div className="relative mx-auto flex max-w-[1200px] flex-col gap-8 px-5 py-12 sm:px-8 md:flex-row md:items-end md:justify-between md:py-16 lg:px-10">
         <div>
           <h2 id="cta-final" className="max-w-[16ch] text-[1.7rem] leading-[1.15] font-medium md:text-4xl">
             {frTypo(title)}
