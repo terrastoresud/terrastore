@@ -65,9 +65,6 @@ export function SiteFooter() {
             <span aria-hidden="true"> · </span>
             RC {siteConfig.tradeRegister}
           </p>
-          <Link href="/contact" className="btn inline-flex btn-secondary mt-6" data-track="quote_cta">
-            Étudier mon projet
-          </Link>
         </div>
         <div>
           <p className="index">

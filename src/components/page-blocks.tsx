@@ -49,15 +49,15 @@ export function RelatedLinks({ items, title = "Pour aller plus loin" }: { items:
   );
 }
 
-export function CtaBand({ title, text }: { title: string; text: string }) {
-  const tel = phoneHref();
-  const whatsapp = whatsappHref("Bonjour Terrastore, je souhaite étudier un projet.");
+export function CtaBand({ title, text, contact = true }: { title: string; text: string; contact?: boolean }) {
+  const tel = contact ? phoneHref() : null;
+  const whatsapp = contact ? whatsappHref("Bonjour Terrastore, je souhaite étudier un projet.") : null;
 
   return (
     <section className="band relative overflow-hidden bg-ink text-inverse" aria-labelledby="cta-final">
       <div className="relative mx-auto flex max-w-[1200px] flex-col gap-8 px-5 py-16 sm:px-8 md:flex-row md:items-end md:justify-between md:py-20 lg:px-10 lg:py-24">
         <div>
-          <h2 id="cta-final" className="max-w-[16ch] text-4xl leading-tight font-medium">
+          <h2 id="cta-final" className="max-w-[16ch] text-[1.7rem] leading-[1.15] font-medium md:text-4xl">
             {frTypo(title)}
           </h2>
           <p className="mt-4 max-w-[46ch] leading-7 text-[#ddd6cc]">{frTypo(text)}</p>
@@ -75,7 +75,15 @@ export function CtaBand({ title, text }: { title: string; text: string }) {
               Appeler
             </a>
           ) : null}
-          <Link href="/contact" className="btn inline-flex border border-inverse text-inverse hover:bg-inverse hover:text-ink" data-track="quote_cta">
+          <Link
+            href="/contact"
+            className={
+              contact
+                ? "btn inline-flex border border-inverse text-inverse hover:bg-inverse hover:text-ink"
+                : "btn inline-flex bg-inverse text-ink hover:bg-sand"
+            }
+            data-track="quote_cta"
+          >
             Étudier mon projet
           </Link>
         </div>

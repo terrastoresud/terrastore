@@ -3,13 +3,12 @@ import type { Metadata } from "next";
 import { Icon } from "@/components/icon";
 import { JsonLd } from "@/components/json-ld";
 import { Media } from "@/components/media";
-import { CtaBand, MobileCta } from "@/components/page-blocks";
+import { CtaBand } from "@/components/page-blocks";
 import type { ImageId } from "@/content/images";
 import { cities } from "@/content/navigation";
 import { guides } from "@/content/guides";
 import { homeGraph } from "@/lib/seo";
 import { pageMetadata } from "@/lib/seo";
-import { phoneHref, siteConfig, whatsappHref } from "@/lib/site-config";
 import { frTypo } from "@/lib/typography";
 
 export const metadata: Metadata = pageMetadata({
@@ -68,38 +67,7 @@ const steps = [
   { title: "L’installation", text: "La pose tient compte de l’accès, des supports et des ouvrages voisins." },
 ];
 
-function HomeContact({
-  tel,
-  whatsapp,
-  className,
-}: {
-  tel: string | null;
-  whatsapp: string | null;
-  className: string;
-}) {
-  return (
-    <div className={`flex flex-wrap items-center gap-x-4 gap-y-1 ${className}`}>
-      {tel && siteConfig.phone ? (
-        <a className="inline-flex min-h-11 items-center gap-2 underline" href={tel} data-track="phone_click">
-          <Icon name="phone" />
-          {siteConfig.phone}
-        </a>
-      ) : null}
-      {whatsapp ? (
-        <a className="inline-flex min-h-11 items-center gap-2 underline" href={whatsapp} data-track="whatsapp_click">
-          <Icon name="chat" />
-          WhatsApp
-        </a>
-      ) : null}
-      <span>Siège à Agadir, intervention partout au Maroc.</span>
-    </div>
-  );
-}
-
 export default function HomePage() {
-  const tel = phoneHref();
-  const whatsapp = whatsappHref("Bonjour Terrastore, je souhaite étudier un projet.");
-
   return (
     <>
       <JsonLd data={homeGraph()} />
@@ -122,15 +90,11 @@ export default function HomePage() {
                     "Terrastore étudie, configure et installe des solutions d’ombrage et d’aménagement extérieur pour les maisons et les projets professionnels, partout au Maroc. Le point de départ est le lieu : exposition, dimensions, usage et architecture existante.",
                   )}
                 </p>
-                <div className="mt-7 flex flex-wrap gap-3">
+                <div className="mt-7">
                   <Link href="/contact" className="btn inline-flex w-full justify-center btn-primary sm:w-auto" data-track="quote_cta">
                     Demander une étude
                   </Link>
-                  <Link href="/solutions" className="btn inline-flex btn-secondary max-md:hidden">
-                    Découvrir nos solutions
-                  </Link>
                 </div>
-                <HomeContact tel={tel} whatsapp={whatsapp} className="mt-6 hidden text-sm leading-6 text-muted md:block" />
               </div>
             </div>
           </div>
@@ -174,22 +138,6 @@ export default function HomePage() {
               );
             })}
           </div>
-          <Link href="/solutions" className="btn mt-6 inline-flex w-full justify-center btn-secondary sm:w-auto md:hidden">
-            Découvrir nos solutions
-          </Link>
-          <HomeContact tel={tel} whatsapp={whatsapp} className="mt-4 text-sm leading-6 text-muted md:hidden" />
-          <ul className="mt-4 flex flex-col text-sm sm:flex-row sm:gap-6">
-            <li>
-              <Link href="/voile-ombrage" className="inline-flex min-h-11 items-center underline">
-                Voile d’ombrage
-              </Link>
-            </li>
-            <li>
-              <Link href="/stores-interieurs" className="inline-flex min-h-11 items-center underline">
-                Stores intérieurs
-              </Link>
-            </li>
-          </ul>
         </section>
 
         <section className="rise mt-24 md:mt-32" aria-labelledby="approche">
@@ -222,29 +170,6 @@ export default function HomePage() {
             <Link href="/carport-aluminium" className="mt-6 inline-flex min-h-11 items-center underline">
               Étudier un carport aluminium
             </Link>
-          </div>
-        </section>
-
-        <section className="rise mt-20 grid items-center gap-8 md:mt-28 md:grid-cols-2 md:gap-12" aria-labelledby="spot-parasol">
-          <div className="min-w-0 md:order-2">
-            <Media id="home-parasol" className="quiet" sizes="(min-width: 768px) 50vw, 100vw" />
-          </div>
-          <div>
-            <p className="text-xs tracking-[0.16em] text-accent uppercase">Parasols</p>
-            <h2 id="spot-parasol" className="mt-3 text-[1.7rem] leading-[1.15] font-medium md:text-4xl">
-              Un ombrage de terrasse, pas un accessoire
-            </h2>
-            <p className="mt-4 leading-8 text-muted">
-              Mât central, mât déporté ou grand format : le parasol se choisit selon la table, la course du soleil et la façon de le tenir au sol. Les terrasses de cafés et d’hôtels ne reprennent pas le modèle d’une villa.
-            </p>
-            <div className="mt-6 flex flex-col gap-2">
-              <Link href="/parasols" className="inline-flex min-h-11 items-center underline">
-                Voir les parasols
-              </Link>
-              <Link href="/parasol-deporte" className="inline-flex min-h-11 items-center underline">
-                Comprendre le parasol déporté
-              </Link>
-            </div>
           </div>
         </section>
 
@@ -327,10 +252,10 @@ export default function HomePage() {
           <p className="measure mt-4 leading-8 text-muted">
             Les projets sont étudiés sur l’ensemble du pays. Agadir, Marrakech, Casablanca, Rabat, Tanger et Essaouira reviennent souvent, chacun avec son exposition. Ces pages décrivent un contexte. Elles n’ouvrent pas une agence.
           </p>
-          <ul className="mt-6 grid grid-cols-2 gap-2 sm:flex sm:flex-wrap sm:gap-3">
+          <ul className="mt-6 flex flex-wrap gap-x-5 gap-y-1">
             {cities.map((city) => (
               <li key={city.href}>
-                <Link href={city.href} className="btn inline-flex w-full justify-center btn-secondary sm:w-auto">
+                <Link href={city.href} className="inline-flex min-h-11 items-center underline decoration-line underline-offset-4">
                   {city.label}
                 </Link>
               </li>
@@ -339,10 +264,10 @@ export default function HomePage() {
         </section>
       </div>
       <CtaBand
+        contact={false}
         title="Parlons de votre projet"
         text="Ville, photos, usage. Nous revenons vers vous pour préciser la configuration, sans vous demander un dossier complet."
       />
-      <MobileCta />
     </>
   );
 }
