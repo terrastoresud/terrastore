@@ -25,6 +25,12 @@ export type PageSection = {
   imageId?: ImageId;
 };
 
+export type FigureLink = {
+  imageId: ImageId;
+  href: string;
+  label: string;
+};
+
 export type Faq = { question: string; answer: string };
 
 export type RelatedLink = { href: string; label: string; text: string };
@@ -41,6 +47,8 @@ export type PageDoc = {
   lede: string;
   primaryQuery: string;
   imageId?: ImageId;
+  figures?: FigureLink[];
+  figuresTitle?: string;
   sections: PageSection[];
   faqs?: Faq[];
   related: RelatedLink[];

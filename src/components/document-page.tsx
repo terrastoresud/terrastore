@@ -3,7 +3,7 @@ import { Breadcrumbs } from "@/components/breadcrumbs";
 import { FaqList } from "@/components/faq-list";
 import { JsonLd } from "@/components/json-ld";
 import { Media } from "@/components/media";
-import { CtaBand, MobileCta, RelatedLinks } from "@/components/page-blocks";
+import { CtaBand, MobileCta, RelatedLinks, SolutionFigures } from "@/components/page-blocks";
 import { Sections } from "@/components/sections";
 import type { PageDoc } from "@/content/types";
 import {
@@ -72,6 +72,7 @@ export function DocumentPage({ page, path }: { page: PageDoc; path: string }) {
             </div>
           ) : null}
         </header>
+        {page.figures?.length ? <SolutionFigures title={page.figuresTitle ?? "En images"} items={page.figures} /> : null}
         <div className="mt-16 md:mt-24">
           <Sections sections={page.sections} />
         </div>

@@ -15,6 +15,15 @@ export const parasolPages: PageDoc[] = [
     lede: "Un parasol de terrasse n'est pas un accessoire de jardin posé au hasard. C'est un plan d'ombre mobile : on le choisit selon la surface à couvrir, la course du soleil, la place des meubles et la manière dont le mât, le lest ou l'ancrage tiennent le site.",
     primaryQuery: "parasol Maroc",
     imageId: "parasol-hero",
+    figuresTitle: "Les parasols, en images",
+    figures: [
+      { imageId: "home-parasol", href: "/parasols#familles", label: "Mât central" },
+      { imageId: "parasol-offset", href: "/parasol-deporte", label: "Parasol déporté" },
+      { imageId: "parasol-offset-base", href: "/parasol-deporte#tenir", label: "Pied et lest" },
+      { imageId: "parasol-detail", href: "/parasols#ancrage", label: "Ancrage" },
+      { imageId: "parasol-pro", href: "/parasol-professionnel", label: "Parasol professionnel" },
+      { imageId: "parasol-pro-rue", href: "/parasol-professionnel#lieux", label: "Terrasse de café" },
+    ],
     serviceType: "Parasol",
     ctaTitle: "Décrire la terrasse à ombrer",
     ctaText: "Une photo de la table ou du salon, la ville et l'usage — maison, café ou hôtel — permettent de distinguer mât central et mât déporté.",
@@ -71,7 +80,6 @@ export const parasolPages: PageDoc[] = [
       {
         id: "ancrage",
         heading: "Ancrage, lest et dalle",
-        imageId: "parasol-detail",
         blocks: [
           {
             type: "paragraphs",

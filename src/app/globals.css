@@ -260,11 +260,9 @@ a:focus-visible .frame img {
 
 @keyframes rise {
   from {
-    opacity: 0;
     transform: translateY(18px);
   }
   to {
-    opacity: 1;
     transform: none;
   }
 }

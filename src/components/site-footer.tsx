@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { cities, footerGuides, footerSolutions } from "@/content/navigation";
+import { Icon } from "@/components/icon";
 import { formatAddress, hasDirectContact, mapHref, phoneHref, siteConfig, whatsappHref } from "@/lib/site-config";
 
 export function SiteFooter() {
@@ -28,15 +29,43 @@ export function SiteFooter() {
             Protection solaire et aménagement sur mesure. Étude, configuration et installation pour les maisons et les projets professionnels au Maroc.
           </p>
           {address ? (
-            <p className="mt-4 max-w-[32ch] text-sm leading-6">
+            <p className="mt-4 flex max-w-[34ch] items-start gap-2.5 text-sm leading-6">
+              <Icon name="pin" className="mt-0.5 size-[1.35rem] text-accent" />
               {map ? (
-                <a className="hover:underline" href={map} target="_blank" rel="noopener noreferrer">
+                <a className="min-w-0 hover:underline" href={map} target="_blank" rel="noopener noreferrer">
                   {address}
                 </a>
               ) : (
                 address
               )}
             </p>
+          ) : null}
+          {hasDirectContact() ? (
+            <ul className="mt-3 space-y-1 text-sm">
+              {tel && siteConfig.phone ? (
+                <li>
+                  <a className="inline-flex min-h-10 items-center gap-2.5 hover:underline" href={tel} data-track="phone_click">
+                    <Icon name="phone" className="size-[1.35rem] text-accent" />
+                    {siteConfig.phone}
+                  </a>
+                </li>
+              ) : null}
+              {whatsapp ? (
+                <li>
+                  <a className="inline-flex min-h-10 items-center gap-2.5 hover:underline" href={whatsapp} data-track="whatsapp_click">
+                    <Icon name="chat" className="size-[1.35rem] text-accent" />
+                    WhatsApp
+                  </a>
+                </li>
+              ) : null}
+              {siteConfig.email ? (
+                <li>
+                  <a className="inline-flex min-h-10 items-center hover:underline" href={`mailto:${siteConfig.email}`}>
+                    {siteConfig.email}
+                  </a>
+                </li>
+              ) : null}
+            </ul>
           ) : null}
           <p className="mt-2 text-sm text-muted">
             {siteConfig.legalForm}
@@ -92,33 +121,7 @@ export function SiteFooter() {
               </li>
             ))}
           </ul>
-          {hasDirectContact() ? (
-            <ul className="mt-4 space-y-1 text-sm">
-              {tel && siteConfig.phone ? (
-                <li>
-                  <a className="inline-flex min-h-10 items-center hover:underline" href={tel} data-track="phone_click">
-                    {siteConfig.phone}
-                  </a>
-                </li>
-              ) : null}
-              {whatsapp ? (
-                <li>
-                  <a className="inline-flex min-h-10 items-center hover:underline" href={whatsapp} data-track="whatsapp_click">
-                    WhatsApp
-                  </a>
-                </li>
-              ) : null}
-              {siteConfig.email ? (
-                <li>
-                  <a className="inline-flex min-h-10 items-center hover:underline" href={`mailto:${siteConfig.email}`}>
-                    {siteConfig.email}
-                  </a>
-                </li>
-              ) : null}
-            </ul>
-          ) : (
-            <p className="mt-4 text-sm text-muted">Siège à Agadir. Intervention partout au Maroc.</p>
-          )}
+          {hasDirectContact() ? null : <p className="mt-4 text-sm text-muted">Siège à Agadir. Intervention partout au Maroc.</p>}
         </div>
         </div>
       </div>

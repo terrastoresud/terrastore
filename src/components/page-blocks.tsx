@@ -1,8 +1,30 @@
 import Link from "next/link";
-import type { RelatedLink } from "@/content/types";
+import type { FigureLink, RelatedLink } from "@/content/types";
 import { Icon } from "@/components/icon";
+import { Media } from "@/components/media";
 import { phoneHref, whatsappHref } from "@/lib/site-config";
 import { frTypo } from "@/lib/typography";
+
+export function SolutionFigures({ title, items }: { title: string; items: FigureLink[] }) {
+  if (!items.length) return null;
+  return (
+    <section className="mt-16 md:mt-24" aria-labelledby="figures-titre">
+      <h2 id="figures-titre" className="text-3xl font-medium md:text-4xl">
+        {frTypo(title)}
+      </h2>
+      <ul className="mt-8 grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+        {items.map((item) => (
+          <li key={`${item.href}-${item.imageId}`}>
+            <Link href={item.href} className="group block">
+              <Media id={item.imageId} sizes="(min-width: 1024px) 360px, (min-width: 640px) 46vw, 100vw" />
+              <p className="text-lg font-medium underline-offset-4 group-hover:underline">{frTypo(item.label)}</p>
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}
 
 export { MobileCta } from "@/components/mobile-cta";
 
