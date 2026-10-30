@@ -20,11 +20,11 @@ export function SiteHeader() {
               Solutions
               <span className="chevron" aria-hidden="true" />
             </summary>
-            <div className="flyout absolute left-0 top-full z-20 mt-3 w-[40rem] bg-paper p-6">
-              <div className="grid grid-cols-2 gap-6">
+            <div className="flyout absolute left-0 top-full z-20 mt-3 w-[40rem] bg-paper p-8">
+              <div className="grid grid-cols-2 gap-x-10 gap-y-8">
                 {solutionGroups.map((group) => (
                   <div key={group.title}>
-                    <p className="text-xs tracking-[0.14em] text-accent uppercase">{group.title}</p>
+                    <p className="text-[0.68rem] font-medium tracking-[0.18em] text-accent uppercase">{group.title}</p>
                     <ul className="mt-2 space-y-1">
                       {group.links.map((item) => (
                         <li key={item.href}>

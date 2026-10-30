@@ -40,7 +40,7 @@ const families: {
     icon: "parasol",
     title: "Parasols",
     text: "Systèmes contemporains, mât central ou déporté, pour la maison comme pour une terrasse professionnelle.",
-    image: "home-parasol",
+    image: "parasol-offset",
   },
   {
     href: "/stores",
@@ -56,7 +56,7 @@ const families: {
     icon: "pergola",
     title: "Pergolas",
     text: "Lames orientables ou couverture rétractable, lorsque la terrasse doit rester en place toute la saison.",
-    image: "home-pergola",
+    image: "pergola-bio-hotel",
   },
 ];
 
@@ -99,7 +99,7 @@ export default function HomePage() {
             </div>
           </div>
           <div className="order-1 lg:order-2 lg:col-span-7">
-            <Media id="home-hero" className="hero-still" plate priority sizes="(min-width: 1024px) 720px, 100vw" />
+            <Media id="parasol-hero" className="hero-still" plate priority sizes="(min-width: 1024px) 720px, 100vw" />
           </div>
         </section>
 
@@ -108,35 +108,17 @@ export default function HomePage() {
             Quatre familles, un ordre clair
           </h2>
           <div className="family-rail">
-            {families.map((item, index) => {
-              const flip = index % 2 === 1;
-              return (
-                <Link key={item.href} href={item.href} className="group min-w-0">
-                  <div className={flip ? "order-2 min-w-0 md:order-none lg:col-span-4 lg:col-start-9" : "order-2 min-w-0 md:order-none lg:col-span-4"}>
-                    <p className="num">{item.n}</p>
-                    <h3 className="mt-2 flex items-center gap-3 text-[1.65rem] font-medium transition-colors group-hover:text-accent md:mt-4 md:text-3xl">
-                      <Icon name={item.icon} className="size-8" />
-                      {item.title}
-                    </h3>
-                    <p className="mt-3 max-w-[40ch] leading-7 text-muted">{item.text}</p>
-                  </div>
-                  <div
-                    className={
-                      flip
-                        ? "order-1 min-w-0 md:order-first lg:order-none lg:col-span-8 lg:col-start-1 lg:row-start-1"
-                        : "order-1 min-w-0 md:order-none lg:col-span-8"
-                    }
-                  >
-                    <Media
-                      id={item.image}
-                      plate={index % 2 === 0}
-                      className={index % 2 === 1 ? "quiet" : undefined}
-                      sizes="(min-width: 1024px) 760px, (min-width: 768px) 50vw, 100vw"
-                    />
-                  </div>
-                </Link>
-              );
-            })}
+            {families.map((item) => (
+              <Link key={item.href} href={item.href} className="group min-w-0">
+                <p className="num">{item.n}</p>
+                <h3 className="mt-2 flex items-center gap-3 text-[1.65rem] font-medium transition-colors group-hover:text-accent">
+                  <Icon name={item.icon} className="size-7" />
+                  {item.title}
+                </h3>
+                <Media id={item.image} plate className="mt-4" sizes="(min-width: 768px) 46vw, 100vw" />
+                <p className="mt-4 max-w-[36ch] leading-7 text-muted">{item.text}</p>
+              </Link>
+            ))}
           </div>
         </section>
 
@@ -155,27 +137,23 @@ export default function HomePage() {
           </ol>
         </section>
 
-        <section className="rise mt-16 grid items-center gap-8 border-t border-line pt-10 md:mt-24 md:grid-cols-12 md:gap-12 md:pt-14" aria-labelledby="spot-carport">
-          <div className="min-w-0 md:col-span-7">
-            <Media id="carport-double" plate sizes="(min-width: 768px) 58vw, 100vw" />
-          </div>
-          <div className="md:col-span-5">
-            <p className="index">
-              <span className="rule" aria-hidden="true" />
-              Carport
-            </p>
-            <h2 id="spot-carport" className="mt-4 text-[1.7rem] leading-[1.15] font-medium md:text-4xl">
-              Protéger la voiture sans fermer un garage
-            </h2>
-            <p className="mt-4 leading-8 text-muted">
-              {frTypo(
-                "Le carport aluminium se lit comme un plan devant la villa. Simple ou double, il se cale sur le nombre de véhicules présents en même temps, sur le sens du portail et sur la place des poteaux — hors du débattement des portières.",
-              )}
-            </p>
-            <Link href="/carport-aluminium" className="mt-6 inline-flex min-h-11 items-center underline underline-offset-4">
-              Étudier un carport aluminium
-            </Link>
-          </div>
+        <section className="rise mt-16 border-t border-line pt-10 md:mt-24 md:pt-14" aria-labelledby="spot-carport">
+          <p className="index">
+            <span className="rule" aria-hidden="true" />
+            Carport
+          </p>
+          <h2 id="spot-carport" className="mt-4 max-w-[16ch] text-[1.7rem] leading-[1.15] font-medium md:text-4xl">
+            Protéger la voiture sans fermer un garage
+          </h2>
+          <Media id="carport-double" plate className="mt-8" sizes="(min-width: 1024px) 1120px, 100vw" />
+          <p className="mt-6 max-w-[62ch] leading-8 text-muted">
+            {frTypo(
+              "Le carport aluminium se lit comme un plan devant la villa. Simple ou double, il se cale sur le nombre de véhicules présents en même temps, sur le sens du portail et sur la place des poteaux — hors du débattement des portières.",
+            )}
+          </p>
+          <Link href="/carport-aluminium" className="mt-4 inline-flex min-h-11 items-center underline underline-offset-4">
+            Étudier un carport aluminium
+          </Link>
         </section>
 
         <section className="rise mt-16 border-t border-line pt-10 md:mt-24 md:pt-14" aria-labelledby="spot-stores">
@@ -184,30 +162,30 @@ export default function HomePage() {
           </h2>
           <div className="mt-8 grid gap-12 md:grid-cols-2 md:gap-10">
             <div className="min-w-0">
-              <Media id="store-zip" className="quiet" sizes="(min-width: 768px) 46vw, 100vw" />
-              <p className="index mt-5">
+              <p className="index">
                 <span className="rule" aria-hidden="true" />
                 Dehors
               </p>
               <h3 className="mt-3 text-2xl font-medium">Extérieur</h3>
-              <p className="mt-3 leading-7 text-muted">
+              <Media id="store-zip" plate className="mt-5" sizes="(min-width: 768px) 46vw, 100vw" />
+              <p className="mt-4 leading-7 text-muted">
                 Le store banne projette l’ombre sur la terrasse. Le store ZIP descend devant le vitrage ou le côté d’une pergola, là où le soleil rase.
               </p>
-              <Link href="/stores-exterieurs" className="mt-4 inline-flex min-h-11 items-center underline underline-offset-4">
+              <Link href="/stores-exterieurs" className="mt-3 inline-flex min-h-11 items-center underline underline-offset-4">
                 Stores extérieurs
               </Link>
             </div>
             <div className="min-w-0">
-              <Media id="store-interior" plate sizes="(min-width: 768px) 46vw, 100vw" />
-              <p className="index mt-5">
+              <p className="index">
                 <span className="rule" aria-hidden="true" />
                 Dedans
               </p>
               <h3 className="mt-3 text-2xl font-medium">Intérieur</h3>
-              <p className="mt-3 leading-7 text-muted">
+              <Media id="store-interior" plate className="mt-5" sizes="(min-width: 768px) 46vw, 100vw" />
+              <p className="mt-4 leading-7 text-muted">
                 Enrouleur, vénitien, jour et nuit : on dose l’éblouissement et le vis-à-vis une fois la lumière entrée. La chaleur, elle, se traite de préférence avant la vitre.
               </p>
-              <Link href="/stores-interieurs" className="mt-4 inline-flex min-h-11 items-center underline underline-offset-4">
+              <Link href="/stores-interieurs" className="mt-3 inline-flex min-h-11 items-center underline underline-offset-4">
                 Stores intérieurs
               </Link>
             </div>

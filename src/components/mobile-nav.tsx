@@ -62,7 +62,7 @@ export function MobileNav({ cta }: { cta: NavLink }) {
           className="menu-sheet fixed inset-0 z-50 flex flex-col bg-paper"
         >
           <div className="flex items-center justify-between border-b border-line px-5 py-4">
-            <p id={titleId} className="flex items-center gap-3 text-sm tracking-[0.16em]">
+            <p id={titleId} className="flex items-center gap-3 text-[0.72rem] font-medium tracking-[0.32em]">
               <span className="rule" aria-hidden="true" />
               TERRASTORE
             </p>
@@ -89,21 +89,21 @@ export function MobileNav({ cta }: { cta: NavLink }) {
                 </li>
               ))}
             </ul>
-            <div className="mt-8 space-y-6 border-t border-line pt-6">
+            <div className="mt-8 border-t border-line">
               {solutionGroups.map((group) => {
                 const icon = groupIcon(group.title);
                 return (
-                <div key={group.title}>
-                  <p className="flex items-center gap-2.5 text-xs tracking-[0.14em] text-accent uppercase">
-                    {icon ? <Icon name={icon} className="size-8 text-ink" /> : null}
+                <div key={group.title} className="border-b border-line py-4">
+                  <p className="flex items-center gap-2.5 text-[0.68rem] font-medium tracking-[0.18em] text-accent uppercase">
+                    {icon ? <Icon name={icon} className="size-5 text-ink" /> : null}
                     {group.title}
                   </p>
-                  <ul className="mt-2">
+                  <ul className="mt-1">
                     {group.links.map((item) => (
                       <li key={item.href}>
                         <Link
                           href={item.href}
-                          className="flex min-h-11 items-center text-lg"
+                          className="flex min-h-11 items-center text-base"
                           onClick={() => setOpen(false)}
                         >
                           {item.label}
