@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { Icon } from "@/components/icon";
 import { phoneHref, whatsappHref } from "@/lib/site-config";
 
 export function MobileCta() {
@@ -30,12 +31,14 @@ export function MobileCta() {
     <div className="fixed inset-x-0 bottom-0 z-30 border-t border-line bg-paper p-3 sm:hidden">
       <div className="grid grid-cols-2 gap-2">
         {tel ? (
-          <a href={tel} className="btn inline-flex btn-secondary" data-track="phone_click">
+          <a href={tel} className="btn inline-flex gap-2 btn-secondary" data-track="phone_click">
+            <Icon name="phone" />
             Appeler
           </a>
         ) : null}
         {whatsapp ? (
-          <a href={whatsapp} className="btn inline-flex btn-primary" data-track="whatsapp_click">
+          <a href={whatsapp} className="btn inline-flex gap-2 btn-primary" data-track="whatsapp_click">
+            <Icon name="chat" />
             WhatsApp
           </a>
         ) : null}

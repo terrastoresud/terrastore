@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { RelatedLink } from "@/content/types";
+import { Icon } from "@/components/icon";
 import { phoneHref, whatsappHref } from "@/lib/site-config";
 import { frTypo } from "@/lib/typography";
 
@@ -31,8 +32,11 @@ export function CtaBand({ title, text }: { title: string; text: string }) {
   const whatsapp = whatsappHref("Bonjour Terrastore, je souhaite étudier un projet.");
 
   return (
-    <section className="bg-ink text-inverse" aria-labelledby="cta-final">
-      <div className="mx-auto flex max-w-[1200px] flex-col gap-8 px-5 py-16 sm:px-8 md:flex-row md:items-end md:justify-between md:py-20 lg:px-10 lg:py-24">
+    <section className="relative overflow-hidden bg-ink text-inverse" aria-labelledby="cta-final">
+      <p aria-hidden="true" className="pointer-events-none absolute -top-4 right-4 hidden text-[7.5rem] leading-none font-medium tracking-[-0.05em] text-inverse lg:block" style={{ opacity: 0.08 }}>
+        Terrastore
+      </p>
+      <div className="relative mx-auto flex max-w-[1200px] flex-col gap-8 px-5 py-16 sm:px-8 md:flex-row md:items-end md:justify-between md:py-20 lg:px-10 lg:py-24">
         <div>
           <h2 id="cta-final" className="max-w-[16ch] text-4xl leading-tight font-medium">
             {frTypo(title)}
@@ -41,12 +45,14 @@ export function CtaBand({ title, text }: { title: string; text: string }) {
         </div>
         <div className="flex flex-wrap gap-3">
           {whatsapp ? (
-            <a className="btn inline-flex bg-inverse text-ink hover:bg-sand" href={whatsapp} data-track="whatsapp_click">
+            <a className="btn inline-flex gap-2 bg-inverse text-ink hover:bg-sand" href={whatsapp} data-track="whatsapp_click">
+              <Icon name="chat" />
               WhatsApp
             </a>
           ) : null}
           {tel ? (
-            <a className="btn inline-flex border border-inverse text-inverse hover:bg-inverse hover:text-ink" href={tel} data-track="phone_click">
+            <a className="btn inline-flex gap-2 border border-inverse text-inverse hover:bg-inverse hover:text-ink" href={tel} data-track="phone_click">
+              <Icon name="phone" />
               Appeler
             </a>
           ) : null}

@@ -5,11 +5,13 @@ import { IntentVisual } from "@/components/intent-visual";
 export function Media({
   id,
   priority = false,
+  plate = false,
   sizes = "(min-width: 1024px) 720px, 100vw",
   className = "",
 }: {
   id: ImageId;
   priority?: boolean;
+  plate?: boolean;
   sizes?: string;
   className?: string;
 }) {
@@ -17,7 +19,7 @@ export function Media({
   if (image.src) {
     return (
       <figure className={className}>
-        <div className="frame relative" style={{ aspectRatio: `${image.width} / ${image.height}` }}>
+        <div className={plate ? "frame plate relative" : "frame relative"} style={{ aspectRatio: `${image.width} / ${image.height}` }}>
           <Image
             src={image.src}
             alt={image.alt}

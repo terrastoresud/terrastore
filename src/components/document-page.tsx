@@ -41,8 +41,8 @@ export function DocumentPage({ page, path }: { page: PageDoc; path: string }) {
       <JsonLd data={graph(nodes)} />
       <article className="mx-auto max-w-[1200px] px-5 pt-8 pb-16 sm:px-8 sm:pb-8 lg:px-10">
         <Breadcrumbs items={crumbs} />
-        <header className="mt-8 grid items-end gap-10 lg:grid-cols-12">
-          <div className="lg:col-span-7">
+        <header className="mt-8 grid items-end gap-8 lg:grid-cols-12 lg:gap-10">
+          <div className="order-2 lg:order-1 lg:col-span-7">
             <p className="text-xs tracking-[0.16em] text-accent uppercase">{page.eyebrow}</p>
             <h1 className="display mt-3 max-w-[16ch] text-4xl leading-[1.05] font-medium md:text-6xl">{frTypo(page.h1)}</h1>
             <p className="measure mt-6 text-lg leading-8 text-muted">{frTypo(page.lede)}</p>
@@ -58,8 +58,8 @@ export function DocumentPage({ page, path }: { page: PageDoc; path: string }) {
             ) : null}
           </div>
           {page.imageId ? (
-            <div className="lg:sticky lg:top-28 lg:col-span-5">
-              <Media id={page.imageId} sizes="(min-width: 1024px) 480px, 100vw" />
+            <div className="order-1 lg:order-2 lg:sticky lg:top-28 lg:col-span-5">
+              <Media id={page.imageId} className="hero-still" plate sizes="(min-width: 1024px) 480px, 100vw" />
             </div>
           ) : null}
         </header>

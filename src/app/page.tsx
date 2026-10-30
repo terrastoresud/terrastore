@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { Icon } from "@/components/icon";
 import { JsonLd } from "@/components/json-ld";
 import { Media } from "@/components/media";
 import { CtaBand, MobileCta } from "@/components/page-blocks";
@@ -18,10 +19,10 @@ export const metadata: Metadata = pageMetadata({
 });
 
 const steps = [
-  { title: "Le besoin", text: "La ville, des photos, l’usage et des dimensions approximatives." },
-  { title: "La configuration", text: "Le système suit l’exposition, l’implantation et l’architecture déjà là." },
-  { title: "Le relevé", text: "Les cotes utiles se confirment avant la commande." },
-  { title: "L’installation", text: "La pose tient compte de l’accès, des supports et des ouvrages voisins." },
+  { title: "Le besoin", text: "La ville, des photos, l’usage et des dimensions approximatives.", icon: "pin" as const },
+  { title: "La configuration", text: "Le système suit l’exposition, l’implantation et l’architecture déjà là.", icon: "pergola" as const },
+  { title: "Le relevé", text: "Les cotes utiles se confirment avant la commande.", icon: "measure" as const },
+  { title: "L’installation", text: "La pose tient compte de l’accès, des supports et des ouvrages voisins.", icon: "carport" as const },
 ];
 
 export default function HomePage() {
@@ -32,8 +33,8 @@ export default function HomePage() {
     <>
       <JsonLd data={homeGraph()} />
       <div className="mx-auto max-w-[1200px] px-5 pt-10 pb-8 sm:px-8 lg:px-10 lg:pt-16">
-        <section className="grid items-end gap-10 md:gap-14 lg:grid-cols-12">
-          <div className="lg:col-span-5">
+        <section className="grid items-end gap-8 md:gap-14 lg:grid-cols-12">
+          <div className="order-2 lg:order-1 lg:col-span-5">
             <p className="text-xs tracking-[0.16em] text-accent uppercase">Protection solaire</p>
             <h1 className="display mt-4 max-w-[12ch] text-[2.6rem] leading-[1.02] font-medium sm:text-5xl md:text-6xl">
               Carports, parasols et stores sur mesure au Maroc
@@ -53,14 +54,16 @@ export default function HomePage() {
             </div>
             <p className="mt-6 text-sm leading-6 text-muted">
               {tel && siteConfig.phone ? (
-                <a className="underline" href={tel} data-track="phone_click">
+                <a className="inline-flex min-h-11 items-center gap-2 underline" href={tel} data-track="phone_click">
+                  <Icon name="phone" />
                   {siteConfig.phone}
                 </a>
               ) : null}
               {whatsapp ? (
                 <>
                   <span aria-hidden="true"> · </span>
-                  <a className="underline" href={whatsapp} data-track="whatsapp_click">
+                  <a className="inline-flex min-h-11 items-center gap-2 underline" href={whatsapp} data-track="whatsapp_click">
+                    <Icon name="chat" />
                     WhatsApp
                   </a>
                 </>
@@ -69,8 +72,8 @@ export default function HomePage() {
               Siège à Agadir, intervention partout au Maroc.
             </p>
           </div>
-          <div className="lg:col-span-7">
-            <Media id="home-hero" priority sizes="(min-width: 1024px) 720px, 100vw" />
+          <div className="order-1 lg:order-2 lg:col-span-7">
+            <Media id="home-hero" className="hero-still" plate priority sizes="(min-width: 1024px) 720px, 100vw" />
           </div>
         </section>
 
@@ -80,32 +83,44 @@ export default function HomePage() {
           </h2>
           <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-12">
             <Link href="/carport-aluminium" className="group border-t border-ink pt-4 lg:col-span-7">
-              <p className="text-xs tracking-[0.14em] text-accent uppercase">01</p>
-              <p className="mt-3 text-3xl font-medium">Carports</p>
+              <p className="num">01</p>
+              <p className="mt-4 flex items-center gap-3 text-3xl font-medium transition-colors group-hover:text-accent">
+                <Icon name="carport" />
+                Carports
+              </p>
               <p className="mt-3 max-w-[36ch] leading-7 text-muted">
                 Abri voiture aluminium, simple ou double, adossé ou autoportant. L’implantation se décide avec le portail et les portières.
               </p>
               <Media id="carport-hero" className="mt-6" sizes="(min-width: 1024px) 640px, 100vw" />
             </Link>
             <Link href="/parasols" className="group border-t border-ink pt-4 lg:col-span-5">
-              <p className="text-xs tracking-[0.14em] text-accent uppercase">02</p>
-              <p className="mt-3 text-3xl font-medium">Parasols</p>
+              <p className="num">02</p>
+              <p className="mt-4 flex items-center gap-3 text-3xl font-medium transition-colors group-hover:text-accent">
+                <Icon name="parasol" />
+                Parasols
+              </p>
               <p className="mt-3 leading-7 text-muted">
                 Systèmes contemporains, mât central ou déporté, pour la maison comme pour une terrasse professionnelle.
               </p>
               <Media id="home-parasol" className="mt-6" sizes="(min-width: 1024px) 460px, 100vw" />
             </Link>
             <Link href="/stores" className="group border-t border-line pt-4 lg:col-span-7">
-              <p className="text-xs tracking-[0.14em] text-accent uppercase">03</p>
-              <p className="mt-3 text-3xl font-medium">Stores</p>
+              <p className="num">03</p>
+              <p className="mt-4 flex items-center gap-3 text-3xl font-medium transition-colors group-hover:text-accent">
+                <Icon name="store" />
+                Stores
+              </p>
               <p className="mt-3 max-w-[46ch] leading-7 text-muted">
                 Store banne et store ZIP dehors. Enrouleur, vénitien et jour-nuit dedans. Chaque famille a sa page.
               </p>
               <Media id="home-store" className="mt-6" sizes="(min-width: 1024px) 640px, 100vw" />
             </Link>
             <Link href="/pergola-bioclimatique" className="group border-t border-line pt-4 lg:col-span-5">
-              <p className="text-xs tracking-[0.14em] text-muted uppercase">04</p>
-              <p className="mt-3 text-2xl font-medium">Pergolas</p>
+              <p className="num">04</p>
+              <p className="mt-4 flex items-center gap-3 text-3xl font-medium transition-colors group-hover:text-accent">
+                <Icon name="pergola" />
+                Pergolas
+              </p>
               <p className="mt-3 leading-7 text-muted">
                 Lames orientables ou couverture rétractable, lorsque la terrasse doit rester en place toute la saison.
               </p>
@@ -129,10 +144,13 @@ export default function HomePage() {
           <h2 id="approche" className="text-3xl font-medium md:text-4xl">
             Comment un projet avance
           </h2>
-          <ol className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <ol className="track mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {steps.map((step, index) => (
-              <li key={step.title} className="border-t border-line pt-4">
-                <p className="text-xs tracking-[0.14em] text-accent">0{index + 1}</p>
+              <li key={step.title} className="pt-6">
+                <p className="flex items-center gap-2 text-xs tracking-[0.14em] text-accent">
+                  <Icon name={step.icon} />
+                  0{index + 1}
+                </p>
                 <p className="mt-3 text-xl font-medium">{step.title}</p>
                 <p className="mt-2 leading-7 text-muted">{frTypo(step.text)}</p>
               </li>

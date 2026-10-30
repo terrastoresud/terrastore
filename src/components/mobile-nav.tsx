@@ -61,7 +61,7 @@ export function MobileNav({ cta }: { cta: NavLink }) {
             </button>
           </div>
           <div className="flex-1 overflow-y-auto px-5 py-6">
-            <ul className="space-y-1">
+            <ul className="menu-links space-y-1">
               {primaryNav.map((item) => (
                 <li key={item.href}>
                   <Link
