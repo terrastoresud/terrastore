@@ -1,4 +1,4 @@
-type IconName = "carport" | "parasol" | "store" | "pergola" | "phone" | "chat" | "pin" | "measure";
+export type IconName = "carport" | "parasol" | "store" | "pergola" | "phone" | "chat" | "pin" | "measure";
 
 export function Icon({ name }: { name: IconName }) {
   return (

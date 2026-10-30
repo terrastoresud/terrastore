@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { QuoteForm } from "@/components/quote-form";
 import { Breadcrumbs } from "@/components/breadcrumbs";
+import { Icon } from "@/components/icon";
 import { formatAddress, mapHref, phoneHref, siteConfig, whatsappHref } from "@/lib/site-config";
 import { pageMetadata } from "@/lib/seo";
 
@@ -19,11 +20,15 @@ export default function ContactPage() {
   const map = mapHref();
 
   return (
-    <div className="mx-auto grid max-w-[1200px] gap-12 px-5 pt-8 pb-16 sm:px-8 lg:grid-cols-12 lg:gap-16 lg:px-10 lg:pt-12">
-      <div className="lg:col-span-5">
+    <div className="mx-auto grid max-w-[1200px] gap-10 px-5 pt-8 pb-16 sm:px-8 md:grid-cols-12 md:items-start md:gap-8 lg:gap-14 lg:px-10 lg:pt-12">
+      <div className="min-w-0 md:col-span-5">
         <Breadcrumbs items={[{ name: "Accueil", href: "/" }, { name: "Contact", href: "/contact" }]} />
-        <h1 className="display mt-6 text-4xl font-medium md:text-5xl">Étudier un projet</h1>
-        <p className="mt-5 leading-8 text-muted">
+        <p className="index mt-6">
+          <span className="rule" aria-hidden="true" />
+          Contact
+        </p>
+        <h1 className="display mt-4 text-4xl font-medium md:text-5xl">Étudier un projet</h1>
+        <p className="settle-up mt-5 leading-8 text-muted">
           Indiquez la ville, le type d’ouvrage et ce que vous voulez protéger. Une dimension approximative et le contexte — villa, café, hôtel, bureau — aident déjà.
         </p>
         <ul className="mt-6 list-disc space-y-2 pl-5 text-muted">
@@ -33,12 +38,14 @@ export default function ContactPage() {
         </ul>
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
           {tel && siteConfig.phone ? (
-            <a className="btn inline-flex btn-primary" href={tel} data-track="phone_click">
+            <a className="btn inline-flex gap-2 btn-primary" href={tel} data-track="phone_click">
+              <Icon name="phone" />
               Appeler {siteConfig.phone}
             </a>
           ) : null}
           {whatsapp ? (
-            <a className="btn inline-flex btn-secondary" href={whatsapp} data-track="whatsapp_click">
+            <a className="btn inline-flex gap-2 btn-secondary" href={whatsapp} data-track="whatsapp_click">
+              <Icon name="chat" />
               WhatsApp
             </a>
           ) : null}
@@ -57,7 +64,7 @@ export default function ContactPage() {
           </p>
         ) : null}
       </div>
-      <div className="lg:col-span-7">
+      <div className="dossier min-w-0 md:col-span-7">
         <QuoteForm deliveryEnabled={deliveryEnabled} />
       </div>
     </div>

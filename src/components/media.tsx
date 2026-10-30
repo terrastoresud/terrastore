@@ -18,7 +18,7 @@ export function Media({
   const image = imageAsset(id);
   if (image.src) {
     return (
-      <figure className={className}>
+      <figure className={className ? `min-w-0 ${className}` : "min-w-0"}>
         <div className={plate ? "frame plate relative" : "frame relative"} style={{ aspectRatio: `${image.width} / ${image.height}` }}>
           <Image
             src={image.src}

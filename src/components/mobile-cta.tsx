@@ -28,7 +28,7 @@ export function MobileCta() {
   const whatsapp = whatsappHref("Bonjour Terrastore, je souhaite étudier un projet.");
 
   return (
-    <div className="fixed inset-x-0 bottom-0 z-30 border-t border-line bg-paper p-3 sm:hidden">
+    <div className="fixed inset-x-0 bottom-0 z-30 border-t border-line bg-paper/95 p-3 shadow-[0_-10px_30px_rgba(28,25,22,0.06)] backdrop-blur-md sm:hidden">
       <div className="grid grid-cols-2 gap-2">
         {tel ? (
           <a href={tel} className="btn inline-flex gap-2 btn-secondary" data-track="phone_click">

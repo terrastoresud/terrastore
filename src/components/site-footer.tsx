@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Icon } from "@/components/icon";
 import { cities, footerGuides, footerSolutions } from "@/content/navigation";
 import { formatAddress, hasDirectContact, mapHref, phoneHref, siteConfig, whatsappHref } from "@/lib/site-config";
 
@@ -9,10 +10,21 @@ export function SiteFooter() {
   const map = mapHref();
 
   return (
-    <footer className="border-t border-line bg-paper">
-      <div className="mx-auto grid max-w-[1200px] gap-10 px-5 py-16 sm:px-8 md:grid-cols-2 lg:grid-cols-4 lg:px-10 lg:py-20">
+    <footer className="colophon colophon-mark relative overflow-hidden border-t border-line">
+      <div className="relative overflow-hidden">
+        <p
+          aria-hidden="true"
+          className="pointer-events-none absolute right-0 bottom-0 text-[clamp(3.4rem,15vw,8rem)] leading-none font-medium tracking-[-0.055em] text-ink select-none"
+          style={{ opacity: 0.055 }}
+        >
+          Terrastore
+        </p>
+        <div className="relative mx-auto grid max-w-[1200px] gap-10 px-5 py-16 sm:px-8 md:grid-cols-2 md:gap-x-12 lg:grid-cols-4 lg:px-10 lg:py-20">
         <div>
-          <p className="text-sm tracking-[0.18em]">TERRASTORE</p>
+          <p className="flex items-center gap-3 text-sm tracking-[0.18em]">
+            <span className="rule" aria-hidden="true" />
+            TERRASTORE
+          </p>
           <p className="mt-4 max-w-[28ch] text-sm leading-6 text-muted">
             Protection solaire et aménagement sur mesure. Étude, configuration et installation pour les maisons et les projets professionnels au Maroc.
           </p>
@@ -37,7 +49,10 @@ export function SiteFooter() {
           </Link>
         </div>
         <div>
-          <p className="text-xs tracking-[0.14em] text-accent uppercase">Solutions</p>
+          <p className="index">
+            <span className="rule" aria-hidden="true" />
+            Solutions
+          </p>
           <ul className="mt-3 space-y-1">
             {footerSolutions.map((item) => (
               <li key={item.href}>
@@ -49,7 +64,10 @@ export function SiteFooter() {
           </ul>
         </div>
         <div>
-          <p className="text-xs tracking-[0.14em] text-accent uppercase">Comprendre</p>
+          <p className="index">
+            <span className="rule" aria-hidden="true" />
+            Comprendre
+          </p>
           <ul className="mt-3 space-y-1">
             {footerGuides.map((item) => (
               <li key={item.href}>
@@ -61,7 +79,10 @@ export function SiteFooter() {
           </ul>
         </div>
         <div>
-          <p className="text-xs tracking-[0.14em] text-accent uppercase">Intervention</p>
+          <p className="index">
+            <span className="rule" aria-hidden="true" />
+            Intervention
+          </p>
           <p className="mt-3 text-sm">Partout au Maroc</p>
           <ul className="mt-2 flex flex-wrap gap-x-3">
             {cities.map((city) => (
@@ -76,14 +97,16 @@ export function SiteFooter() {
             <ul className="mt-4 space-y-1 text-sm">
               {tel && siteConfig.phone ? (
                 <li>
-                  <a className="inline-flex min-h-10 items-center hover:underline" href={tel} data-track="phone_click">
+                  <a className="inline-flex min-h-10 items-center gap-2 hover:underline" href={tel} data-track="phone_click">
+                    <Icon name="phone" />
                     {siteConfig.phone}
                   </a>
                 </li>
               ) : null}
               {whatsapp ? (
                 <li>
-                  <a className="inline-flex min-h-10 items-center hover:underline" href={whatsapp} data-track="whatsapp_click">
+                  <a className="inline-flex min-h-10 items-center gap-2 hover:underline" href={whatsapp} data-track="whatsapp_click">
+                    <Icon name="chat" />
                     WhatsApp
                   </a>
                 </li>
@@ -100,8 +123,9 @@ export function SiteFooter() {
             <p className="mt-4 text-sm text-muted">Siège à Agadir. Intervention partout au Maroc.</p>
           )}
         </div>
+        </div>
       </div>
-      <div className="border-t border-line">
+      <div className="relative border-t border-line">
         <div className="mx-auto flex max-w-[1200px] flex-col gap-3 px-5 py-5 text-sm text-muted sm:flex-row sm:items-center sm:justify-between">
           <p>© 2026 Terrastore</p>
           <ul className="flex flex-wrap gap-x-4">
