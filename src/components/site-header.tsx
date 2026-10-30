@@ -9,12 +9,12 @@ export function SiteHeader() {
       <a href="#contenu" className="skip-link">
         Aller au contenu
       </a>
-      <div className="mx-auto flex h-[4.25rem] max-w-[1200px] items-center justify-between gap-4 px-5 sm:px-8 lg:px-10">
+      <div className="mx-auto flex h-16 max-w-[1200px] items-center justify-between gap-6 px-5 sm:px-8 lg:px-10">
         <Link href="/" className="flex min-h-11 items-center gap-3" aria-label="Terrastore, accueil">
           <span className="rule" aria-hidden="true" />
-          <span className="text-[0.95rem] tracking-[0.18em]">TERRASTORE</span>
+          <span className="text-[0.72rem] font-medium tracking-[0.32em]">TERRASTORE</span>
         </Link>
-        <nav aria-label="Navigation principale" className="hidden items-center gap-4 xl:flex">
+        <nav aria-label="Navigation principale" className="hidden items-center gap-7 xl:flex">
           <details className="relative">
             <summary className="flex min-h-11 cursor-pointer items-center gap-2 text-sm">
               Solutions

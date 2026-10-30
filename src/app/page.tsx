@@ -71,8 +71,8 @@ export default function HomePage() {
   return (
     <>
       <JsonLd data={homeGraph()} />
-      <div className="mx-auto max-w-[1200px] px-5 pt-10 pb-8 sm:px-8 lg:px-10 lg:pt-16">
-        <section className="grid items-end gap-8 lg:grid-cols-12 lg:gap-14">
+      <div className="mx-auto max-w-[1200px] px-5 pt-8 pb-16 sm:px-8 lg:px-10 lg:pt-20 lg:pb-8">
+        <section className="grid items-center gap-8 lg:grid-cols-12 lg:gap-16">
           <div className="order-2 lg:order-1 lg:col-span-5">
             <div className="md:grid md:grid-cols-2 md:items-start md:gap-10 lg:block">
               <div>

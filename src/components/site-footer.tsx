@@ -10,7 +10,7 @@ export function SiteFooter() {
   const map = mapHref();
 
   return (
-    <footer className="colophon colophon-mark relative overflow-hidden border-t border-line">
+    <footer className="colophon relative border-t border-line">
       <div className="relative">
         <div className="relative mx-auto grid max-w-[1200px] gap-10 px-5 py-14 sm:px-8 md:grid-cols-2 md:gap-x-12 lg:grid-cols-4 lg:px-10 lg:py-20">
         <div>
@@ -23,7 +23,7 @@ export function SiteFooter() {
           </p>
           {address ? (
             <p className="mt-4 flex max-w-[34ch] items-start gap-2.5 text-sm leading-6">
-              <Icon name="pin" className="mt-0.5 size-[1.35rem] text-accent" />
+              <Icon name="pin" className="mt-0.5 size-[1.35rem] text-muted" />
               {map ? (
                 <a className="min-w-0 hover:underline" href={map} target="_blank" rel="noopener noreferrer">
                   {address}
@@ -38,7 +38,7 @@ export function SiteFooter() {
               {tel && siteConfig.phone ? (
                 <li>
                   <a className="inline-flex min-h-10 items-center gap-2.5 hover:underline" href={tel} data-track="phone_click">
-                    <Icon name="phone" className="size-[1.35rem] text-accent" />
+                    <Icon name="phone" className="size-[1.35rem] text-muted" />
                     {siteConfig.phone}
                   </a>
                 </li>
@@ -46,7 +46,7 @@ export function SiteFooter() {
               {whatsapp ? (
                 <li>
                   <a className="inline-flex min-h-10 items-center gap-2.5 hover:underline" href={whatsapp} data-track="whatsapp_click">
-                    <Icon name="chat" className="size-[1.35rem] text-accent" />
+                    <Icon name="chat" className="size-[1.35rem] text-muted" />
                     WhatsApp
                   </a>
                 </li>
@@ -102,7 +102,7 @@ export function SiteFooter() {
             Intervention
           </p>
           <p className="mt-3 text-sm">Partout au Maroc</p>
-          <ul className="mt-2 flex flex-wrap gap-x-3">
+          <ul className="mt-2 grid grid-cols-2 gap-x-4">
             {cities.map((city) => (
               <li key={city.href}>
                 <Link href={city.href} className="inline-flex min-h-10 items-center text-sm hover:underline">
