@@ -110,6 +110,65 @@ h3,
   }
 }
 
+.icon-line :is(path, circle) {
+  vector-effect: non-scaling-stroke;
+}
+
+.family-rail {
+  display: flex;
+  gap: 0.75rem;
+  max-width: 100%;
+  min-width: 0;
+  margin-top: 2rem;
+  padding-bottom: 0.35rem;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  border-top: 1px solid var(--color-ink);
+  scroll-behavior: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.family-rail::-webkit-scrollbar {
+  display: none;
+}
+
+.family-rail > a {
+  display: flex;
+  flex: 0 0 calc(100% - 2.75rem);
+  flex-direction: column;
+  gap: 0.85rem;
+  min-width: 0;
+  scroll-snap-align: start;
+}
+
+@media (min-width: 768px) {
+  .family-rail {
+    display: block;
+    margin-top: 2rem;
+    padding-bottom: 0;
+    overflow: visible;
+    scroll-snap-type: none;
+  }
+
+  .family-rail > a {
+    display: grid;
+    flex: none;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: center;
+    gap: 2.5rem;
+    padding-block: 2rem;
+    border-bottom: 1px solid var(--color-line);
+    scroll-snap-align: none;
+  }
+}
+
+@media (min-width: 1024px) {
+  .family-rail > a {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+}
+
 .num {
   color: rgba(138, 60, 18, 0.42);
   font-size: clamp(2.6rem, 6vw, 4.4rem);

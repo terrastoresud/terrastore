@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { Icon } from "@/components/icon";
 import { cities, footerGuides, footerSolutions } from "@/content/navigation";
 import { formatAddress, hasDirectContact, mapHref, phoneHref, siteConfig, whatsappHref } from "@/lib/site-config";
 
@@ -97,16 +96,14 @@ export function SiteFooter() {
             <ul className="mt-4 space-y-1 text-sm">
               {tel && siteConfig.phone ? (
                 <li>
-                  <a className="inline-flex min-h-10 items-center gap-2 hover:underline" href={tel} data-track="phone_click">
-                    <Icon name="phone" />
+                  <a className="inline-flex min-h-10 items-center hover:underline" href={tel} data-track="phone_click">
                     {siteConfig.phone}
                   </a>
                 </li>
               ) : null}
               {whatsapp ? (
                 <li>
-                  <a className="inline-flex min-h-10 items-center gap-2 hover:underline" href={whatsapp} data-track="whatsapp_click">
-                    <Icon name="chat" />
+                  <a className="inline-flex min-h-10 items-center hover:underline" href={whatsapp} data-track="whatsapp_click">
                     WhatsApp
                   </a>
                 </li>

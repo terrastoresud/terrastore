@@ -62,11 +62,43 @@ const families: {
 ];
 
 const steps = [
-  { title: "Le besoin", text: "La ville, des photos, l’usage et des dimensions approximatives.", icon: "pin" as const },
-  { title: "La configuration", text: "Le système suit l’exposition, l’implantation et l’architecture déjà là.", icon: "pergola" as const },
-  { title: "Le relevé", text: "Les cotes utiles se confirment avant la commande.", icon: "measure" as const },
-  { title: "L’installation", text: "La pose tient compte de l’accès, des supports et des ouvrages voisins.", icon: "carport" as const },
+  { title: "Le besoin", text: "La ville, des photos, l’usage et des dimensions approximatives." },
+  { title: "La configuration", text: "Le système suit l’exposition, l’implantation et l’architecture déjà là." },
+  { title: "Le relevé", text: "Les cotes utiles se confirment avant la commande." },
+  { title: "L’installation", text: "La pose tient compte de l’accès, des supports et des ouvrages voisins." },
 ];
+
+function HomeContact({
+  tel,
+  whatsapp,
+  className,
+}: {
+  tel: string | null;
+  whatsapp: string | null;
+  className: string;
+}) {
+  return (
+    <p className={className}>
+      {tel && siteConfig.phone ? (
+        <a className="inline-flex min-h-11 items-center gap-2 underline" href={tel} data-track="phone_click">
+          <Icon name="phone" />
+          {siteConfig.phone}
+        </a>
+      ) : null}
+      {whatsapp ? (
+        <>
+          <span aria-hidden="true"> · </span>
+          <a className="inline-flex min-h-11 items-center gap-2 underline" href={whatsapp} data-track="whatsapp_click">
+            <Icon name="chat" />
+            WhatsApp
+          </a>
+        </>
+      ) : null}
+      <span aria-hidden="true"> · </span>
+      Siège à Agadir, intervention partout au Maroc.
+    </p>
+  );
+}
 
 export default function HomePage() {
   const tel = phoneHref();
@@ -89,38 +121,20 @@ export default function HomePage() {
                 </h1>
               </div>
               <div className="mt-6 md:mt-0 lg:mt-6">
-            <p className="settle-up max-w-[42rem] text-lg leading-8 text-muted">
-              {frTypo(
-                "Terrastore étudie, configure et installe des solutions d’ombrage et d’aménagement extérieur pour les maisons et les projets professionnels, partout au Maroc. Le point de départ est le lieu : exposition, dimensions, usage et architecture existante.",
-              )}
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Link href="/contact" className="btn inline-flex btn-primary" data-track="quote_cta">
-                Demander une étude
-              </Link>
-              <Link href="/solutions" className="btn inline-flex btn-secondary">
-                Découvrir nos solutions
-              </Link>
-            </div>
-            <p className="mt-6 text-sm leading-6 text-muted">
-              {tel && siteConfig.phone ? (
-                <a className="inline-flex min-h-11 items-center gap-2 underline" href={tel} data-track="phone_click">
-                  <Icon name="phone" />
-                  {siteConfig.phone}
-                </a>
-              ) : null}
-              {whatsapp ? (
-                <>
-                  <span aria-hidden="true"> · </span>
-                  <a className="inline-flex min-h-11 items-center gap-2 underline" href={whatsapp} data-track="whatsapp_click">
-                    <Icon name="chat" />
-                    WhatsApp
-                  </a>
-                </>
-              ) : null}
-              <span aria-hidden="true"> · </span>
-              Siège à Agadir, intervention partout au Maroc.
-            </p>
+                <p className="settle-up max-w-[42rem] text-lg leading-8 text-muted">
+                  {frTypo(
+                    "Terrastore étudie, configure et installe des solutions d’ombrage et d’aménagement extérieur pour les maisons et les projets professionnels, partout au Maroc. Le point de départ est le lieu : exposition, dimensions, usage et architecture existante.",
+                  )}
+                </p>
+                <div className="mt-8 flex flex-wrap gap-3">
+                  <Link href="/contact" className="btn inline-flex btn-primary" data-track="quote_cta">
+                    Demander une étude
+                  </Link>
+                  <Link href="/solutions" className="btn inline-flex btn-secondary max-md:hidden">
+                    Découvrir nos solutions
+                  </Link>
+                </div>
+                <HomeContact tel={tel} whatsapp={whatsapp} className="mt-6 hidden text-sm leading-6 text-muted md:block" />
               </div>
             </div>
           </div>
@@ -129,45 +143,45 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="rise mt-24 md:mt-32" aria-labelledby="focus">
+        <section className="rise mt-8 min-w-0 md:mt-32" aria-labelledby="focus">
           <h2 id="focus" className="text-3xl font-medium md:text-4xl">
             Quatre familles, un ordre clair
           </h2>
-          <div className="mt-8 border-t border-ink">
+          <div className="family-rail">
             {families.map((item, index) => {
               const flip = index % 2 === 1;
               return (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="group grid min-w-0 gap-5 border-b border-line py-8 md:grid-cols-2 md:items-center md:gap-10 lg:grid-cols-12"
-                >
-                  <div className={flip ? "min-w-0 lg:col-span-4 lg:col-start-9" : "min-w-0 lg:col-span-4"}>
+                <Link key={item.href} href={item.href} className="group min-w-0">
+                  <div className={flip ? "order-2 min-w-0 md:order-none lg:col-span-4 lg:col-start-9" : "order-2 min-w-0 md:order-none lg:col-span-4"}>
                     <p className="num">{item.n}</p>
-                    <p className="mt-4 flex items-center gap-3 text-3xl font-medium transition-colors group-hover:text-accent">
-                      <Icon name={item.icon} />
+                    <h3 className="mt-4 flex items-center gap-3 text-3xl font-medium transition-colors group-hover:text-accent">
+                      <Icon name={item.icon} className="size-8" />
                       {item.title}
-                    </p>
+                    </h3>
                     <p className="mt-3 max-w-[40ch] leading-7 text-muted">{item.text}</p>
                   </div>
                   <div
                     className={
                       flip
-                        ? "min-w-0 md:order-first lg:order-none lg:col-span-8 lg:col-start-1 lg:row-start-1"
-                        : "min-w-0 lg:col-span-8"
+                        ? "order-1 min-w-0 md:order-first lg:order-none lg:col-span-8 lg:col-start-1 lg:row-start-1"
+                        : "order-1 min-w-0 md:order-none lg:col-span-8"
                     }
                   >
                     <Media
                       id={item.image}
                       plate={index % 2 === 0}
                       className={index % 2 === 1 ? "quiet" : undefined}
-                      sizes="(min-width: 1024px) 760px, (min-width: 768px) 50vw, 100vw"
+                      sizes="(min-width: 1024px) 760px, (min-width: 768px) 50vw, 86vw"
                     />
                   </div>
                 </Link>
               );
             })}
           </div>
+          <Link href="/solutions" className="btn mt-6 inline-flex btn-secondary md:hidden">
+            Découvrir nos solutions
+          </Link>
+          <HomeContact tel={tel} whatsapp={whatsapp} className="mt-4 text-sm leading-6 text-muted md:hidden" />
           <p className="mt-6 text-sm text-muted">
             Également :{" "}
             <Link href="/voile-ombrage" className="underline">
@@ -188,10 +202,7 @@ export default function HomePage() {
           <ol className="track mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {steps.map((step, index) => (
               <li key={step.title} className="pt-6">
-                <p className="flex items-center gap-2 text-xs tracking-[0.14em] text-accent">
-                  <Icon name={step.icon} />
-                  0{index + 1}
-                </p>
+                <p className="text-xs tracking-[0.14em] text-accent">0{index + 1}</p>
                 <p className="mt-3 text-xl font-medium">{step.title}</p>
                 <p className="mt-2 leading-7 text-muted">{frTypo(step.text)}</p>
               </li>
