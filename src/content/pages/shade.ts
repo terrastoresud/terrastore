@@ -78,6 +78,7 @@ export const shadePages: PageDoc[] = [
       {
         id: "adosse",
         heading: "Adossé ou autoportant",
+        imageId: "home-hero",
         blocks: [
           {
             type: "paragraphs",

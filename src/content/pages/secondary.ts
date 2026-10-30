@@ -73,6 +73,7 @@ export const secondaryPages: PageDoc[] = [
       {
         id: "lames",
         heading: "Moduler, plutôt que seulement couvrir",
+        imageId: "pergola-bio-lames",
         blocks: [
           {
             type: "paragraphs",
@@ -86,6 +87,7 @@ export const secondaryPages: PageDoc[] = [
       {
         id: "lieux-pergola",
         heading: "Villa, hôtel, restaurant",
+        imageId: "pergola-bio-hotel",
         blocks: [
           {
             type: "paragraphs",
@@ -126,6 +128,7 @@ export const secondaryPages: PageDoc[] = [
       {
         id: "quand",
         heading: "Quand la toile a un sens",
+        imageId: "pergola-retractable-cafe",
         blocks: [
           {
             type: "paragraphs",
@@ -165,6 +168,7 @@ export const secondaryPages: PageDoc[] = [
       {
         id: "points",
         heading: "La forme suit les ancrages",
+        imageId: "voile-mats",
         blocks: [
           {
             type: "paragraphs",

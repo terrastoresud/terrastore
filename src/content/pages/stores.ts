@@ -141,6 +141,7 @@ export const storePages: PageDoc[] = [
       {
         id: "facade",
         heading: "La façade décide avant la toile",
+        imageId: "store-coffre",
         blocks: [
           {
             type: "paragraphs",
@@ -218,6 +219,7 @@ export const storePages: PageDoc[] = [
       {
         id: "vertical",
         heading: "Couper le soleil qui entre de côté",
+        imageId: "store-zip-guide",
         blocks: [
           {
             type: "paragraphs",
@@ -231,6 +233,7 @@ export const storePages: PageDoc[] = [
       {
         id: "usages-zip",
         heading: "Vitrage, pergola, terrasse",
+        imageId: "store-zip-pergola",
         blocks: [
           {
             type: "points",
@@ -286,6 +289,7 @@ export const storePages: PageDoc[] = [
       {
         id: "types",
         heading: "Trois types, trois gestes",
+        imageId: "store-jour-nuit",
         blocks: [
           {
             type: "points",
@@ -300,6 +304,7 @@ export const storePages: PageDoc[] = [
       {
         id: "pieces",
         heading: "Pièces de villa, bureaux, chambres d'hôtel",
+        imageId: "store-venitien",
         blocks: [
           {
             type: "paragraphs",

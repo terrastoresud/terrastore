@@ -153,7 +153,7 @@ export const parasolPages: PageDoc[] = [
       {
         id: "tenir",
         heading: "Tenir le mât : lest, plot, dalle",
-        imageId: "parasol-detail",
+        imageId: "parasol-offset-base",
         blocks: [
           {
             type: "paragraphs",
@@ -235,6 +235,7 @@ export const parasolPages: PageDoc[] = [
       {
         id: "lieux",
         heading: "Cafés, restaurants, hôtels, riads",
+        imageId: "parasol-pro-rue",
         blocks: [
           {
             type: "paragraphs",

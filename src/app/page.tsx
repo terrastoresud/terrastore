@@ -80,6 +80,7 @@ export default function HomePage() {
               <p className="mt-3 max-w-[46ch] leading-7 text-muted">
                 Store banne et store ZIP dehors. Enrouleur, vénitien et jour-nuit dedans. Chaque famille a sa page.
               </p>
+              <Media id="home-store" className="mt-6" sizes="(min-width: 1024px) 640px, 100vw" />
             </Link>
             <Link href="/pergola-bioclimatique" className="border-t border-line pt-4 lg:col-span-5">
               <p className="text-xs tracking-[0.14em] text-muted uppercase">04</p>
@@ -87,6 +88,7 @@ export default function HomePage() {
               <p className="mt-3 leading-7 text-muted">
                 Lames orientables ou couverture rétractable, lorsque la terrasse doit rester en place toute la saison.
               </p>
+              <Media id="home-pergola" className="mt-6" sizes="(min-width: 1024px) 460px, 100vw" />
             </Link>
           </div>
           <p className="mt-6 text-sm text-muted">
@@ -168,7 +170,8 @@ export default function HomePage() {
               <p className="mt-3 leading-7 text-muted">
                 Le store banne projette l’ombre sur la terrasse. Le store ZIP descend devant le vitrage ou le côté d’une pergola, là où le soleil rase.
               </p>
-              <Link href="/stores-exterieurs" className="mt-4 inline-flex min-h-11 items-center underline">
+              <Media id="store-zip" className="mt-6" sizes="(min-width: 768px) 560px, 100vw" />
+              <Link href="/stores-exterieurs" className="inline-flex min-h-11 items-center underline">
                 Stores extérieurs
               </Link>
             </div>
@@ -177,7 +180,8 @@ export default function HomePage() {
               <p className="mt-3 leading-7 text-muted">
                 Enrouleur, vénitien, jour et nuit : on dose l’éblouissement et le vis-à-vis une fois la lumière entrée. La chaleur, elle, se traite de préférence avant la vitre.
               </p>
-              <Link href="/stores-interieurs" className="mt-4 inline-flex min-h-11 items-center underline">
+              <Media id="store-interior" className="mt-6" sizes="(min-width: 768px) 560px, 100vw" />
+              <Link href="/stores-interieurs" className="inline-flex min-h-11 items-center underline">
                 Stores intérieurs
               </Link>
             </div>
