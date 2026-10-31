@@ -1,4 +1,8 @@
+import { readFileSync } from "node:fs";
+import path from "node:path";
 import { ImageResponse } from "next/og";
+
+const logoSrc = `data:image/png;base64,${readFileSync(path.join(process.cwd(), "public/brand/logo-header.png")).toString("base64")}`;
 
 export const ogSize = { width: 1200, height: 630 };
 export const ogContentType = "image/png";
@@ -16,8 +20,7 @@ export function renderBrandCard(title: string, kicker: string) {
         padding: "68px",
       }}
     >
-      <div style={{ display: "flex", fontSize: 24, letterSpacing: 6 }}>TERRASTORE</div>
-      <div style={{ display: "flex", width: 84, height: 6, background: "#c45c26", marginTop: 28 }} />
+      <img src={logoSrc} alt="" width={210} height={86} />
       <div style={{ display: "flex", marginTop: 40, fontSize: 26, color: "#8a3c12" }}>{kicker}</div>
       <div style={{ display: "flex", marginTop: 18, fontSize: 52, lineHeight: 1.08, maxWidth: 1000 }}>{title}</div>
     </div>,

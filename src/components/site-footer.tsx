@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { BrandLogo } from "@/components/brand-logo";
 import { cities, footerGuides, footerSolutions } from "@/content/navigation";
 import { Icon } from "@/components/icon";
 import { formatAddress, hasDirectContact, mapHref, phoneHref, siteConfig, whatsappHref } from "@/lib/site-config";
@@ -31,8 +32,10 @@ export function SiteFooter() {
       <div className="mx-auto max-w-[1200px] px-5 sm:px-8 lg:px-10">
         <div className="grid gap-8 py-8 lg:grid-cols-2 lg:items-end lg:gap-16 lg:py-14">
           <div>
-            <p className="text-[0.72rem] font-medium tracking-[0.32em]">TERRASTORE</p>
-            <p className="mt-4 max-w-[36ch] text-sm leading-6 text-muted">
+            <Link href="/" aria-label="Terrastore, accueil" className="inline-flex">
+              <BrandLogo className="h-20 w-auto sm:h-24" />
+            </Link>
+            <p className="mt-5 max-w-[36ch] text-sm leading-6 text-muted">
               Protection solaire et aménagement sur mesure. Étude, configuration et installation pour les maisons et les projets professionnels au Maroc.
             </p>
             <p className="mt-4 text-sm text-muted">

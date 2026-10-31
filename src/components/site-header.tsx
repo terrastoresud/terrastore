@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { BrandLogo } from "@/components/brand-logo";
 import { MobileNav } from "@/components/mobile-nav";
 import { primaryNav, solutionGroups } from "@/content/navigation";
 
@@ -9,10 +10,9 @@ export function SiteHeader() {
       <a href="#contenu" className="skip-link">
         Aller au contenu
       </a>
-      <div className="mx-auto flex h-16 max-w-[1200px] items-center justify-between gap-6 px-5 sm:px-8 lg:px-10">
-        <Link href="/" className="flex min-h-11 items-center gap-3" aria-label="Terrastore, accueil">
-          <span className="rule" aria-hidden="true" />
-          <span className="text-[0.72rem] font-medium tracking-[0.32em]">TERRASTORE</span>
+      <div className="mx-auto flex h-20 max-w-[1200px] items-center justify-between gap-6 px-5 sm:px-8 lg:px-10">
+        <Link href="/" className="flex min-h-11 shrink-0 items-center" aria-label="Terrastore, accueil">
+          <BrandLogo priority />
         </Link>
         <nav aria-label="Navigation principale" className="hidden items-center gap-7 xl:flex">
           <details className="relative">

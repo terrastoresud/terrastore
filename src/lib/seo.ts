@@ -59,6 +59,12 @@ export function organizationNode() {
     "@id": organizationId(),
     name: siteConfig.brandName,
     url: getSiteUrl(),
+    logo: {
+      "@type": "ImageObject",
+      url: absoluteUrl("/brand/mark.png"),
+      width: 512,
+      height: 512,
+    },
     areaServed: {
       "@type": "Country",
       name: "Morocco",

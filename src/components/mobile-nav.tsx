@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useId, useState } from "react";
 import { createPortal } from "react-dom";
+import { BrandLogo } from "@/components/brand-logo";
 import { Icon, type IconName } from "@/components/icon";
 import { primaryNav, solutionGroups, type NavLink } from "@/content/navigation";
 import { phoneHref, siteConfig, whatsappHref } from "@/lib/site-config";
@@ -62,9 +63,9 @@ export function MobileNav({ cta }: { cta: NavLink }) {
           className="menu-sheet fixed inset-0 z-50 flex flex-col bg-paper"
         >
           <div className="flex items-center justify-between border-b border-line px-5 py-4">
-            <p id={titleId} className="flex items-center gap-3 text-[0.72rem] font-medium tracking-[0.32em]">
-              <span className="rule" aria-hidden="true" />
-              TERRASTORE
+            <p id={titleId} className="flex items-center">
+              <BrandLogo className="h-12 w-auto" />
+              <span className="sr-only">Terrastore</span>
             </p>
             <button
               type="button"
