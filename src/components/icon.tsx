@@ -11,10 +11,13 @@ export type IconName =
   | "arrow"
   | "check";
 
-export function Icon({ name, className }: { name: IconName; className?: string }) {
+export function Icon({ name, className = "" }: { name: IconName; className?: string }) {
+  const sized = /(?:^|\s)(?:size-|w-|h-)/.test(className);
   return (
     <svg
-      className={className ? `icon-line shrink-0 ${className}` : "icon-line size-5 shrink-0"}
+      className={`icon-line shrink-0 ${sized ? "" : "size-5 "}${className}`.trim()}
+      width="20"
+      height="20"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
