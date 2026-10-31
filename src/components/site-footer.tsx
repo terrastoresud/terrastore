@@ -1,8 +1,9 @@
 import Link from "next/link";
 import { BrandLogo } from "@/components/brand-logo";
+import { SocialLinks } from "@/components/social-links";
 import { cities, footerGuides, footerSolutions } from "@/content/navigation";
 import { Icon } from "@/components/icon";
-import { formatAddress, hasDirectContact, mapHref, phoneHref, siteConfig, whatsappHref } from "@/lib/site-config";
+import { formatAddress, hasDirectContact, mailtoHref, mapHref, phoneHref, siteConfig, whatsappHref } from "@/lib/site-config";
 
 function IndexRow({ label, links }: { label: string; links: { href: string; label: string }[] }) {
   return (
@@ -23,6 +24,7 @@ function IndexRow({ label, links }: { label: string; links: { href: string; labe
 
 export function SiteFooter() {
   const tel = phoneHref();
+  const mail = mailtoHref();
   const whatsapp = whatsappHref("Bonjour Terrastore, je souhaite étudier un projet.");
   const address = formatAddress();
   const map = mapHref();
@@ -75,9 +77,10 @@ export function SiteFooter() {
                     </a>
                   </li>
                 ) : null}
-                {siteConfig.email ? (
+                {mail && siteConfig.email ? (
                   <li>
-                    <a className="inline-flex min-h-11 items-center hover:underline" href={`mailto:${siteConfig.email}`}>
+                    <a className="inline-flex min-h-11 items-center gap-2.5 hover:underline" href={mail}>
+                      <Icon name="mail" className="size-[1.35rem] text-muted" />
                       {siteConfig.email}
                     </a>
                   </li>
@@ -86,6 +89,7 @@ export function SiteFooter() {
             ) : (
               <p className="mt-3 text-muted">Siège à Agadir. Intervention partout au Maroc.</p>
             )}
+            <SocialLinks className="mt-2 w-full lg:justify-end" />
           </div>
         </div>
 

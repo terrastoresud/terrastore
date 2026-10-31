@@ -1,29 +1,29 @@
-/** Indexing is on only for an explicit production flag and a non-preview host. */
+/** Production on the public domain is indexable. Previews and local builds stay closed. */
 
-export function isIndexable(): boolean {
-  if (process.env.NEXT_PUBLIC_SITE_INDEXABLE !== "true") return false;
-
-  const vercelEnv = process.env.VERCEL_ENV;
-  if (vercelEnv && vercelEnv !== "production") return false;
-
-  const raw = process.env.NEXT_PUBLIC_SITE_URL?.trim();
+function blockedHost(raw: string | undefined): boolean {
   if (!raw) return false;
-
   try {
     const host = new URL(raw).hostname.toLowerCase();
-    if (
+    return (
       host === "localhost" ||
       host === "127.0.0.1" ||
       host.endsWith(".localhost") ||
       host.endsWith(".vercel.app")
-    ) {
-      return false;
-    }
+    );
   } catch {
-    return false;
+    return true;
   }
+}
 
-  return true;
+export function isIndexable(): boolean {
+  const vercelEnv = process.env.VERCEL_ENV;
+  if (vercelEnv === "production") {
+    return !blockedHost(process.env.NEXT_PUBLIC_SITE_URL);
+  }
+  if (vercelEnv && vercelEnv !== "production") return false;
+  if (process.env.NEXT_PUBLIC_SITE_INDEXABLE !== "true") return false;
+  if (blockedHost(process.env.NEXT_PUBLIC_SITE_URL)) return false;
+  return Boolean(process.env.NEXT_PUBLIC_SITE_URL?.trim());
 }
 
 export function robotsDirective(): { index: boolean; follow: boolean } {

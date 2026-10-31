@@ -86,6 +86,7 @@ export function organizationNode() {
           contactPoint: {
             "@type": "ContactPoint",
             telephone: siteConfig.phone,
+            ...(siteConfig.email ? { email: siteConfig.email } : {}),
             contactType: "customer service",
             areaServed: "MA",
             availableLanguage: "French",

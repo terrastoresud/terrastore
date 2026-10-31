@@ -6,7 +6,7 @@ import { createPortal } from "react-dom";
 import { BrandLogo } from "@/components/brand-logo";
 import { Icon, type IconName } from "@/components/icon";
 import { primaryNav, solutionGroups, type NavLink } from "@/content/navigation";
-import { phoneHref, siteConfig, whatsappHref } from "@/lib/site-config";
+import { mailtoHref, phoneHref, siteConfig, whatsappHref } from "@/lib/site-config";
 
 function groupIcon(title: string): IconName | null {
   if (title.startsWith("Carport")) return "carport";
@@ -20,6 +20,7 @@ export function MobileNav({ cta }: { cta: NavLink }) {
   const [open, setOpen] = useState(false);
   const titleId = useId();
   const tel = phoneHref();
+  const mail = mailtoHref();
   const whatsapp = whatsappHref("Bonjour Terrastore, je souhaite étudier un projet.");
 
   useEffect(() => {
@@ -130,6 +131,12 @@ export function MobileNav({ cta }: { cta: NavLink }) {
                 </a>
               ) : null}
             </div>
+            {mail && siteConfig.email ? (
+              <a className="mb-3 inline-flex min-h-11 items-center gap-2 text-sm underline" href={mail}>
+                <Icon name="mail" className="size-[1.35rem]" />
+                {siteConfig.email}
+              </a>
+            ) : null}
             <Link href={cta.href} className="btn inline-flex btn-primary w-full" data-track="quote_cta" onClick={() => setOpen(false)}>
               {cta.label}
             </Link>

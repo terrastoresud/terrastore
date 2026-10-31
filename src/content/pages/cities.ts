@@ -31,7 +31,7 @@ export const cityPages: PageDoc[] = [
       { href: "/parasol-professionnel", label: "Parasols professionnels", text: "Cafés et restaurants qui ouvrent la toile chaque service." },
     ],
     faqs: [
-      { question: "Avez-vous une agence ouverte au public à Agadir ?", answer: "Le siège est au N° 264, Rue Tafoukt, Bloc 1, Cité Lagouira, Agadir. Ce n'est pas un showroom à visiter sans rendez-vous. L'étude se fait sur le lieu du projet. Le téléphone et le WhatsApp sont le +212 661-232722." },
+      { question: "Avez-vous une agence ouverte au public à Agadir ?", answer: "Le siège est au N° 264, Rue Tafoukt, Bloc 1, Cité Lagouira, Agadir. Ce n'est pas un showroom à visiter sans rendez-vous. L'étude se fait sur le lieu du projet. Le téléphone et le WhatsApp sont le +212 661-232722. L'e-mail est contact@terrastore.ma." },
       { question: "Le bord de mer change-t-il le projet ?", answer: "Oui pour l'ancrage, le choix entre toile légère et structure, et la fréquence de fermeture des parasols et stores. Non pour inventer une classe de résistance identique à toutes les parcelles d'Agadir." },
     ],
     sections: [

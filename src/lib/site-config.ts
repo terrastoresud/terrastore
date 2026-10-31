@@ -20,7 +20,7 @@ export const siteConfig = {
   siteUrl: pub("NEXT_PUBLIC_SITE_URL")?.replace(/\/$/, "") ?? null,
   phone: pub("NEXT_PUBLIC_PHONE") ?? "+212 661-232722",
   whatsapp: pub("NEXT_PUBLIC_WHATSAPP") ?? "+212 661-232722",
-  email: pub("NEXT_PUBLIC_CONTACT_EMAIL"),
+  email: pub("NEXT_PUBLIC_CONTACT_EMAIL") ?? "contact@terrastore.ma",
   streetAddress: "N° 264, Rue Tafoukt, Bloc 1, Cité Lagouira",
   locality: "Agadir",
   region: null as string | null,
@@ -32,17 +32,39 @@ export const siteConfig = {
   googleBusinessProfileUrl: null as string | null,
   openingHours: null as string[] | null,
   social: {
-    instagram: null as string | null,
-    facebook: null as string | null,
-    linkedin: null as string | null,
+    instagram: "https://www.instagram.com/",
+    facebook: "https://www.facebook.com/",
+    linkedin: "https://www.linkedin.com/",
   },
   areaServed: "Maroc",
   gaId: pub("NEXT_PUBLIC_GA_ID"),
   googleSiteVerification: pub("NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION"),
 } as const;
 
+const PRODUCTION_SITE_URL = "https://www.terrastore.ma";
+
 export function getSiteUrl(): string {
-  return siteConfig.siteUrl ?? "http://localhost:3000";
+  const raw = siteConfig.siteUrl;
+  if (!raw) return PRODUCTION_SITE_URL;
+  try {
+    const host = new URL(raw).hostname.toLowerCase();
+    if (
+      host === "localhost" ||
+      host === "127.0.0.1" ||
+      host.endsWith(".localhost") ||
+      host.endsWith(".vercel.app")
+    ) {
+      return PRODUCTION_SITE_URL;
+    }
+  } catch {
+    return PRODUCTION_SITE_URL;
+  }
+  return raw;
+}
+
+export function mailtoHref(): string | null {
+  if (!siteConfig.email) return null;
+  return `mailto:${siteConfig.email}`;
 }
 
 export function hasDirectContact(): boolean {

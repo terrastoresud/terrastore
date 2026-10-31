@@ -1,8 +1,5 @@
+import { Resend } from "resend";
 import { validateContact, type ContactInput } from "@/lib/contact";
-
-type Delivery =
-  | { ok: true }
-  | { ok: false; code: "unconfigured" | "upstream" | "invalid_target" };
 
 const recent = new Map<string, number>();
 const WINDOW_MS = 10 * 60 * 1000;
@@ -31,61 +28,85 @@ function seen(key: string, fingerprint: string): boolean {
   return typeof time === "number" && Date.now() - time < WINDOW_MS;
 }
 
-function target(): { url: string; key: string } | null {
-  const url = process.env.CONTACT_API_URL?.trim();
-  const key = process.env.CONTACT_API_KEY?.trim();
-  if (!url || !key) return null;
-  try {
-    const parsed = new URL(url);
-    const local = parsed.hostname === "localhost" || parsed.hostname === "127.0.0.1";
-    if (parsed.protocol === "https:" || (parsed.protocol === "http:" && local)) {
-      return { url, key };
-    }
-  } catch {
-    return null;
-  }
-  return null;
+function mailConfig(): { key: string; from: string; to: string } | null {
+  const key = process.env.RESEND_API_KEY?.trim();
+  const from = process.env.CONTACT_FROM_EMAIL?.trim();
+  const to = process.env.CONTACT_TO_EMAIL?.trim();
+  if (!key || !from || !to) return null;
+  return { key, from, to };
 }
 
-async function deliver(payload: Omit<ContactInput, "consent" | "company">): Promise<Delivery> {
-  const api = target();
-  if (!api) return { ok: false, code: "unconfigured" };
-  try {
-    const response = await fetch(api.url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${api.key}`,
-      },
-      body: JSON.stringify({ ...payload, source: "terrastore-website" }),
-      signal: AbortSignal.timeout(10000),
-    });
-    if (!response.ok) return { ok: false, code: "upstream" };
-    return { ok: true };
-  } catch {
-    return { ok: false, code: "upstream" };
-  }
+function escapeHtml(value: string): string {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+function oneLine(value: string): string {
+  return value.replace(/[\r\n\t]+/g, " ").trim();
+}
+
+function row(label: string, value: string): string {
+  return `<tr>
+    <th style="padding:10px 16px 10px 0;text-align:left;vertical-align:top;color:#5c564e;font-weight:600;white-space:nowrap">${label}</th>
+    <td style="padding:10px 0;vertical-align:top">${value}</td>
+  </tr>`;
+}
+
+function phoneCell(phone: string): string {
+  const shown = escapeHtml(phone);
+  const compact = phone.replace(/[^\d+]/g, "");
+  let digits = phone.replace(/\D/g, "");
+  if (digits.startsWith("0")) digits = `212${digits.slice(1)}`;
+  const tel = compact ? `<a href="tel:${escapeHtml(compact)}">${shown}</a>` : shown;
+  const whatsapp = digits ? ` <a href="https://wa.me/${digits}">WhatsApp</a>` : "";
+  return `${tel}${whatsapp}`;
+}
+
+function messageHtml(payload: Omit<ContactInput, "consent" | "company">): string {
+  const when = new Intl.DateTimeFormat("fr-MA", {
+    dateStyle: "full",
+    timeStyle: "short",
+    timeZone: "Africa/Casablanca",
+  }).format(new Date());
+  const dimensions = payload.dimensions ? escapeHtml(payload.dimensions) : "Non précisées";
+  return `<div style="font-family:Arial,Helvetica,sans-serif;color:#1c1916;line-height:1.5">
+    <p style="margin:0 0 16px">Nouvelle demande d’étude depuis terrastore.ma.</p>
+    <table style="border-collapse:collapse;width:100%;max-width:560px">
+      ${row("Nom", escapeHtml(payload.name))}
+      ${row("Téléphone / WhatsApp", phoneCell(payload.phone))}
+      ${row("Ville", escapeHtml(payload.city))}
+      ${row("Type de projet", escapeHtml(payload.projectType))}
+      ${row("Dimensions", dimensions)}
+      ${row("Besoin", escapeHtml(payload.message).replace(/\n/g, "<br>"))}
+    </table>
+    <p style="margin:16px 0 0;color:#5c564e;font-size:13px">Reçue le ${escapeHtml(when)} (Africa/Casablanca).</p>
+  </div>`;
 }
 
 export async function POST(request: Request) {
+  if (!mailConfig()) {
+    return Response.json({ ok: false, code: "unconfigured" }, { status: 503 });
+  }
+
   const length = Number(request.headers.get("content-length") || 0);
   if (length > 20_000) {
-    return Response.json({ ok: false, code: "invalid" }, { status: 413 });
+    return Response.json({ ok: false, message: "L’envoi n’a pas abouti." }, { status: 413 });
   }
 
   const key = clientKey(request);
   if (limited(key)) {
-    return Response.json(
-      { ok: false, code: "rate_limited", message: "Trop de tentatives. Réessayez plus tard." },
-      { status: 429 },
-    );
+    return Response.json({ ok: false, message: "Trop de tentatives. Réessayez plus tard." }, { status: 429 });
   }
 
   let body: ContactInput;
   try {
     body = (await request.json()) as ContactInput;
   } catch {
-    return Response.json({ ok: false, code: "invalid" }, { status: 400 });
+    return Response.json({ ok: false, message: "L’envoi n’a pas abouti." }, { status: 400 });
   }
 
   const fields = validateContact({
@@ -100,7 +121,11 @@ export async function POST(request: Request) {
   });
 
   if (Object.keys(fields).length) {
-    return Response.json({ ok: false, code: "invalid", fields }, { status: 400 });
+    return Response.json({ fields }, { status: 400 });
+  }
+
+  if (String(body.company ?? "").trim()) {
+    return Response.json({ ok: true });
   }
 
   const payload = {
@@ -112,37 +137,30 @@ export async function POST(request: Request) {
     message: body.message.trim(),
   };
   const fingerprint = `${payload.phone}|${payload.message}`.toLowerCase();
-  if (!target()) {
-    remember(key, `attempt:${Date.now()}`);
-    return Response.json(
-      {
-        ok: false,
-        code: "unconfigured",
-        message: "L’envoi n’est pas encore activé. Aucune donnée n’a été enregistrée.",
-      },
-      { status: 503 },
-    );
-  }
   if (seen(key, fingerprint)) {
-    return Response.json(
-      { ok: false, code: "duplicate", message: "Cette demande a déjà été transmise récemment." },
-      { status: 409 },
-    );
+    return Response.json({ ok: false, message: "Cette demande a déjà été transmise récemment." }, { status: 409 });
   }
 
-  const result = await deliver(payload);
-  if (!result.ok && result.code === "unconfigured") {
-    return Response.json(
-      { ok: false, code: "unconfigured", message: "L’envoi n’est pas encore activé." },
-      { status: 503 },
-    );
+  const config = mailConfig();
+  if (!config) {
+    return Response.json({ ok: false, code: "unconfigured" }, { status: 503 });
   }
-  if (!result.ok) {
-    return Response.json(
-      { ok: false, code: "upstream", message: "L’envoi n’a pas abouti." },
-      { status: 502 },
-    );
+
+  try {
+    const resend = new Resend(config.key);
+    const { error } = await resend.emails.send({
+      from: config.from,
+      to: config.to,
+      subject: `Nouvelle demande – ${oneLine(payload.projectType)} – ${oneLine(payload.city)} – ${oneLine(payload.name)}`,
+      html: messageHtml(payload),
+    });
+    if (error) {
+      return Response.json({ ok: false, message: "L’envoi n’a pas abouti." }, { status: 502 });
+    }
+  } catch {
+    return Response.json({ ok: false, message: "L’envoi n’a pas abouti." }, { status: 502 });
   }
+
   remember(key, fingerprint);
   return Response.json({ ok: true });
 }

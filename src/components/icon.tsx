@@ -1,4 +1,4 @@
-export type IconName = "carport" | "parasol" | "store" | "pergola" | "phone" | "chat" | "pin" | "measure";
+export type IconName = "carport" | "parasol" | "store" | "pergola" | "phone" | "chat" | "pin" | "measure" | "mail";
 
 export function Icon({ name, className }: { name: IconName; className?: string }) {
   return (
@@ -20,6 +20,7 @@ export function Icon({ name, className }: { name: IconName; className?: string }
       {name === "chat" ? <Chat /> : null}
       {name === "pin" ? <Pin /> : null}
       {name === "measure" ? <Measure /> : null}
+      {name === "mail" ? <Mail /> : null}
     </svg>
   );
 }
@@ -100,6 +101,15 @@ function Pin() {
     <>
       <path d="M16 27.5s6.2-5.3 6.2-10.4a6.2 6.2 0 0 0-12.4 0c0 5.1 6.2 10.4 6.2 10.4z" />
       <circle cx="16" cy="17" r="1.7" />
+    </>
+  );
+}
+
+function Mail() {
+  return (
+    <>
+      <rect x="4" y="7" width="24" height="18" />
+      <path d="M4 8 16 18 28 8" />
     </>
   );
 }

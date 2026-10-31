@@ -1,19 +1,21 @@
 import type { Metadata } from "next";
 import { QuoteForm } from "@/components/quote-form";
+import { SocialLinks } from "@/components/social-links";
 import { Breadcrumbs } from "@/components/breadcrumbs";
-import { formatAddress, mapHref, phoneHref, siteConfig, whatsappHref } from "@/lib/site-config";
+import { Icon } from "@/components/icon";
+import { formatAddress, mailtoHref, mapHref, phoneHref, siteConfig, whatsappHref } from "@/lib/site-config";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
   title: "Demander une étude | Terrastore",
   description:
-    "Appelez ou écrivez sur WhatsApp au +212 661-232722. Siège à Cité Lagouira, Agadir. Intervention partout au Maroc.",
+    "Appelez ou écrivez au +212 661-232722, ou par e-mail à contact@terrastore.ma. Siège à Cité Lagouira, Agadir. Intervention partout au Maroc.",
   path: "/contact",
 });
 
 export default function ContactPage() {
-  const deliveryEnabled = Boolean(process.env.CONTACT_API_URL && process.env.CONTACT_API_KEY);
   const tel = phoneHref();
+  const mail = mailtoHref();
   const whatsapp = whatsappHref("Bonjour Terrastore, je souhaite étudier un projet.");
   const address = formatAddress();
   const map = mapHref();
@@ -35,7 +37,7 @@ export default function ContactPage() {
           <li className="py-3">Le nombre de véhicules, de tables ou de baies</li>
           <li className="py-3">Une photo, que vous pouvez décrire en attendant de l’envoyer</li>
         </ul>
-        <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+        <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
           {tel && siteConfig.phone ? (
             <a className="btn inline-flex w-full justify-center btn-primary sm:w-auto" href={tel} data-track="phone_click">
               Appeler {siteConfig.phone}
@@ -46,7 +48,14 @@ export default function ContactPage() {
               WhatsApp
             </a>
           ) : null}
+          {mail && siteConfig.email ? (
+            <a className="btn inline-flex w-full justify-center gap-2 btn-secondary sm:w-auto" href={mail}>
+              <Icon name="mail" className="size-[1.35rem]" />
+              {siteConfig.email}
+            </a>
+          ) : null}
         </div>
+        <SocialLinks className="mt-4" />
         {address ? (
           <p className="mt-6 text-sm leading-6 text-muted">
             Siège :{" "}
@@ -62,7 +71,7 @@ export default function ContactPage() {
         ) : null}
       </div>
       <div className="dossier min-w-0 md:col-span-7">
-        <QuoteForm deliveryEnabled={deliveryEnabled} />
+        <QuoteForm />
       </div>
     </div>
   );

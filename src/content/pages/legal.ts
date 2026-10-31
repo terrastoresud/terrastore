@@ -41,7 +41,7 @@ export const legalPages: PageDoc[] = [
           {
             type: "paragraphs",
             items: [
-              ["Téléphone et WhatsApp : +212 661-232722. Ces coordonnées figurent aussi dans le pied de page et sur la page contact. Aucun e-mail public n'est affiché."],
+              ["Téléphone et WhatsApp : +212 661-232722. E-mail : contact@terrastore.ma. Ces coordonnées figurent aussi dans le pied de page et sur la page contact."],
             ],
           },
         ],
@@ -81,7 +81,7 @@ export const legalPages: PageDoc[] = [
       "Politique de confidentialité du site Terrastore : données du formulaire de contact, absence de revente, et mesure d'audience seulement si elle est activée.",
     h1: "Politique de confidentialité",
     eyebrow: "Données",
-    lede: "Cette page décrit uniquement les traitements réellement prévus par le site. Elle sera mise à jour lorsque l'envoi des messages sera relié à un outil définitif.",
+    lede: "Cette page décrit les traitements réellement prévus par le site.",
     primaryQuery: "confidentialité Terrastore",
     serviceType: "Information légale",
     ctaTitle: "Revenir au projet",
@@ -96,7 +96,7 @@ export const legalPages: PageDoc[] = [
           {
             type: "paragraphs",
             items: [
-              ["Le responsable du traitement est l'éditeur du site : la société à responsabilité limitée à associé unique immatriculée au registre du commerce d'Agadir sous le numéro 58317, siège N° 264, Rue Tafoukt, Bloc 1, Cité Lagouira, Agadir. Tant que l'envoi du formulaire n'est pas activé, ce formulaire n'enregistre pas le message."],
+              ["Le responsable du traitement est l'éditeur du site : la société à responsabilité limitée à associé unique immatriculée au registre du commerce d'Agadir sous le numéro 58317, siège N° 264, Rue Tafoukt, Bloc 1, Cité Lagouira, Agadir."],
             ],
           },
         ],
@@ -109,8 +109,7 @@ export const legalPages: PageDoc[] = [
             type: "paragraphs",
             items: [
               ["Le formulaire demande le nom, le téléphone ou WhatsApp, la ville, le type de projet, des dimensions facultatives et un message. Ces informations servent à répondre à une demande d'étude."],
-              ["Tant que l'adresse d'envoi et la clé d'accès ne sont pas configurées, le serveur refuse la demande et n'enregistre pas le message. Il n'y a pas d'accusé de réception fictif."],
-              ["Lorsque l'envoi est activé, le message est transmis au service désigné par cette configuration, par une liaison chiffrée. La durée de conservation dépendra alors de cet outil et sera précisée ici. Elle ne dépassera pas le temps utile pour traiter la demande et les suites du projet, sauf obligation légale."],
+              ["Le message est envoyé par e-mail à contact@terrastore.ma, par une liaison chiffrée, via le service Resend. Le site ne conserve pas de copie. La boîte conserve le message le temps utile pour traiter la demande et les suites du projet, sauf obligation légale."],
             ],
           },
         ],
@@ -123,7 +122,7 @@ export const legalPages: PageDoc[] = [
             type: "paragraphs",
             items: [
               ["La demande est envoyée avec votre accord, recueilli par la case du formulaire. Le cadre applicable est la loi marocaine 09-08 relative à la protection des personnes physiques à l'égard du traitement des données à caractère personnel. Une déclaration auprès de la CNDP, si elle est requise pour le traitement définitif, sera référencée lorsqu'elle existera. Le site ne prétend pas qu'elle est déjà faite."],
-              ["Vous pouvez demander l'accès, la rectification ou la suppression des messages vous concernant par téléphone ou WhatsApp au +212 661-232722."],
+              ["Vous pouvez demander l'accès, la rectification ou la suppression des messages vous concernant par téléphone ou WhatsApp au +212 661-232722, ou par e-mail à contact@terrastore.ma."],
             ],
           },
         ],
@@ -147,7 +146,7 @@ export const legalPages: PageDoc[] = [
           {
             type: "paragraphs",
             items: [
-              ["Les données du formulaire ne sont pas vendues. Elles ne sont pas cédées à des partenaires commerciaux. Le seul destinataire prévu est l'outil d'envoi configuré pour Terrastore, le moment venu."],
+              ["Les données du formulaire ne sont pas vendues. Elles ne sont pas cédées à des partenaires commerciaux. Le destinataire est Terrastore, à contact@terrastore.ma. L'acheminement passe par Resend (resend.com), qui transmet l'e-mail."],
             ],
           },
         ],

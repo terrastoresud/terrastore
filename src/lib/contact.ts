@@ -37,7 +37,6 @@ export function validateContact(input: ContactInput): FieldErrors {
   const dimensions = input.dimensions.trim();
   const digits = phone.replace(/\D/g, "");
 
-  if (input.company.trim()) errors.company = "Champ inattendu.";
   if (name.length < 2 || name.length > 80) errors.name = "Indiquez votre nom.";
   if (!/^[\d+\s().-]{8,24}$/.test(phone) || digits.length < 8 || digits.length > 15) {
     errors.phone = "Indiquez un numéro de téléphone ou WhatsApp.";

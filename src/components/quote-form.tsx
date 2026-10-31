@@ -4,7 +4,6 @@ import Link from "next/link";
 import { useState } from "react";
 import { projectTypes } from "@/content/navigation";
 import { emptyContact, validateContact, type ContactInput, type FieldErrors } from "@/lib/contact";
-import { phoneHref, siteConfig, whatsappHref } from "@/lib/site-config";
 
 function track(name: string) {
   const gtag = (window as Window & { gtag?: (...args: unknown[]) => void }).gtag;
@@ -12,7 +11,7 @@ function track(name: string) {
   gtag("event", name);
 }
 
-export function QuoteForm({ deliveryEnabled }: { deliveryEnabled: boolean }) {
+export function QuoteForm() {
   const [values, setValues] = useState<ContactInput>(emptyContact);
   const [errors, setErrors] = useState<FieldErrors>({});
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "unconfigured" | "error">("idle");
@@ -44,7 +43,11 @@ export function QuoteForm({ deliveryEnabled }: { deliveryEnabled: boolean }) {
         body: JSON.stringify(values),
       });
       const body = (await response.json()) as { ok?: boolean; code?: string; fields?: FieldErrors };
-      if (body.fields) setErrors(body.fields);
+      if (body.fields) {
+        setErrors(body.fields);
+        setStatus("idle");
+        return;
+      }
       if (response.ok && body.ok) {
         setStatus("sent");
         track("form_submit");
@@ -65,25 +68,6 @@ export function QuoteForm({ deliveryEnabled }: { deliveryEnabled: boolean }) {
 
   return (
     <form onSubmit={onSubmit} onFocus={onFocus} noValidate className="space-y-5">
-      {!deliveryEnabled ? (
-        <p className="border-l border-mark pl-4 text-sm leading-6" role="status">
-          L’envoi en ligne n’est pas encore relié : ce formulaire n’enregistre rien. Pour une réponse, appelez au{" "}
-          {phoneHref() && siteConfig.phone ? (
-            <a className="underline" href={phoneHref() ?? undefined}>
-              {siteConfig.phone}
-            </a>
-          ) : null}{" "}
-          ou écrivez sur{" "}
-          {whatsappHref() ? (
-            <a className="underline" href={whatsappHref() ?? undefined}>
-              WhatsApp
-            </a>
-          ) : (
-            "WhatsApp"
-          )}
-          .
-        </p>
-      ) : null}
       {errorEntries.length ? (
         <div role="alert" className="border border-line bg-sand px-4 py-3 text-sm">
           <p>Le message n’est pas parti. Corrigez les champs indiqués.</p>

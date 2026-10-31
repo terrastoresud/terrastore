@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { FigureLink, RelatedLink } from "@/content/types";
 import { Icon } from "@/components/icon";
 import { Media } from "@/components/media";
-import { phoneHref, whatsappHref } from "@/lib/site-config";
+import { mailtoHref, phoneHref, siteConfig, whatsappHref } from "@/lib/site-config";
 import { frTypo } from "@/lib/typography";
 
 export function SolutionFigures({ title, items }: { title: string; items: FigureLink[] }) {
@@ -51,6 +51,7 @@ export function RelatedLinks({ items, title = "Pour aller plus loin" }: { items:
 
 export function CtaBand({ title, text, contact = true }: { title: string; text: string; contact?: boolean }) {
   const tel = contact ? phoneHref() : null;
+  const mail = contact ? mailtoHref() : null;
   const whatsapp = contact ? whatsappHref("Bonjour Terrastore, je souhaite étudier un projet.") : null;
 
   return (
@@ -73,6 +74,12 @@ export function CtaBand({ title, text, contact = true }: { title: string; text: 
             <a className="btn inline-flex gap-2 border border-inverse text-inverse hover:bg-inverse hover:text-ink" href={tel} data-track="phone_click">
               <Icon name="phone" />
               Appeler
+            </a>
+          ) : null}
+          {mail && siteConfig.email ? (
+            <a className="btn inline-flex gap-2 border border-inverse text-inverse hover:bg-inverse hover:text-ink" href={mail}>
+              <Icon name="mail" className="size-[1.35rem]" />
+              {siteConfig.email}
             </a>
           ) : null}
           <Link
