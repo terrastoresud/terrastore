@@ -18,7 +18,7 @@ const marks = {
 export function SocialLinks({ className = "" }: { className?: string }) {
   const items = (Object.keys(marks) as (keyof typeof marks)[])
     .map((key) => ({ key, href: siteConfig.social[key], ...marks[key] }))
-    .filter((item) => item.href);
+    .filter((item): item is typeof item & { href: string } => Boolean(item.href));
 
   if (!items.length) return null;
 

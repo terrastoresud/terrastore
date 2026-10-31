@@ -32,9 +32,9 @@ export const siteConfig = {
   googleBusinessProfileUrl: null as string | null,
   openingHours: null as string[] | null,
   social: {
-    instagram: "https://www.instagram.com/",
-    facebook: "https://www.facebook.com/",
-    linkedin: "https://www.linkedin.com/",
+    instagram: "https://www.instagram.com/terasstore_du_sud",
+    facebook: "https://www.facebook.com/Noureddine07",
+    linkedin: null as string | null,
   },
   areaServed: "Maroc",
   gaId: pub("NEXT_PUBLIC_GA_ID"),
