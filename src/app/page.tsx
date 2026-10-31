@@ -1,9 +1,8 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { Icon } from "@/components/icon";
+import { Icon, IconWell } from "@/components/icon";
 import { JsonLd } from "@/components/json-ld";
 import { Media } from "@/components/media";
-import { CtaBand } from "@/components/page-blocks";
 import type { ImageId } from "@/content/images";
 import { cities } from "@/content/navigation";
 import { guides } from "@/content/guides";
@@ -111,8 +110,8 @@ export default function HomePage() {
             {families.map((item) => (
               <Link key={item.href} href={item.href} className="group min-w-0">
                 <p className="num">{item.n}</p>
-                <h3 className="mt-2 flex items-center gap-3 text-[1.65rem] font-medium transition-colors group-hover:text-accent">
-                  <Icon name={item.icon} className="size-7" />
+                <h3 className="mt-3 flex items-center gap-3 text-[1.65rem] font-medium transition-colors group-hover:text-accent">
+                  <IconWell name={item.icon} />
                   {item.title}
                 </h3>
                 <Media id={item.image} plate className="mt-4" sizes="(min-width: 768px) 46vw, 100vw" />
@@ -128,8 +127,8 @@ export default function HomePage() {
           </h2>
           <ol className="mt-8 grid gap-x-8 gap-y-8 sm:grid-cols-2 lg:grid-cols-4">
             {steps.map((step, index) => (
-              <li key={step.title}>
-                <p className="text-[0.68rem] font-medium tracking-[0.18em] text-accent">0{index + 1}</p>
+              <li key={step.title} className="step">
+                <p className="step-index">0{index + 1}</p>
                 <p className="mt-3 text-xl font-medium">{step.title}</p>
                 <p className="mt-2 leading-7 text-muted">{frTypo(step.text)}</p>
               </li>
@@ -233,9 +232,7 @@ export default function HomePage() {
               <li key={guide.slug}>
                 <Link href={`/conseils/${guide.slug}`} className="group flex min-h-16 items-center justify-between gap-4 py-3">
                   <span className="min-w-0 text-lg">{guide.h1.replace(/\s*\?$/, "")}</span>
-                  <span aria-hidden="true" className="shrink-0 text-muted transition-transform duration-200 group-hover:translate-x-1">
-                    →
-                  </span>
+                  <Icon name="arrow" className="size-5 shrink-0 text-muted transition-transform duration-200 group-hover:translate-x-1" />
                 </Link>
               </li>
             ))}
@@ -263,11 +260,6 @@ export default function HomePage() {
           </ul>
         </section>
       </div>
-      <CtaBand
-        contact={false}
-        title="Parlons de votre projet"
-        text="Ville, photos, usage. Nous revenons vers vous pour préciser la configuration, sans vous demander un dossier complet."
-      />
     </>
   );
 }

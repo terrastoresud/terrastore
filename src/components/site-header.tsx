@@ -12,7 +12,7 @@ export function SiteHeader() {
       </a>
       <div className="mx-auto flex h-20 max-w-[1200px] items-center justify-between gap-6 px-5 sm:px-8 lg:px-10">
         <Link href="/" className="flex min-h-11 shrink-0 items-center" aria-label="Terrastore, accueil">
-          <BrandLogo priority />
+          <BrandLogo />
         </Link>
         <nav aria-label="Navigation principale" className="hidden items-center gap-7 xl:flex">
           <details className="relative">

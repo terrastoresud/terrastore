@@ -55,7 +55,8 @@ type Crumb = { name: string; href: string };
 
 export function organizationNode() {
   return {
-    "@type": "Organization",
+    "@type": ["Organization", "LocalBusiness"],
+    sameAs: Object.values(siteConfig.social),
     "@id": organizationId(),
     name: siteConfig.brandName,
     url: getSiteUrl(),

@@ -92,6 +92,11 @@ export async function POST(request: Request) {
     return Response.json({ ok: false, code: "unconfigured" }, { status: 503 });
   }
 
+  const contentType = request.headers.get("content-type") ?? "";
+  if (!contentType.toLowerCase().includes("application/json")) {
+    return Response.json({ ok: false, message: "L’envoi n’a pas abouti." }, { status: 415 });
+  }
+
   const length = Number(request.headers.get("content-length") || 0);
   if (length > 20_000) {
     return Response.json({ ok: false, message: "L’envoi n’a pas abouti." }, { status: 413 });

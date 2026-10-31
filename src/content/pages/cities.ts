@@ -19,7 +19,7 @@ export const cityPages: PageDoc[] = [
     area: "Agadir",
     title: "Carports, parasols et stores à Agadir | Terrastore",
     description:
-      "Terrastore intervient à Agadir pour les carports, parasols, stores et pergolas. Le siège est à Cité Lagouira. L'étude se fait sur le lieu du projet.",
+      "Terrastore intervient à Agadir, dans le Souss-Massa, pour les carports, parasols, stores et pergolas. Le siège est à Cité Lagouira. L'étude se fait sur le lieu du projet.",
     h1: "Protection solaire à Agadir",
     eyebrow: "Souss",
     lede: "Terrastore intervient à Agadir pour les villas, les terrasses et les lieux d'hospitalité. Le littoral change les priorités : soleil long, air marin, et vent qui traverse les parcelles ouvertes.",

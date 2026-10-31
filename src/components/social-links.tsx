@@ -31,9 +31,9 @@ export function SocialLinks({ className = "" }: { className?: string }) {
             target="_blank"
             rel="noopener noreferrer"
             aria-label={item.label}
-            className="inline-flex size-11 items-center justify-center text-muted transition-colors hover:text-ink"
+            className="icon-well"
           >
-            <svg viewBox="0 0 24 24" className="size-[1.35rem]" fill="currentColor" aria-hidden="true">
+            <svg viewBox="0 0 24 24" className="size-[1.05rem]" fill="currentColor" aria-hidden="true">
               <path d={item.path} />
             </svg>
           </a>
