@@ -340,7 +340,7 @@ export const images: Record<ImageId, ImageAsset> = {
     width: 1280,
     height: 960,
     objectPosition: "center center",
-    caption: "Terrasse de restaurant, voiles superposées face à la mer.",
+    caption: "Terrasse de restaurant face à la mer.",
     variant: "voile",
   },
   "voile-mats": {
@@ -350,7 +350,7 @@ export const images: Record<ImageId, ImageAsset> = {
     width: 664,
     height: 508,
     objectPosition: "center center",
-    caption: "Superposition vue du dessus, ombre au sol.",
+    caption: "Superposition vue du dessus.",
     variant: "voile",
   },
   "voile-restaurant": {
@@ -360,7 +360,7 @@ export const images: Record<ImageId, ImageAsset> = {
     width: 1448,
     height: 1086,
     objectPosition: "center center",
-    caption: "Terrasse de restaurant, triangles superposés.",
+    caption: "Terrasse de restaurant, triangles tendus.",
     variant: "voile",
   },
   "voile-rooftop-riad": {
@@ -370,7 +370,7 @@ export const images: Record<ImageId, ImageAsset> = {
     width: 1448,
     height: 1086,
     objectPosition: "center 40%",
-    caption: "Rooftop de riad, ombre tendue au-dessus du salon.",
+    caption: "Rooftop de riad, salon à l'ombre.",
     variant: "voile",
   },
   "voile-villa": {
@@ -380,7 +380,7 @@ export const images: Record<ImageId, ImageAsset> = {
     width: 1448,
     height: 1086,
     objectPosition: "center center",
-    caption: "Terrasse de villa, ombre sur l'espace repas.",
+    caption: "Villa — ombre sur l'espace repas.",
     variant: "voile",
   },
   "voile-lanternes": {
@@ -390,7 +390,7 @@ export const images: Record<ImageId, ImageAsset> = {
     width: 1536,
     height: 1024,
     objectPosition: "center center",
-    caption: "Terrasse de restaurant, voiles et lanternes.",
+    caption: "Restaurant au crépuscule.",
     variant: "voile",
   },
   "voile-piscine": {
@@ -400,7 +400,7 @@ export const images: Record<ImageId, ImageAsset> = {
     width: 1536,
     height: 1024,
     objectPosition: "center center",
-    caption: "Bord de piscine, voiles en superposition.",
+    caption: "Bord de piscine, mâts et façade.",
     variant: "voile",
   },
   "voile-rooftop-hotel": {
@@ -410,7 +410,7 @@ export const images: Record<ImageId, ImageAsset> = {
     width: 1448,
     height: 1086,
     objectPosition: "center center",
-    caption: "Rooftop d'hôtel, trois triangles tendus.",
+    caption: "Rooftop d'hôtel, trois triangles.",
     variant: "voile",
   },
   "voile-patio": {
@@ -420,7 +420,7 @@ export const images: Record<ImageId, ImageAsset> = {
     width: 1448,
     height: 1086,
     objectPosition: "center center",
-    caption: "Patio de riad, voiles au-dessus du salon.",
+    caption: "Patio de riad, salon bas.",
     variant: "voile",
   },
   "voile-terrasse-riad": {
@@ -430,7 +430,7 @@ export const images: Record<ImageId, ImageAsset> = {
     width: 1448,
     height: 1086,
     objectPosition: "center center",
-    caption: "Terrasse de riad, ombre architecturale.",
+    caption: "Terrasse de riad.",
     variant: "voile",
   },
   "voile-jardin": {
@@ -440,7 +440,7 @@ export const images: Record<ImageId, ImageAsset> = {
     width: 1448,
     height: 1086,
     objectPosition: "center center",
-    caption: "Jardin et patio, voiles au-dessus de la table.",
+    caption: "Jardin — table sous les voiles.",
     variant: "voile",
   },
   "pro-project": {

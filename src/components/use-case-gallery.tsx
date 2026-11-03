@@ -13,9 +13,11 @@ export type GalleryEntry = {
 
 export function UseCaseGallery({
   title,
+  lede,
   items,
 }: {
   title: string;
+  lede?: string;
   items: GalleryEntry[];
 }) {
   const headingId = useId();
@@ -76,12 +78,13 @@ export function UseCaseGallery({
     <section className="rise border-t border-line py-12 md:py-16" aria-labelledby={headingId}>
       <p className="index">
         <span className="rule" aria-hidden="true" />
-        Usages
+        En images
       </p>
-      <h2 id={headingId} className="mt-4 max-w-[22ch] text-[1.7rem] leading-[1.15] font-medium md:text-4xl">
+      <h2 id={headingId} className="mt-4 max-w-[24ch] text-[1.7rem] leading-[1.15] font-medium md:text-4xl">
         {frTypo(title)}
       </h2>
-      <ul className="voile-gallery mt-8">
+      {lede ? <p className="mt-4 max-w-[48rem] leading-8 text-muted">{frTypo(lede)}</p> : null}
+      <ul className="voile-gallery mt-10">
         {items.map((item, index) => {
           const image = imageAsset(item.imageId);
           if (!image.src) return null;
@@ -94,12 +97,9 @@ export function UseCaseGallery({
                 aria-haspopup="dialog"
                 aria-label={`Agrandir : ${image.alt}`}
               >
-                <span className="mb-2 block text-[0.68rem] font-medium tracking-[0.16em] text-accent uppercase">
-                  {frTypo(item.category)}
-                </span>
                 <span
                   className="frame plate relative block overflow-hidden"
-                  style={{ aspectRatio: `${image.width} / ${image.height}` }}
+                  style={{ aspectRatio: "4 / 3" }}
                 >
                   <Image
                     src={image.src}
@@ -111,6 +111,12 @@ export function UseCaseGallery({
                     loading="lazy"
                   />
                 </span>
+                <span className="mt-3 block text-[0.68rem] font-medium tracking-[0.16em] text-accent uppercase">
+                  {frTypo(item.category)}
+                </span>
+                {image.caption ? (
+                  <span className="mt-1 block text-sm leading-6 text-muted">{frTypo(image.caption)}</span>
+                ) : null}
               </button>
             </li>
           );

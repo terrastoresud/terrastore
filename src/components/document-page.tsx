@@ -107,15 +107,30 @@ export function DocumentPage({ page, path }: { page: PageDoc; path: string }) {
           </div>
         </header>
         {page.benefits?.length ? (
-          <BenefitsGrid title={page.benefitsTitle ?? "Ce que la voile apporte"} items={page.benefits} />
+          <BenefitsGrid
+            title={page.benefitsTitle ?? "Ce que la voile apporte"}
+            lede={page.benefitsLede}
+            items={page.benefits}
+          />
         ) : null}
         {page.figures?.length ? <SolutionFigures title={page.figuresTitle ?? "En images"} items={page.figures} /> : null}
-        {page.gallery?.length ? (
-          <UseCaseGallery title={page.galleryTitle ?? "Usages et lieux"} items={page.gallery} />
+        {!page.galleryAfterSections && page.gallery?.length ? (
+          <UseCaseGallery
+            title={page.galleryTitle ?? "Usages et lieux"}
+            lede={page.galleryLede}
+            items={page.gallery}
+          />
         ) : null}
-        <div className="mt-12 md:mt-16">
+        <div className={page.benefits?.length || page.gallery?.length ? "mt-0" : "mt-12 md:mt-16"}>
           <Sections sections={page.sections} />
         </div>
+        {page.galleryAfterSections && page.gallery?.length ? (
+          <UseCaseGallery
+            title={page.galleryTitle ?? "Usages et lieux"}
+            lede={page.galleryLede}
+            items={page.gallery}
+          />
+        ) : null}
         {page.faqs?.length ? (
           <section className="border-t border-line py-12 md:py-16" aria-labelledby="faq-titre">
             <h2 id="faq-titre" className="text-[1.7rem] leading-[1.15] font-medium md:text-4xl">

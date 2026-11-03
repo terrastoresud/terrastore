@@ -24,6 +24,8 @@ export type PageSection = {
   heading: string;
   blocks: ContentBlock[];
   imageId?: ImageId;
+  /** stack = image above copy (default). split = image beside copy on large screens. */
+  layout?: "stack" | "split";
 };
 
 export type FigureLink = {
@@ -63,8 +65,12 @@ export type PageDoc = {
   figuresTitle?: string;
   benefits?: Benefit[];
   benefitsTitle?: string;
+  benefitsLede?: string;
   gallery?: GalleryItem[];
   galleryTitle?: string;
+  galleryLede?: string;
+  /** When true, gallery renders after the prose sections (editorial flow). */
+  galleryAfterSections?: boolean;
   sections: PageSection[];
   faqs?: Faq[];
   related: RelatedLink[];
