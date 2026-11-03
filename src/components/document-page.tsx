@@ -78,29 +78,33 @@ export function DocumentPage({ page, path }: { page: PageDoc; path: string }) {
           <div className={page.imageId ? "mt-6 lg:col-span-6 lg:mt-0" : "mt-6 lg:col-span-8"}>
             <p className="settle-up max-w-[42rem] text-base leading-7 text-muted sm:text-lg sm:leading-8">{frTypo(page.lede)}</p>
             {page.kind !== "legal" ? (
-              <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <div className="mt-7 flex flex-col gap-3">
                 <Link href={ctaHref} className="btn inline-flex w-full justify-center btn-primary sm:w-auto" data-track="quote_cta">
                   {ctaLabel}
                 </Link>
-                {whatsapp ? (
-                  <a
-                    className="btn inline-flex w-full justify-center gap-2 btn-secondary sm:w-auto"
-                    href={whatsapp}
-                    data-track="whatsapp_click"
-                  >
-                    <Icon name="chat" />
-                    WhatsApp
-                  </a>
-                ) : null}
-                {tel ? (
-                  <a
-                    className="btn inline-flex w-full justify-center gap-2 btn-secondary sm:w-auto"
-                    href={tel}
-                    data-track="phone_click"
-                  >
-                    <Icon name="phone" />
-                    Appeler
-                  </a>
+                {whatsapp || tel ? (
+                  <div className="grid grid-cols-2 gap-3 sm:flex sm:flex-wrap">
+                    {whatsapp ? (
+                      <a
+                        className="btn inline-flex min-h-11 w-full justify-center gap-2 btn-secondary sm:w-auto"
+                        href={whatsapp}
+                        data-track="whatsapp_click"
+                      >
+                        <Icon name="chat" />
+                        WhatsApp
+                      </a>
+                    ) : null}
+                    {tel ? (
+                      <a
+                        className="btn inline-flex min-h-11 w-full justify-center gap-2 btn-secondary sm:w-auto"
+                        href={tel}
+                        data-track="phone_click"
+                      >
+                        <Icon name="phone" />
+                        Appeler
+                      </a>
+                    ) : null}
+                  </div>
                 ) : null}
               </div>
             ) : null}

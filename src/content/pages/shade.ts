@@ -265,8 +265,9 @@ export const shadePages: PageDoc[] = [
       },
     ],
     galleryTitle: "Où l'abri voiture trouve sa place",
-    galleryLede: "Une image par usage : villa, résidence, parking, clinique, hôtel, concession.",
+    galleryLede: "Toutes les photos du projet : glissez sur mobile, agrandissez pour parcourir le détail.",
     gallery: [
+      { imageId: "abri-residence", category: "Villas & résidences privées" },
       { imageId: "abri-villa", category: "Villas & résidences privées" },
       { imageId: "abri-detail", category: "Résidences fermées" },
       { imageId: "abri-parking", category: "Parkings d'entreprise" },
