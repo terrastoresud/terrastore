@@ -3,13 +3,19 @@ export type IconName =
   | "parasol"
   | "store"
   | "pergola"
+  | "sail"
   | "phone"
   | "chat"
   | "pin"
   | "measure"
   | "mail"
   | "arrow"
-  | "check";
+  | "check"
+  | "sun"
+  | "architecture"
+  | "fabric"
+  | "fixing"
+  | "tools";
 
 export function Icon({ name, className = "" }: { name: IconName; className?: string }) {
   const sized = /(?:^|\s)(?:size-|w-|h-)/.test(className);
@@ -30,6 +36,7 @@ export function Icon({ name, className = "" }: { name: IconName; className?: str
       {name === "parasol" ? <Parasol /> : null}
       {name === "store" ? <Store /> : null}
       {name === "pergola" ? <Pergola /> : null}
+      {name === "sail" ? <Sail /> : null}
       {name === "phone" ? <Phone /> : null}
       {name === "chat" ? <Chat /> : null}
       {name === "pin" ? <Pin /> : null}
@@ -37,6 +44,11 @@ export function Icon({ name, className = "" }: { name: IconName; className?: str
       {name === "mail" ? <Mail /> : null}
       {name === "arrow" ? <Arrow /> : null}
       {name === "check" ? <Check /> : null}
+      {name === "sun" ? <Sun /> : null}
+      {name === "architecture" ? <Architecture /> : null}
+      {name === "fabric" ? <Fabric /> : null}
+      {name === "fixing" ? <Fixing /> : null}
+      {name === "tools" ? <Tools /> : null}
     </svg>
   );
 }
@@ -150,4 +162,71 @@ function Arrow() {
 
 function Check() {
   return <path d="M5.5 12.5 10 17l8.5-10" />;
+}
+
+function Sail() {
+  return (
+    <>
+      <path d="M5 19 12 5l7 14" />
+      <path d="M7.2 14.5h9.6" />
+      <path d="M12 5v14" />
+    </>
+  );
+}
+
+function Sun() {
+  return (
+    <>
+      <circle cx="12" cy="12" r="3.2" />
+      <path d="M12 4.5v2" />
+      <path d="M12 17.5v2" />
+      <path d="M4.5 12h2" />
+      <path d="M17.5 12h2" />
+      <path d="M6.6 6.6 8 8" />
+      <path d="M16 16l1.4 1.4" />
+      <path d="M17.4 6.6 16 8" />
+      <path d="M8 16l-1.4 1.4" />
+    </>
+  );
+}
+
+function Architecture() {
+  return (
+    <>
+      <path d="M4 18.5h16" />
+      <path d="M6 18.5V9.5L12 5l6 4.5v9" />
+      <path d="M10 18.5v-5h4v5" />
+    </>
+  );
+}
+
+function Fabric() {
+  return (
+    <>
+      <path d="M4 8.5c3.5-3 12.5-3 16 0" />
+      <path d="M4.5 8.8 7 18.5" />
+      <path d="M19.5 8.8 17 18.5" />
+      <path d="M8.5 11.5c2.3-1.2 4.7-1.2 7 0" />
+    </>
+  );
+}
+
+function Fixing() {
+  return (
+    <>
+      <path d="M7 17.5 17 7.5" />
+      <path d="M8.2 8.2 6 6" />
+      <path d="M18 18l-2.2-2.2" />
+      <circle cx="7" cy="17.5" r="1.6" />
+      <circle cx="17" cy="7.5" r="1.6" />
+    </>
+  );
+}
+
+function Tools() {
+  return (
+    <>
+      <path d="M14.5 5.5a3.5 3.5 0 0 0-4.7 4.7L5.5 14.5 9.5 18.5l4.3-4.3a3.5 3.5 0 0 0 4.7-4.7L16 12l-2.5-2.5 1-4z" />
+    </>
+  );
 }

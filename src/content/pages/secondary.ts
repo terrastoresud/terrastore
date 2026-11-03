@@ -22,6 +22,7 @@ export const secondaryPages: PageDoc[] = [
       { href: "/parasols", label: "Parasols", text: "Ombre mobile de terrasse." },
       { href: "/stores", label: "Stores", text: "Façade, vitrage et pièces." },
       { href: "/pergola-bioclimatique", label: "Pergolas", text: "Terrasse structurée pour la saison." },
+      { href: "/voile-ombrage", label: "Voile d'ombrage", text: "Toile tendue pour cours, rooftops et jardins." },
     ],
     sections: [
       {
@@ -36,6 +37,7 @@ export const secondaryPages: PageDoc[] = [
               { title: "La terrasse est collée à la façade", text: "Le store banne part du mur et dégage le sol." },
               { title: "Le soleil rase la baie", text: "Le store ZIP descend devant le vitrage." },
               { title: "La terrasse doit rester habitable toute la saison", text: "La pergola structure l'espace ; la toile rétractable s'étudie si l'on veut pouvoir rouvrir le ciel." },
+              { title: "Une cour ou un rooftop demande une ombre légère", text: "La voile d'ombrage tend une toile entre des points hauts, sans poteau au centre." },
               { title: "La pièce éblouit", text: "Le store intérieur règle la lumière déjà entrée." },
             ],
           },
@@ -60,6 +62,7 @@ export const secondaryPages: PageDoc[] = [
     breadcrumbs: [solutions, { name: "Pergola bioclimatique", href: "/pergola-bioclimatique" }],
     related: [
       { href: "/pergola-retractable", label: "Couverture rétractable", text: "Quand on veut pouvoir rouvrir entièrement le ciel." },
+      { href: "/voile-ombrage", label: "Voile d'ombrage", text: "Ombre tendue plus légère, sans structure de pergola." },
       { href: "/conseils/pergola-bioclimatique-ou-retractable", label: "Bioclimatique ou rétractable", text: "Le critère d'usage, pas de mode." },
       { href: "/store-zip", label: "Stores ZIP latéraux", text: "Fermer un côté sans maçonner." },
       { href: "/carport-aluminium", label: "Carport", text: "Ne pas confondre terrasse et stationnement." },
@@ -117,6 +120,7 @@ export const secondaryPages: PageDoc[] = [
     breadcrumbs: [solutions, { name: "Couverture rétractable", href: "/pergola-retractable" }],
     related: [
       { href: "/pergola-bioclimatique", label: "Pergola bioclimatique", text: "Lames plutôt que toile." },
+      { href: "/voile-ombrage", label: "Voile d'ombrage", text: "Toile tendue sans structure complète de pergola." },
       { href: "/conseils/pergola-bioclimatique-ou-retractable", label: "Comment choisir", text: "Air et pluie d'un côté, ciel ouvert de l'autre." },
       { href: "/store-banne", label: "Store banne", text: "Une projection plus légère, sans structure complète." },
     ],
@@ -144,37 +148,198 @@ export const secondaryPages: PageDoc[] = [
   {
     slug: "voile-ombrage",
     kind: "product",
-    title: "Voile d'ombrage au Maroc | Terrastore",
+    title: "Voile d'ombrage sur mesure au Maroc | Terrastore",
     description:
-      "Voile d'ombrage au Maroc pour jardins, cours et terrasses. Points d'ancrage, tension et exposition au vent, sans dimension standard inventée.",
-    h1: "Voile d'ombrage au Maroc",
+      "Voile d'ombrage sur mesure au Maroc : toile tendue pour terrasses, riads, rooftops et piscines. Étude, fixations inox, pose professionnelle.",
+    h1: "Voile d'ombrage sur mesure au Maroc",
     eyebrow: "Toile tendue",
-    lede: "La voile d'ombrage tend une toile entre des points hauts. Elle couvre un jardin, une cour ou une terrasse sans poteau au centre, à condition que les ancrages existent et que la tension reste juste.",
+    lede: "La voile d'ombrage tend une toile haute résistance entre des points choisis — façade, poteaux acier, structure existante. Elle ombre une terrasse, un patio ou un rooftop sans poteau au centre, à condition que la tension, la pente et le vent aient été étudiés sur place.",
     primaryQuery: "voile d'ombrage Maroc",
     imageId: "voile",
     serviceType: "Voile d'ombrage",
-    ctaTitle: "Montrer les points d'accroche possibles",
-    ctaText: "Murs, mâts ou arbres ne se valent pas. Une photo du volume à couvrir oriente la forme de la voile.",
+    ctaLabel: "Demander un devis",
+    ctaHref: "/contact?projectType=Voile%20d%27ombrage",
+    heroContactLinks: true,
+    ctaTitle: "Étudier une toile tendue sur votre lieu",
+    ctaText: "Envoyez la ville, une photo du volume à couvrir et les points d'accroche possibles. Nous revenons avec une lecture claire avant toute fabrication.",
     breadcrumbs: [solutions, { name: "Voile d'ombrage", href: "/voile-ombrage" }],
+    benefitsTitle: "Ce que la toile tendue apporte",
+    benefits: [
+      {
+        icon: "sun",
+        title: "Protection UV",
+        text: "Une toile bien tendue coupe le rayonnement direct sur la table, le salon ou le bord de piscine, sans fermer le volume comme un toit opaque.",
+      },
+      {
+        icon: "architecture",
+        title: "Design architectural",
+        text: "Triangles, rectangles ou superposition : la géométrie suit le lieu. L'ombre devient une ligne lisible depuis la cour ou la rue.",
+      },
+      {
+        icon: "fabric",
+        title: "Toile haute résistance",
+        text: "Toiles PEHD ou PVC selon l'usage, coupées sur mesure. La tension évite le flottement et les poches d'eau.",
+      },
+      {
+        icon: "fixing",
+        title: "Fixations inox",
+        text: "Câbles, tendeurs, manilles et platines en inox pour tenir la charge et le climat, y compris près du littoral.",
+      },
+      {
+        icon: "measure",
+        title: "Sur mesure",
+        text: "Chaque voile part du métrage réel : hauteurs d'ancrage, portées, obstacles et circulation sous l'ouvrage.",
+      },
+      {
+        icon: "tools",
+        title: "Installation professionnelle",
+        text: "Pose, réglage de tension et contrôle des ancrages. Une voile mal tendue n'est ni stable ni durable.",
+      },
+    ],
+    galleryTitle: "Restaurants, rooftops, villas et riads",
+    gallery: [
+      { imageId: "voile", category: "Restaurants & cafés" },
+      { imageId: "voile-restaurant", category: "Restaurants & cafés" },
+      { imageId: "voile-lanternes", category: "Restaurants & cafés" },
+      { imageId: "voile-rooftop-hotel", category: "Hôtels & rooftops" },
+      { imageId: "voile-rooftop-riad", category: "Hôtels & rooftops" },
+      { imageId: "voile-piscine", category: "Villas & piscines" },
+      { imageId: "voile-villa", category: "Villas & piscines" },
+      { imageId: "voile-patio", category: "Riads & patios" },
+      { imageId: "voile-terrasse-riad", category: "Riads & patios" },
+      { imageId: "voile-jardin", category: "Jardins & terrasses" },
+    ],
     related: [
-      { href: "/parasol-deporte", label: "Parasol déporté", text: "Ombre sans ancrages périphériques multiples." },
-      { href: "/pergola-bioclimatique", label: "Pergola", text: "Quand il faut aussi gérer la pluie." },
+      { href: "/pergola-bioclimatique", label: "Pergola bioclimatique", text: "Quand il faut aussi gérer la pluie et doser la lumière avec des lames." },
+      { href: "/pergola-retractable", label: "Couverture rétractable", text: "Rouvrir entièrement le ciel une fois la toile repliée." },
+      { href: "/store-banne", label: "Store banne", text: "Projection depuis la façade, sans points d'ancrage multiples." },
+      { href: "/parasols", label: "Parasols", text: "Ombre mobile, utile quand on veut pouvoir fermer par grand vent." },
+      { href: "/parasol-deporte", label: "Parasol déporté", text: "Libérer le sol au centre sans tendre une toile périphérique." },
     ],
     faqs: [
-      { question: "La voile protège-t-elle de la pluie ?", answer: "Certaines toiles résistent à une averse si la forme évacue l'eau. Une voile n'est pas un toit. La poche d'eau est le risque principal : la coupe et les hauteurs d'ancrage doivent l'éviter. On ne promet pas une étanchéité de pergola." },
-      { question: "Peut-on s'accrocher à un arbre ou à un mur léger ?", answer: "Pas par principe. Chaque point reprend une tension. Un mur trop mince ou un tronc inadapté ne sont pas des ancrages. On le vérifie avant de dessiner la voile." },
+      {
+        question: "Quel est le prix d'une voile d'ombrage au Maroc ?",
+        answer:
+          "Le prix suit la surface, la forme, le nombre de points d'ancrage, la nécessité de poteaux et la difficulté d'accès. Sans relevé, une grille tarifaire inventée n'a pas de sens. Une photo et des cotes approximatives permettent une première estimation ; le devis suit l'étude.",
+      },
+      {
+        question: "Une voile résiste-t-elle au vent ?",
+        answer:
+          "Une toile tendue prend beaucoup de surface. Sur un site abrité — cour de riad, patio — elle tient bien si les ancrages sont justes. Sur un front de mer, une colline ou à Essaouira, une voile permanente se discute franchement : un parasol que l'on ferme, ou une pergola, peut être plus adapté. On le tranche sur place.",
+      },
+      {
+        question: "Quelle est la durée de vie d'une toile tendue ?",
+        answer:
+          "Elle dépend de l'exposition UV, du vent, de l'entretien et de la qualité de la tension. Une toile bien posée et nettoyée tient plusieurs saisons. On ne publie pas de garantie générique hors du système retenu pour le projet.",
+      },
+      {
+        question: "Comment entretenir une voile d'ombrage ?",
+        answer:
+          "Un rinçage à l'eau claire, un balayage doux des poussières et le contrôle périodique des tendeurs suffisent en général. Évitez les solvants agressifs. En cas de tempête annoncée sur un site exposé, la dépose temporaire peut être prévue dès l'étude.",
+      },
+      {
+        question: "Quel délai entre la commande et la pose ?",
+        answer:
+          "Après validation du relevé et de la coupe, la fabrication puis la pose se calent selon la charge atelier et l'accès au chantier. Un délai précis figure sur le devis ; il n'est pas le même pour une cour simple et un rooftop d'hôtel en activité.",
+      },
+      {
+        question: "Fixation murale ou poteaux acier ?",
+        answer:
+          "Si des murs porteurs existent à la bonne hauteur, on s'y ancre. Sinon, des poteaux acier thermolaqués reprennent les angles libres, avec fondations adaptées. Mur trop mince, isolation, réseaux ou tronc d'arbre ne sont pas des ancrages par défaut : on les vérifie avant de dessiner la voile.",
+      },
+      {
+        question: "La voile protège-t-elle de la pluie ?",
+        answer:
+          "Certaines toiles résistent à une averse si la forme évacue l'eau. Une voile n'est pas un toit. La poche d'eau est le risque principal : la coupe et les hauteurs d'ancrage doivent l'éviter. Pour une protection pluie plus continue, on regarde plutôt une pergola.",
+      },
     ],
     sections: [
       {
-        id: "points",
+        id: "technique",
+        heading: "Matériaux, formes et couleurs",
+        imageId: "voile-villa",
+        blocks: [
+          {
+            type: "points",
+            items: [
+              {
+                title: "Toiles PEHD ou PVC",
+                text: "Le PEHD micro-aéré laisse passer une part d'air ; le PVC est plus fermé. Le choix suit l'usage, le climat et l'esthétique du lieu.",
+              },
+              {
+                title: "Câbles et tendeurs inox",
+                text: "La tension se règle point par point. L'inox tient mieux le sel et l'humidité qu'un acier ordinaire, surtout près de la côte.",
+              },
+              {
+                title: "Poteaux acier thermolaqué",
+                text: "Profils carrés ou rectangulaires, teinte anthracite ou assortie aux menuiseries, ancrés dans des fondations dimensionnées.",
+              },
+              {
+                title: "Formes",
+                text: "Triangle, carré, rectangle, ou superposition de plusieurs toiles à hauteurs décalées pour élargir l'ombre sans un seul grand panneau.",
+              },
+              {
+                title: "Couleurs",
+                text: "Crème, blanc, anthracite et teintes sobres qui suivent la façade. Une couleur criarde fatigue vite sous le soleil marocain.",
+              },
+              {
+                title: "Entretien",
+                text: "Nettoyage doux, contrôle des tendeurs, vigilance avant les coups de vent sur les sites ouverts.",
+              },
+            ],
+          },
+          {
+            type: "note",
+            title: "Sans performance inventée",
+            text: "Classe de vent, facteur UV exact et durée de vie publiée hors contexte n'ont pas de place ici. Ces données suivent le système retenu après relevé.",
+          },
+        ],
+      },
+      {
+        id: "ancrages",
         heading: "La forme suit les ancrages",
-        imageId: "voile-mats",
+        imageId: "voile-rooftop-hotel",
         blocks: [
           {
             type: "paragraphs",
             items: [
-              ["Triangle ou rectangle, la voile n'est belle que tendue. Les points ne sont pas à la même hauteur : la différence crée la pente qui évite la poche. Dans une cour de riad ou entre deux ailes de villa, les murs existent déjà. Dans un jardin ouvert, il faut parfois des mâts, et donc des fondations."],
-              ["Le vent prend une grande surface. Sur un site exposé — Essaouira, front de mer, colline — une voile permanente se discute franchement. Un parasol que l'on ferme, ou une pergola, peut être plus sain. Le choix se fait sur place, pas sur une inspiration."],
+              [
+                "Triangle ou rectangle, la voile d'ombrage n'est belle que tendue. Les points ne sont pas à la même hauteur : la différence crée la pente qui évite la poche. Dans une cour de riad ou entre deux ailes de villa, les murs existent déjà. Dans un jardin ouvert ou sur un rooftop, il faut parfois des mâts, et donc des fondations.",
+              ],
+              [
+                "Le vent prend une grande surface. Sur un site exposé — Essaouira, front de mer, colline — une voile permanente se discute franchement. Un ",
+                { href: "/parasols", label: "parasol" },
+                " que l'on ferme, ou une ",
+                { href: "/pergola-bioclimatique", label: "pergola" },
+                ", peut être plus sain. Le choix se fait sur place, pas sur une inspiration.",
+              ],
+            ],
+          },
+        ],
+      },
+      {
+        id: "deroule",
+        heading: "Comment le projet avance",
+        blocks: [
+          {
+            type: "steps",
+            items: [
+              {
+                title: "Contact",
+                text: "Ville, photos du volume, usage (restaurant, villa, riad) et points d'accroche visibles. Le type « Voile d'ombrage » oriente déjà la lecture.",
+              },
+              {
+                title: "Étude et métrage",
+                text: "Relevé des hauteurs, portées, nature des murs ou du sol, exposition au vent. On valide la forme et le nombre de toiles.",
+              },
+              {
+                title: "Fabrication",
+                text: "Coupe sur mesure de la toile, préparation des fixations inox et, si besoin, des poteaux thermolaqués.",
+              },
+              {
+                title: "Pose",
+                text: "Ancrage, tension progressive, contrôle des pentes et de la circulation sous l'ouvrage. Ajustements finaux sur site.",
+              },
             ],
           },
         ],

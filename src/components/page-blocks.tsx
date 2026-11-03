@@ -49,7 +49,19 @@ export function RelatedLinks({ items, title = "Pour aller plus loin" }: { items:
   );
 }
 
-export function CtaBand({ title, text, contact = true }: { title: string; text: string; contact?: boolean }) {
+export function CtaBand({
+  title,
+  text,
+  contact = true,
+  studyHref = "/contact",
+  studyLabel = "Étudier mon projet",
+}: {
+  title: string;
+  text: string;
+  contact?: boolean;
+  studyHref?: string;
+  studyLabel?: string;
+}) {
   const tel = contact ? phoneHref() : null;
   const mail = contact ? mailtoHref() : null;
   const whatsapp = contact ? whatsappHref("Bonjour Terrastore, je souhaite étudier un projet.") : null;
@@ -83,7 +95,7 @@ export function CtaBand({ title, text, contact = true }: { title: string; text: 
             </a>
           ) : null}
           <Link
-            href="/contact"
+            href={studyHref}
             className={
               contact
                 ? "btn inline-flex border border-inverse text-inverse hover:bg-inverse hover:text-ink"
@@ -91,7 +103,7 @@ export function CtaBand({ title, text, contact = true }: { title: string; text: 
             }
             data-track="quote_cta"
           >
-            Étudier mon projet
+            {studyLabel}
           </Link>
         </div>
       </div>

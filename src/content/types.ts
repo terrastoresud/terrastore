@@ -1,4 +1,5 @@
 import type { ImageId } from "@/content/images";
+import type { IconName } from "@/components/icon";
 
 export type Inline = string | { label: string; href: string };
 
@@ -35,6 +36,17 @@ export type Faq = { question: string; answer: string };
 
 export type RelatedLink = { href: string; label: string; text: string };
 
+export type Benefit = {
+  icon: IconName;
+  title: string;
+  text: string;
+};
+
+export type GalleryItem = {
+  imageId: ImageId;
+  category: string;
+};
+
 export type PageKind = "product" | "hub" | "city" | "legal" | "about" | "b2b";
 
 export type PageDoc = {
@@ -49,11 +61,21 @@ export type PageDoc = {
   imageId?: ImageId;
   figures?: FigureLink[];
   figuresTitle?: string;
+  benefits?: Benefit[];
+  benefitsTitle?: string;
+  gallery?: GalleryItem[];
+  galleryTitle?: string;
   sections: PageSection[];
   faqs?: Faq[];
   related: RelatedLink[];
   ctaTitle: string;
   ctaText: string;
+  /** Primary hero CTA label. Defaults to « Demander une étude ». */
+  ctaLabel?: string;
+  /** Primary hero CTA href. Defaults to /contact. */
+  ctaHref?: string;
+  /** Show WhatsApp / phone next to the primary hero CTA. */
+  heroContactLinks?: boolean;
   breadcrumbs: { name: string; href: string }[];
   serviceType: string;
 };

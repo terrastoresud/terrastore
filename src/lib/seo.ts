@@ -11,8 +11,15 @@ export function pageMetadata(input: {
   title: string;
   description: string;
   path: string;
+  image?: { url: string; width: number; height: number; alt: string };
 }): Metadata {
   const url = absoluteUrl(input.path);
+  const image = input.image ?? {
+    url: "/images/terrastore-carport-autoportant.jpg",
+    width: 1024,
+    height: 682,
+    alt: "Carport aluminium autoportant à couverture translucide, deux véhicules dans une cour de villa.",
+  };
   return {
     title: input.title,
     description: input.description,
@@ -27,10 +34,10 @@ export function pageMetadata(input: {
       siteName: siteConfig.brandName,
       images: [
         {
-          url: "/images/terrastore-carport-autoportant.jpg",
-          width: 1024,
-          height: 682,
-          alt: "Carport aluminium autoportant à couverture translucide, deux véhicules dans une cour de villa.",
+          url: image.url,
+          width: image.width,
+          height: image.height,
+          alt: image.alt,
         },
       ],
     },
@@ -38,7 +45,7 @@ export function pageMetadata(input: {
       card: "summary_large_image",
       title: input.title,
       description: input.description,
-      images: ["/images/terrastore-carport-autoportant.jpg"],
+      images: [image.url],
     },
   };
 }
@@ -128,14 +135,18 @@ export function serviceNode(input: {
   path: string;
   serviceType: string;
   areaName?: string;
+  imageUrl?: string;
 }) {
   return {
-    "@type": "Service",
+    "@type": ["Service", "Product"],
     name: input.name,
     description: input.description,
     serviceType: input.serviceType,
+    category: input.serviceType,
     url: absoluteUrl(input.path),
     provider: { "@id": organizationId() },
+    brand: { "@id": organizationId() },
+    ...(input.imageUrl ? { image: absoluteUrl(input.imageUrl) } : {}),
     areaServed: input.areaName
       ? { "@type": "City", name: input.areaName }
       : { "@type": "Country", name: "Morocco" },

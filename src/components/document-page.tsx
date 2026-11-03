@@ -1,10 +1,14 @@
 import Link from "next/link";
+import { BenefitsGrid } from "@/components/benefits-grid";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { FaqList } from "@/components/faq-list";
+import { Icon } from "@/components/icon";
 import { JsonLd } from "@/components/json-ld";
 import { Media } from "@/components/media";
 import { CtaBand, RelatedLinks, SolutionFigures } from "@/components/page-blocks";
 import { Sections } from "@/components/sections";
+import { UseCaseGallery } from "@/components/use-case-gallery";
+import { imageAsset } from "@/content/images";
 import type { PageDoc } from "@/content/types";
 import {
   articleNode,
@@ -15,10 +19,12 @@ import {
   serviceNode,
   webPageNode,
 } from "@/lib/seo";
+import { phoneHref, whatsappHref } from "@/lib/site-config";
 import { frTypo } from "@/lib/typography";
 
 export function DocumentPage({ page, path }: { page: PageDoc; path: string }) {
   const crumbs = [{ name: "Accueil", href: "/" }, ...page.breadcrumbs];
+  const heroImage = page.imageId ? imageAsset(page.imageId) : undefined;
   const nodes: Record<string, unknown>[] = [
     organizationNode(),
     webPageNode({ name: page.h1, description: page.description, path }),
@@ -33,9 +39,18 @@ export function DocumentPage({ page, path }: { page: PageDoc; path: string }) {
         path,
         serviceType: page.serviceType,
         areaName: page.kind === "city" ? page.breadcrumbs.at(-1)?.name : undefined,
+        imageUrl: heroImage?.src ?? undefined,
       }),
     );
   }
+
+  const ctaHref = page.ctaHref ?? "/contact";
+  const ctaLabel = page.ctaLabel ?? "Demander une étude";
+  const tel = page.heroContactLinks ? phoneHref() : null;
+  const whatsapp = page.heroContactLinks
+    ? whatsappHref(`Bonjour Terrastore, je souhaite un devis pour une ${page.serviceType.toLowerCase()}.`)
+    : null;
+
   return (
     <>
       <JsonLd data={graph(nodes)} />
@@ -63,15 +78,41 @@ export function DocumentPage({ page, path }: { page: PageDoc; path: string }) {
           <div className={page.imageId ? "mt-6 lg:col-span-6 lg:mt-0" : "mt-6 lg:col-span-8"}>
             <p className="settle-up max-w-[42rem] text-base leading-7 text-muted sm:text-lg sm:leading-8">{frTypo(page.lede)}</p>
             {page.kind !== "legal" ? (
-              <div className="mt-7">
-                <Link href="/contact" className="btn inline-flex w-full justify-center btn-primary sm:w-auto" data-track="quote_cta">
-                  Demander une étude
+              <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                <Link href={ctaHref} className="btn inline-flex w-full justify-center btn-primary sm:w-auto" data-track="quote_cta">
+                  {ctaLabel}
                 </Link>
+                {whatsapp ? (
+                  <a
+                    className="btn inline-flex w-full justify-center gap-2 btn-secondary sm:w-auto"
+                    href={whatsapp}
+                    data-track="whatsapp_click"
+                  >
+                    <Icon name="chat" />
+                    WhatsApp
+                  </a>
+                ) : null}
+                {tel ? (
+                  <a
+                    className="btn inline-flex w-full justify-center gap-2 btn-secondary sm:w-auto"
+                    href={tel}
+                    data-track="phone_click"
+                  >
+                    <Icon name="phone" />
+                    Appeler
+                  </a>
+                ) : null}
               </div>
             ) : null}
           </div>
         </header>
+        {page.benefits?.length ? (
+          <BenefitsGrid title={page.benefitsTitle ?? "Ce que la voile apporte"} items={page.benefits} />
+        ) : null}
         {page.figures?.length ? <SolutionFigures title={page.figuresTitle ?? "En images"} items={page.figures} /> : null}
+        {page.gallery?.length ? (
+          <UseCaseGallery title={page.galleryTitle ?? "Usages et lieux"} items={page.gallery} />
+        ) : null}
         <div className="mt-12 md:mt-16">
           <Sections sections={page.sections} />
         </div>
@@ -87,7 +128,15 @@ export function DocumentPage({ page, path }: { page: PageDoc; path: string }) {
         ) : null}
         <RelatedLinks items={page.related} />
       </article>
-      {page.kind !== "legal" ? <CtaBand contact={false} title={page.ctaTitle} text={page.ctaText} /> : null}
+      {page.kind !== "legal" ? (
+        <CtaBand
+          contact={false}
+          title={page.ctaTitle}
+          text={page.ctaText}
+          studyHref={page.ctaHref ?? "/contact"}
+          studyLabel={page.ctaLabel ?? "Étudier mon projet"}
+        />
+      ) : null}
     </>
   );
 }

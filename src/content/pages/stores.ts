@@ -140,6 +140,7 @@ export const storePages: PageDoc[] = [
       { href: "/conseils/store-banne-ou-store-zip", label: "Banne ou ZIP", text: "Quand la projection ne suffit plus." },
       { href: "/store-zip", label: "Store ZIP", text: "Le complément vertical." },
       { href: "/parasols", label: "Parasols", text: "Si l'ombre ne peut pas partir du mur." },
+      { href: "/voile-ombrage", label: "Voile d'ombrage", text: "Quand l'ombre doit partir de plusieurs points, pas seulement de la façade." },
     ],
     faqs: [
       { question: "Coffre, semi-coffre ou store ouvert ?", answer: "Le coffre intégral range toile et bras. Il protège mieux l'étoffe hors saison et donne une ligne plus nette en façade. Le semi-coffre protège surtout la toile. Un système plus ouvert reste plus compact. On ne retient un coffre que si le système proposé le prévoit et si le linteau a la place." },

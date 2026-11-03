@@ -20,7 +20,7 @@ export const metadata: Metadata = pageMetadata({
 const families: {
   href: string;
   n: string;
-  icon: "carport" | "parasol" | "store" | "pergola";
+  icon: "carport" | "parasol" | "store" | "pergola" | "sail";
   title: string;
   text: string;
   image: ImageId;
@@ -56,6 +56,14 @@ const families: {
     title: "Pergolas",
     text: "Lames orientables ou couverture rétractable, lorsque la terrasse doit rester en place toute la saison.",
     image: "pergola-bio-hotel",
+  },
+  {
+    href: "/voile-ombrage",
+    n: "05",
+    icon: "sail",
+    title: "Voiles d'ombrage",
+    text: "Toile tendue sur mesure pour terrasses, riads, rooftops et piscines. Ancrages muraux ou poteaux acier, fixations inox.",
+    image: "voile",
   },
 ];
 
@@ -104,7 +112,7 @@ export default function HomePage() {
 
         <section className="rise mt-14 min-w-0 md:mt-32" aria-labelledby="focus">
           <h2 id="focus" className="text-[1.7rem] leading-[1.15] font-medium md:text-4xl">
-            Quatre familles, un ordre clair
+            Cinq familles, un ordre clair
           </h2>
           <div className="family-rail">
             {families.map((item) => (

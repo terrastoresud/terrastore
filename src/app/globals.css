@@ -643,6 +643,38 @@ details[open] > summary .chevron {
   }
 }
 
+.voile-gallery {
+  display: grid;
+  gap: 1.75rem 1.25rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .voile-gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .voile-gallery {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2.25rem 1.75rem;
+  }
+
+  .voile-gallery-item:nth-child(4n + 1) {
+    grid-column: span 2;
+  }
+}
+
+.voile-gallery-item button {
+  min-height: 44px;
+}
+
+.lightbox {
+  animation: settle 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
