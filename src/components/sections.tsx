@@ -112,12 +112,12 @@ export function Sections({ sections }: { sections: PageSection[] }) {
   return (
     <div>
       {sections.map((section, index) => (
-        <section key={section.id} aria-labelledby={section.id} className="rise border-t border-line py-12 md:py-16">
+        <section key={section.id} aria-labelledby={section.id} className="rise border-t border-line py-10 sm:py-12 md:py-16">
           <p className="index">
             <span className="rule" aria-hidden="true" />
             {String(index + 1).padStart(2, "0")}
           </p>
-          <h2 id={section.id} className="mt-4 max-w-[22ch] text-[1.7rem] leading-[1.15] font-medium md:text-4xl">
+          <h2 id={section.id} className="mt-3 max-w-[22ch] text-[1.55rem] leading-[1.15] font-medium sm:mt-4 sm:text-[1.7rem] md:text-4xl">
             {frTypo(section.heading)}
           </h2>
           <SectionBody section={section} />

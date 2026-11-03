@@ -56,16 +56,24 @@ export function DocumentPage({ page, path }: { page: PageDoc; path: string }) {
       <JsonLd data={graph(nodes)} />
       <article className="mx-auto max-w-[1200px] px-5 pt-8 pb-16 sm:px-8 lg:px-10">
         <Breadcrumbs items={crumbs} />
-        <header className="mt-8 lg:grid lg:grid-cols-12 lg:items-start lg:gap-x-16 lg:gap-y-6">
-          <div className={page.imageId ? "lg:col-span-6" : "lg:col-span-8"}>
+        <header
+          className={
+            page.imageId
+              ? "product-hero mt-6 sm:mt-8 lg:grid lg:grid-cols-12 lg:items-start lg:gap-x-16 lg:gap-y-6"
+              : "mt-6 sm:mt-8 lg:grid lg:grid-cols-12 lg:items-start lg:gap-x-16 lg:gap-y-6"
+          }
+        >
+          <div className={`product-hero-title ${page.imageId ? "lg:col-span-6" : "lg:col-span-8"}`}>
             <p className="index">
               <span className="rule" aria-hidden="true" />
               {page.eyebrow}
             </p>
-            <h1 className="display mt-4 text-balance text-[2.05rem] leading-[1.08] font-medium sm:text-5xl lg:text-6xl">{frTypo(page.h1)}</h1>
+            <h1 className="display mt-3 text-balance text-[1.85rem] leading-[1.08] font-medium sm:mt-4 sm:text-5xl lg:text-6xl">
+              {frTypo(page.h1)}
+            </h1>
           </div>
           {page.imageId ? (
-            <div className="mt-8 min-w-0 lg:col-span-6 lg:row-span-2 lg:mt-0">
+            <div className="product-hero-media mt-5 min-w-0 sm:mt-8 lg:col-span-6 lg:row-span-2 lg:mt-0">
               <Media
                 id={page.imageId}
                 className="hero-still"
@@ -75,32 +83,36 @@ export function DocumentPage({ page, path }: { page: PageDoc; path: string }) {
               />
             </div>
           ) : null}
-          <div className={page.imageId ? "mt-6 lg:col-span-6 lg:mt-0" : "mt-6 lg:col-span-8"}>
-            <p className="settle-up max-w-[42rem] text-base leading-7 text-muted sm:text-lg sm:leading-8">{frTypo(page.lede)}</p>
+          <div className={`product-hero-lede ${page.imageId ? "mt-5 lg:col-span-6 lg:mt-0" : "mt-5 lg:col-span-8"}`}>
+            <p className="settle-up max-w-[42rem] text-[0.98rem] leading-7 text-muted sm:text-lg sm:leading-8">{frTypo(page.lede)}</p>
             {page.kind !== "legal" ? (
-              <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <div className="hero-actions mt-6">
                 <Link href={ctaHref} className="btn inline-flex w-full justify-center btn-primary sm:w-auto" data-track="quote_cta">
                   {ctaLabel}
                 </Link>
-                {whatsapp ? (
-                  <a
-                    className="btn inline-flex w-full justify-center gap-2 btn-secondary sm:w-auto"
-                    href={whatsapp}
-                    data-track="whatsapp_click"
-                  >
-                    <Icon name="chat" />
-                    WhatsApp
-                  </a>
-                ) : null}
-                {tel ? (
-                  <a
-                    className="btn inline-flex w-full justify-center gap-2 btn-secondary sm:w-auto"
-                    href={tel}
-                    data-track="phone_click"
-                  >
-                    <Icon name="phone" />
-                    Appeler
-                  </a>
+                {whatsapp || tel ? (
+                  <div className="hero-actions-secondary">
+                    {whatsapp ? (
+                      <a
+                        className="btn inline-flex w-full justify-center gap-2 btn-secondary sm:w-auto"
+                        href={whatsapp}
+                        data-track="whatsapp_click"
+                      >
+                        <Icon name="chat" />
+                        WhatsApp
+                      </a>
+                    ) : null}
+                    {tel ? (
+                      <a
+                        className="btn inline-flex w-full justify-center gap-2 btn-secondary sm:w-auto"
+                        href={tel}
+                        data-track="phone_click"
+                      >
+                        <Icon name="phone" />
+                        Appeler
+                      </a>
+                    ) : null}
+                  </div>
                 ) : null}
               </div>
             ) : null}

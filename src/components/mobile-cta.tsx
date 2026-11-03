@@ -1,8 +1,9 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Icon } from "@/components/icon";
-import { phoneHref, whatsappHref } from "@/lib/site-config";
+import { whatsappHref } from "@/lib/site-config";
 
 export function MobileCta() {
   const [visible, setVisible] = useState(false);
@@ -10,7 +11,7 @@ export function MobileCta() {
   useEffect(() => {
     const root = document.documentElement;
     const update = () => {
-      const on = window.scrollY > 560;
+      const on = window.scrollY > 420;
       setVisible(on);
       root.classList.toggle("has-mobile-cta", on);
     };
@@ -24,20 +25,16 @@ export function MobileCta() {
 
   if (!visible) return null;
 
-  const tel = phoneHref();
   const whatsapp = whatsappHref("Bonjour Terrastore, je souhaite étudier un projet.");
 
   return (
     <div className="fixed inset-x-0 bottom-0 z-30 border-t border-line bg-paper/95 p-3 shadow-[0_-10px_30px_rgba(28,25,22,0.06)] backdrop-blur-md sm:hidden">
-      <div className="grid grid-cols-2 gap-2">
-        {tel ? (
-          <a href={tel} className="btn inline-flex gap-2 btn-secondary" data-track="phone_click">
-            <Icon name="phone" />
-            Appeler
-          </a>
-        ) : null}
+      <div className="grid grid-cols-[1.35fr_1fr] gap-2">
+        <Link href="/contact" className="btn inline-flex justify-center btn-primary" data-track="quote_cta">
+          Demander une étude
+        </Link>
         {whatsapp ? (
-          <a href={whatsapp} className="btn inline-flex gap-2 btn-primary" data-track="whatsapp_click">
+          <a href={whatsapp} className="btn inline-flex justify-center gap-2 btn-secondary" data-track="whatsapp_click">
             <Icon name="chat" />
             WhatsApp
           </a>

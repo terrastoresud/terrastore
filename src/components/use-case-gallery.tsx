@@ -75,16 +75,16 @@ export function UseCaseGallery({
   const activeImage = active ? imageAsset(active.imageId) : null;
 
   return (
-    <section className="rise border-t border-line py-12 md:py-16" aria-labelledby={headingId}>
+    <section className="rise border-t border-line py-10 sm:py-12 md:py-16" aria-labelledby={headingId}>
       <p className="index">
         <span className="rule" aria-hidden="true" />
         En images
       </p>
-      <h2 id={headingId} className="mt-4 max-w-[24ch] text-[1.7rem] leading-[1.15] font-medium md:text-4xl">
+      <h2 id={headingId} className="mt-3 max-w-[24ch] text-[1.55rem] leading-[1.15] font-medium sm:mt-4 sm:text-[1.7rem] md:text-4xl">
         {frTypo(title)}
       </h2>
-      {lede ? <p className="mt-4 max-w-[48rem] leading-8 text-muted">{frTypo(lede)}</p> : null}
-      <ul className="voile-gallery mt-10">
+      {lede ? <p className="mt-3 max-w-[48rem] text-[0.98rem] leading-7 text-muted sm:mt-4 sm:leading-8">{frTypo(lede)}</p> : null}
+      <ul className="voile-gallery mt-8 sm:mt-10">
         {items.map((item, index) => {
           const image = imageAsset(item.imageId);
           if (!image.src) return null;

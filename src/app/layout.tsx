@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Manrope } from "next/font/google";
 import { Analytics } from "@/components/analytics";
+import { MobileCta } from "@/components/mobile-cta";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { robotsDirective } from "@/lib/indexing";
@@ -17,11 +18,11 @@ const manrope = Manrope({
 export const metadata: Metadata = {
   metadataBase: new URL(getSiteUrl()),
   title: {
-    default: "Carports, parasols et stores sur mesure au Maroc | Terrastore",
+    default: "Carports, parasols, stores et voiles au Maroc | Terrastore",
     template: "%s",
   },
   description:
-    "Terrastore, siège à Agadir, étudie, configure et installe des carports aluminium, des parasols, des stores et des pergolas, partout au Maroc.",
+    "Terrastore, siège à Agadir : carports aluminium, parasols, stores, pergolas et voiles d'ombrage sur mesure, partout au Maroc.",
   applicationName: "Terrastore",
   authors: [{ name: "Terrastore" }],
   robots: robotsDirective(),
@@ -30,9 +31,9 @@ export const metadata: Metadata = {
     type: "website",
     locale: "fr_MA",
     siteName: "Terrastore",
-    title: "Carports, parasols et stores sur mesure au Maroc | Terrastore",
+    title: "Carports, parasols, stores et voiles au Maroc | Terrastore",
     description:
-      "Terrastore, siège à Agadir, étudie, configure et installe des carports aluminium, des parasols, des stores et des pergolas, partout au Maroc.",
+      "Terrastore, siège à Agadir : carports aluminium, parasols, stores, pergolas et voiles d'ombrage sur mesure, partout au Maroc.",
     images: [
       {
         url: "/images/terrastore-carport-autoportant.jpg",
@@ -64,6 +65,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <SiteHeader />
         <main id="contenu">{children}</main>
         <SiteFooter />
+        <MobileCta />
         <Analytics gaId={siteConfig.gaId} />
       </body>
     </html>
