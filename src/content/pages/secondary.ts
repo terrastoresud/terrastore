@@ -198,7 +198,6 @@ export const secondaryPages: PageDoc[] = [
     ],
     galleryTitle: "Restaurants, rooftops, villas et riads",
     gallery: [
-      { imageId: "voile", category: "Restaurants & cafés" },
       { imageId: "voile-restaurant", category: "Restaurants & cafés" },
       { imageId: "voile-lanternes", category: "Restaurants & cafés" },
       { imageId: "voile-rooftop-hotel", category: "Hôtels & rooftops" },
@@ -208,6 +207,7 @@ export const secondaryPages: PageDoc[] = [
       { imageId: "voile-patio", category: "Riads & patios" },
       { imageId: "voile-terrasse-riad", category: "Riads & patios" },
       { imageId: "voile-jardin", category: "Jardins & terrasses" },
+      { imageId: "voile-mats", category: "Jardins & terrasses" },
     ],
     related: [
       { href: "/pergola-bioclimatique", label: "Pergola bioclimatique", text: "Quand il faut aussi gérer la pluie et doser la lumière avec des lames." },
