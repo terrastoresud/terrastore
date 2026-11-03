@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { QuoteForm } from "@/components/quote-form";
 import { SocialLinks } from "@/components/social-links";
 import { Breadcrumbs } from "@/components/breadcrumbs";
@@ -71,7 +72,9 @@ export default function ContactPage() {
         ) : null}
       </div>
       <div className="dossier min-w-0 md:col-span-7">
-        <QuoteForm />
+        <Suspense fallback={<p className="text-sm text-muted">Chargement du formulaire…</p>}>
+          <QuoteForm />
+        </Suspense>
       </div>
     </div>
   );

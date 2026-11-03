@@ -7,6 +7,7 @@ export const primaryNav: NavLink[] = [
   { href: "/parasols", label: "Parasols" },
   { href: "/stores", label: "Stores" },
   { href: "/pergola-bioclimatique", label: "Pergolas" },
+  { href: "/voile-ombrage", label: "Voiles" },
   { href: "/professionnels", label: "Professionnels" },
   { href: "/conseils", label: "Conseils" },
 ];
@@ -14,7 +15,10 @@ export const primaryNav: NavLink[] = [
 export const solutionGroups: { title: string; links: NavLink[] }[] = [
   {
     title: "Carports",
-    links: [{ href: "/carport-aluminium", label: "Carport aluminium" }],
+    links: [
+      { href: "/carport-aluminium", label: "Carport aluminium" },
+      { href: "/abri-voiture", label: "Abri voiture" },
+    ],
   },
   {
     title: "Parasols",
@@ -47,10 +51,11 @@ export const solutionGroups: { title: string; links: NavLink[] }[] = [
 export const footerSolutions: NavLink[] = [
   { href: "/solutions", label: "Toutes" },
   { href: "/carport-aluminium", label: "Carports" },
+  { href: "/abri-voiture", label: "Abri voiture" },
   { href: "/parasols", label: "Parasols" },
   { href: "/stores", label: "Stores" },
   { href: "/pergola-bioclimatique", label: "Pergolas" },
-  { href: "/voile-ombrage", label: "Voile" },
+  { href: "/voile-ombrage", label: "Voile d'ombrage" },
 ];
 
 export const footerGuides: NavLink[] = [
@@ -70,10 +75,12 @@ export const cities: { href: string; label: string }[] = [
 
 export const projectTypes = [
   "Carport",
+  "Abri voiture",
   "Parasol",
   "Store extérieur",
   "Store intérieur",
   "Pergola",
+  "Voile d'ombrage",
   "Projet professionnel",
   "Autre",
 ] as const;
