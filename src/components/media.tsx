@@ -26,7 +26,7 @@ export function Media({
             fill
             priority={priority}
             fetchPriority={priority ? "high" : undefined}
-            quality={priority ? 72 : 75}
+            quality={priority ? 68 : 75}
             sizes={sizes}
             className="object-cover"
             style={{ objectPosition: image.objectPosition }}
