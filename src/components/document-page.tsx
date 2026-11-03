@@ -7,6 +7,7 @@ import { JsonLd } from "@/components/json-ld";
 import { Media } from "@/components/media";
 import { CtaBand, RelatedLinks, SolutionFigures } from "@/components/page-blocks";
 import { Sections } from "@/components/sections";
+import { ProductStories } from "@/components/product-stories";
 import { UseCaseGallery } from "@/components/use-case-gallery";
 import { imageAsset } from "@/content/images";
 import type { PageDoc } from "@/content/types";
@@ -50,6 +51,26 @@ export function DocumentPage({ page, path }: { page: PageDoc; path: string }) {
   const whatsapp = page.heroContactLinks
     ? whatsappHref(`Bonjour Terrastore, je souhaite un devis pour une ${page.serviceType.toLowerCase()}.`)
     : null;
+
+  const storiesSplitAt = page.storiesAfterSectionId
+    ? page.sections.findIndex((section) => section.id === page.storiesAfterSectionId)
+    : -1;
+  const storiesAfterIntro = Boolean(page.stories?.length) && storiesSplitAt >= 0;
+  const sectionsBeforeStories = storiesAfterIntro
+    ? page.sections.slice(0, storiesSplitAt + 1)
+    : page.sections;
+  const sectionsAfterStories = storiesAfterIntro ? page.sections.slice(storiesSplitAt + 1) : [];
+  const sectionsWrapClass =
+    page.benefits?.length || page.gallery?.length || page.stories?.length
+      ? "mt-0"
+      : "mt-12 md:mt-16";
+  const storiesEl = page.stories?.length ? (
+    <ProductStories
+      title={page.storiesTitle ?? "Configurations et lieux"}
+      lede={page.storiesLede}
+      items={page.stories}
+    />
+  ) : null;
 
   return (
     <>
@@ -133,9 +154,16 @@ export function DocumentPage({ page, path }: { page: PageDoc; path: string }) {
             items={page.gallery}
           />
         ) : null}
-        <div className={page.benefits?.length || page.gallery?.length ? "mt-0" : "mt-12 md:mt-16"}>
-          <Sections sections={page.sections} />
+        {!storiesAfterIntro ? storiesEl : null}
+        <div className={sectionsWrapClass}>
+          <Sections sections={sectionsBeforeStories} />
         </div>
+        {storiesAfterIntro ? storiesEl : null}
+        {sectionsAfterStories.length ? (
+          <div className="mt-0">
+            <Sections sections={sectionsAfterStories} />
+          </div>
+        ) : null}
         {page.galleryAfterSections && page.gallery?.length ? (
           <UseCaseGallery
             title={page.galleryTitle ?? "Usages et lieux"}

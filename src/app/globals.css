@@ -771,6 +771,20 @@ details[open] > summary .chevron {
   min-height: 44px;
 }
 
+.story-block {
+  scroll-margin-top: 5.5rem;
+}
+
+.story-details dt {
+  color: var(--ink);
+}
+
+@media (max-width: 1023px) {
+  .story-block > div:first-child {
+    order: -1;
+  }
+}
+
 .lightbox {
   animation: settle 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
 }

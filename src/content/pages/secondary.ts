@@ -197,20 +197,151 @@ export const secondaryPages: PageDoc[] = [
         text: "Ancrage, tension progressive et contrôle final. Une voile mal tendue ne tient pas la saison.",
       },
     ],
-    galleryAfterSections: true,
-    galleryTitle: "Terrasses, rooftops, villas et riads",
-    galleryLede: "Mêmes principes, lieux différents : restaurant en bord de mer, rooftop d'hôtel, patio de riad ou bord de piscine. Cliquez pour agrandir.",
-    gallery: [
-      { imageId: "voile-restaurant", category: "Restaurants & cafés" },
-      { imageId: "voile-lanternes", category: "Restaurants & cafés" },
-      { imageId: "voile-rooftop-hotel", category: "Hôtels & rooftops" },
-      { imageId: "voile-rooftop-riad", category: "Hôtels & rooftops" },
-      { imageId: "voile-piscine", category: "Villas & piscines" },
-      { imageId: "voile-villa", category: "Villas & piscines" },
-      { imageId: "voile-patio", category: "Riads & patios" },
-      { imageId: "voile-terrasse-riad", category: "Riads & patios" },
-      { imageId: "voile-jardin", category: "Jardins & terrasses" },
-      { imageId: "voile-mats", category: "Jardins & terrasses" },
+    storiesTitle: "Chaque configuration, expliquée",
+    storiesLede:
+      "Restaurant, rooftop, villa, riad ou jardin : la même logique de tension, une lecture différente du lieu. Chaque photo ci-dessous décrit une installation type — forme, ancrages et usage au sol.",
+    storiesAfterSectionId: "definition",
+    stories: [
+      {
+        imageId: "voile-restaurant",
+        category: "Restaurants & cafés",
+        title: "Terrasse de restaurant à deux triangles",
+        text: [
+          "Deux voiles triangulaires crème se croisent au-dessus des tables. Le mât noir en limite de terrasse libère le passage de service : les serveurs circulent sans contourner un pied central.",
+          "Les façades traditionnelles servent d'ancrage mural. La superposition crée une ombre continue sur la zone repas sans fermer la vue vers la rue ou la cour.",
+        ],
+        details: [
+          { label: "Forme", value: "Deux triangles superposés" },
+          { label: "Ancrages", value: "Façades + mât en limite" },
+          { label: "Usage", value: "Tables et circulation de service" },
+        ],
+      },
+      {
+        imageId: "voile-lanternes",
+        category: "Restaurants & cafés",
+        title: "Salle extérieure au crépuscule",
+        text: [
+          "Trois voiles crème couvrent une terrasse de restaurant au moment où les lanternes s'allument. L'ombre diurne devient un plafond aéré le soir : la toile reste lisible sans écraser l'ambiance.",
+          "Les oliviers et le mobilier bas restent sous la projection. Les mâts sont placés hors des allées pour que le service et les clients gardent un sol libre.",
+        ],
+        details: [
+          { label: "Forme", value: "Trois triangles en nappe" },
+          { label: "Ancrages", value: "Poteaux acier + points muraux" },
+          { label: "Usage", value: "Service du soir, ombre diurne" },
+        ],
+      },
+      {
+        imageId: "voile-rooftop-hotel",
+        category: "Hôtels & rooftops",
+        title: "Rooftop d'hôtel en trois triangles",
+        text: [
+          "Sur une terrasse d'hôtel, trois voiles crème tendues entre poteaux anthracite et fixations inox créent une ligne claire vue de loin. L'ouvrage ombre le salon sans structure de pergola complète.",
+          "Les hauteurs décalées assurent la pente d'évacuation. Les platines et câbles inox supportent la charge et le climat, y compris près du littoral.",
+        ],
+        details: [
+          { label: "Forme", value: "Trois triangles décalés" },
+          { label: "Ancrages", value: "Poteaux acier + inox" },
+          { label: "Usage", value: "Salon / salle extérieure" },
+        ],
+      },
+      {
+        imageId: "voile-rooftop-riad",
+        category: "Hôtels & rooftops",
+        title: "Rooftop de riad face à la médina",
+        text: [
+          "Sur le toit d'un riad, la voile ombre un salon bas tout en laissant la vue sur la médina et les montagnes. L'ouvrage reste léger : pas de toiture opaque qui fermerait l'horizon.",
+          "Les ancrages s'appuient sur les acrotères et, si besoin, sur des mâts discrets. La tension se règle pour que le vent de toiture ne fasse pas claquer la toile.",
+        ],
+        details: [
+          { label: "Forme", value: "Triangles sur rooftop" },
+          { label: "Ancrages", value: "Acrotères / mâts discrets" },
+          { label: "Usage", value: "Salon bas, vue préservée" },
+        ],
+      },
+      {
+        imageId: "voile-piscine",
+        category: "Villas & piscines",
+        title: "Espace détente au bord de la piscine",
+        text: [
+          "Des triangles crème tendus entre façade et mâts ombrent l'espace détente sans empiéter sur le bassin. Les poteaux restent hors du chemin des baigneurs et du robot de nettoyage.",
+          "La toile coupe le soleil zénithal sur les transats et le salon de jardin. L'eau et le reflet restent visibles : l'ouvrage filtre la lumière, il ne ferme pas le jardin.",
+        ],
+        details: [
+          { label: "Forme", value: "Triangles façade → mâts" },
+          { label: "Ancrages", value: "Mur villa + poteaux hors bassin" },
+          { label: "Usage", value: "Transats et salon de jardin" },
+        ],
+      },
+      {
+        imageId: "voile-villa",
+        category: "Villas & piscines",
+        title: "Terrasse repas de villa",
+        text: [
+          "Deux voiles crème au-dessus de la table de repas : l'ombre suit le rythme des repas en famille ou entre amis. Les poteaux acier noirs cadrent la terrasse sans bloquer l'accès à la maison.",
+          "Hauteurs d'ancrage et portées partent du métrage réel. La superposition élargit l'ombre sans un seul grand panneau difficile à tendre.",
+        ],
+        details: [
+          { label: "Forme", value: "Deux triangles repas" },
+          { label: "Ancrages", value: "Poteaux acier thermolaqués" },
+          { label: "Usage", value: "Table et circulation terrasse" },
+        ],
+      },
+      {
+        imageId: "voile-patio",
+        category: "Riads & patios",
+        title: "Patio de riad et salon bas",
+        text: [
+          "Dans un patio de riad, deux voiles crème tendues entre les murs ombrent le salon bas et la fontaine en zellige. Peu d'emprise au sol : les murs de cour portent déjà les points hauts.",
+          "Les supports anciens se vérifient avant perçage — épaisseur, réseaux, enduits. La tension se règle progressivement pour ne pas tirer sur un mur trop mince.",
+        ],
+        details: [
+          { label: "Forme", value: "Deux triangles entre murs" },
+          { label: "Ancrages", value: "Murs de cour vérifiés" },
+          { label: "Usage", value: "Salon bas, fontaine libre" },
+        ],
+      },
+      {
+        imageId: "voile-terrasse-riad",
+        category: "Riads & patios",
+        title: "Terrasse de riad en superposition",
+        text: [
+          "Plusieurs triangles crème se superposent au-dessus du mobilier et des lanternes en laiton. La nappe d'ombre est large, la ligne reste aérée vue depuis la cour inférieure.",
+          "Les hauteurs décalées créent la pente qui évite les poches d'eau. L'ouvrage s'accorde aux enduits et au sol sans imposer une structure de pergola.",
+        ],
+        details: [
+          { label: "Forme", value: "Triangles superposés" },
+          { label: "Ancrages", value: "Murs / poteaux selon la terrasse" },
+          { label: "Usage", value: "Salon et lanternes" },
+        ],
+      },
+      {
+        imageId: "voile-jardin",
+        category: "Jardins & terrasses",
+        title: "Patio de jardin sous les bougainvilliers",
+        text: [
+          "Trois voiles crème au-dessus d'une table de jardin, entre plantation et lanternes. La forme suit le patio : l'ombre couvre le repas sans masquer le bougainvillier ni fermer la vue.",
+          "Quand le jardin est ouvert, les poteaux acier reprennent les angles libres. La coupe sur mesure évite les grands panneaux qui flottent au vent.",
+        ],
+        details: [
+          { label: "Forme", value: "Trois triangles jardin" },
+          { label: "Ancrages", value: "Poteaux + points existants" },
+          { label: "Usage", value: "Table sous plantation" },
+        ],
+      },
+      {
+        imageId: "voile-mats",
+        category: "Jardins & terrasses",
+        title: "Superposition vue du dessus",
+        text: [
+          "Vue du dessus, deux triangles crème se croisent : les ombres géométriques au sol montrent comment la superposition élargit la zone ombragée sans un seul panneau trop grand.",
+          "Les mâts et les hauteurs décalées se lisent clairement. C'est le principe de nombreuses installations Terrastore : plusieurs toiles bien tendues plutôt qu'une seule surface difficile à maîtriser.",
+        ],
+        details: [
+          { label: "Forme", value: "Deux triangles croisés" },
+          { label: "Ancrages", value: "Mâts à hauteurs décalées" },
+          { label: "Usage", value: "Lecture du calepinage" },
+        ],
+      },
     ],
     related: [
       { href: "/pergola-bioclimatique", label: "Pergola bioclimatique", text: "Quand il faut aussi gérer la pluie avec des lames." },
@@ -260,8 +391,6 @@ export const secondaryPages: PageDoc[] = [
       {
         id: "definition",
         heading: "Une toile tendue, calée sur le lieu",
-        imageId: "voile-villa",
-        layout: "split",
         blocks: [
           {
             type: "paragraphs",
@@ -284,49 +413,8 @@ export const secondaryPages: PageDoc[] = [
         ],
       },
       {
-        id: "usages",
-        heading: "Où la voile d'ombrage a du sens",
-        blocks: [
-          {
-            type: "paragraphs",
-            items: [
-              [
-                "Le bon usage suit le lieu. Une terrasse de restaurant cherche une ombre continue au-dessus des tables. Un rooftop d'hôtel veut une ligne lisible sans fermer la vue. Une villa ou un riad demande souvent une superposition discrète entre murs déjà là.",
-              ],
-            ],
-          },
-          {
-            type: "points",
-            items: [
-              {
-                title: "Restaurants & cafés",
-                text: "Ombre sur les tables, passage de service dégagé, fixations murales ou mâts en limite de terrasse.",
-              },
-              {
-                title: "Hôtels & rooftops",
-                text: "Couverture aérée d'un salon ou d'une salle extérieure, sans structure de pergola complète.",
-              },
-              {
-                title: "Villas & piscines",
-                text: "Espace repas ou transats à l'abri du soleil zénithal, poteaux hors du chemin et du bassin.",
-              },
-              {
-                title: "Riads & patios",
-                text: "Toile tendue entre murs de cour : peu d'emprise au sol, tension réglée sur des supports anciens vérifiés.",
-              },
-              {
-                title: "Jardins & terrasses",
-                text: "Quand le jardin est ouvert, les poteaux acier reprennent les angles libres ; la forme suit la plantation et la vue.",
-              },
-            ],
-          },
-        ],
-      },
-      {
         id: "technique",
         heading: "Matériaux, formes et couleurs",
-        imageId: "voile-piscine",
-        layout: "split",
         blocks: [
           {
             type: "paragraphs",
@@ -363,8 +451,6 @@ export const secondaryPages: PageDoc[] = [
       {
         id: "ancrages",
         heading: "Mur porteur ou poteaux acier",
-        imageId: "voile-rooftop-hotel",
-        layout: "split",
         blocks: [
           {
             type: "paragraphs",

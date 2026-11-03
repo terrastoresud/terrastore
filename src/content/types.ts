@@ -49,6 +49,15 @@ export type GalleryItem = {
   category: string;
 };
 
+/** Editorial image + explanation block (blog / product story). */
+export type StoryItem = {
+  imageId: ImageId;
+  category: string;
+  title: string;
+  text: string[];
+  details?: { label: string; value: string }[];
+};
+
 export type PageKind = "product" | "hub" | "city" | "legal" | "about" | "b2b";
 
 export type PageDoc = {
@@ -71,6 +80,12 @@ export type PageDoc = {
   galleryLede?: string;
   /** When true, gallery renders after the prose sections (editorial flow). */
   galleryAfterSections?: boolean;
+  /** Blog-style explained installations; rendered after benefits by default. */
+  stories?: StoryItem[];
+  storiesTitle?: string;
+  storiesLede?: string;
+  /** When set, stories render after this section id (inclusive). Otherwise after benefits. */
+  storiesAfterSectionId?: string;
   sections: PageSection[];
   faqs?: Faq[];
   related: RelatedLink[];
