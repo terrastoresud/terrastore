@@ -116,13 +116,14 @@ h3,
   display: grid;
   max-width: 100%;
   min-width: 0;
-  margin-top: 1.5rem;
-  gap: 2.75rem;
+  margin-top: 1.25rem;
+  gap: 2rem;
   border-top: 1px solid var(--color-line);
-  padding-top: 1.5rem;
+  padding-top: 1.25rem;
 }
 
-.family-rail > a {
+.family-rail > a,
+.family-card {
   display: flex;
   flex-direction: column;
   min-width: 0;
@@ -132,6 +133,94 @@ h3,
 .family-rail > a:hover,
 .family-rail > a:focus-visible {
   transform: translateY(-4px);
+}
+
+.family-rail-hint {
+  margin-bottom: 0.15rem;
+}
+
+.hero-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.hero-actions-secondary {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.65rem;
+}
+
+@media (min-width: 640px) {
+  .hero-actions {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .hero-actions-secondary {
+    display: contents;
+  }
+}
+
+/* Phone: put copy + CTAs before the hero image so actions stay above the fold. */
+@media (max-width: 1023px) {
+  .product-hero {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .product-hero-title {
+    order: 1;
+  }
+
+  .product-hero-lede {
+    order: 2;
+  }
+
+  .product-hero-media {
+    order: 3;
+  }
+
+  .product-hero-media .hero-still figcaption {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .family-rail {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 0.35rem;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 0;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .family-rail::-webkit-scrollbar {
+    display: none;
+  }
+
+  .family-rail > a,
+  .family-card {
+    flex: 0 0 min(78vw, 17.5rem);
+    scroll-snap-align: start;
+  }
+
+  .family-rail > a:hover,
+  .family-rail > a:focus-visible {
+    transform: none;
+  }
+
+  .home-hero .hero-still figcaption,
+  .family-rail figcaption {
+    display: none;
+  }
 }
 
 .icon-well {
@@ -215,10 +304,13 @@ a.icon-well:focus-visible {
 
 @media (min-width: 768px) {
   .family-rail {
+    display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 3.5rem 2.5rem;
     margin-top: 2rem;
     padding-top: 2rem;
+    overflow: visible;
+    scroll-snap-type: none;
   }
 }
 
@@ -641,6 +733,46 @@ details[open] > summary .chevron {
   .dossier {
     padding: 1.75rem 1.6rem 2rem;
   }
+}
+
+@media (max-width: 639px) {
+  .rise.border-t {
+    padding-top: 2.25rem;
+    padding-bottom: 2.25rem;
+  }
+
+  .icon-well {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+}
+
+.voile-gallery {
+  display: grid;
+  gap: 1.5rem 1.25rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .voile-gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2.25rem 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .voile-gallery {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2.5rem 1.75rem;
+  }
+}
+
+.voile-gallery-item button {
+  min-height: 44px;
+}
+
+.lightbox {
+  animation: settle 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 @media (prefers-reduced-motion: reduce) {

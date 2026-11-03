@@ -22,7 +22,8 @@ export function BrandLogo({
       width={file.width}
       height={file.height}
       priority={priority}
-      quality={95}
+      quality={85}
+      sizes={variant === "full" ? "(min-width: 640px) 19rem, 90vw" : "150px"}
       className={className ?? (variant === "full" ? "h-auto w-[19rem] max-w-full" : "h-12 w-auto sm:h-14")}
     />
   );

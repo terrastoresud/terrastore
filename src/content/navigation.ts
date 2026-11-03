@@ -7,6 +7,7 @@ export const primaryNav: NavLink[] = [
   { href: "/parasols", label: "Parasols" },
   { href: "/stores", label: "Stores" },
   { href: "/pergola-bioclimatique", label: "Pergolas" },
+  { href: "/voile-ombrage", label: "Voiles" },
   { href: "/professionnels", label: "Professionnels" },
   { href: "/conseils", label: "Conseils" },
 ];
@@ -50,7 +51,7 @@ export const footerSolutions: NavLink[] = [
   { href: "/parasols", label: "Parasols" },
   { href: "/stores", label: "Stores" },
   { href: "/pergola-bioclimatique", label: "Pergolas" },
-  { href: "/voile-ombrage", label: "Voile" },
+  { href: "/voile-ombrage", label: "Voile d'ombrage" },
 ];
 
 export const footerGuides: NavLink[] = [
@@ -74,6 +75,7 @@ export const projectTypes = [
   "Store extérieur",
   "Store intérieur",
   "Pergola",
+  "Voile d'ombrage",
   "Projet professionnel",
   "Autre",
 ] as const;

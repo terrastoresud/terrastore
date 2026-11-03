@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { projectTypes } from "@/content/navigation";
 import { emptyContact, validateContact, type ContactInput, type FieldErrors } from "@/lib/contact";
@@ -11,8 +12,33 @@ function track(name: string) {
   gtag("event", name);
 }
 
+const typeSet = new Set<string>(projectTypes);
+
+const projetAliases: Record<string, (typeof projectTypes)[number]> = {
+  "voile-ombrage": "Voile d'ombrage",
+  voile: "Voile d'ombrage",
+  carport: "Carport",
+  parasol: "Parasol",
+  pergola: "Pergola",
+  "store-exterieur": "Store extérieur",
+  "store-interieur": "Store intérieur",
+};
+
+function resolveProjectType(raw: string | null): string {
+  if (!raw) return "";
+  const trimmed = raw.trim();
+  if (typeSet.has(trimmed)) return trimmed;
+  const alias = projetAliases[trimmed.toLowerCase()];
+  return alias ?? "";
+}
+
 export function QuoteForm() {
-  const [values, setValues] = useState<ContactInput>(emptyContact);
+  const searchParams = useSearchParams();
+  const preset = resolveProjectType(searchParams.get("projectType") ?? searchParams.get("projet"));
+  const [values, setValues] = useState<ContactInput>(() => ({
+    ...emptyContact(),
+    projectType: preset,
+  }));
   const [errors, setErrors] = useState<FieldErrors>({});
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "unconfigured" | "error">("idle");
   const [started, setStarted] = useState(false);

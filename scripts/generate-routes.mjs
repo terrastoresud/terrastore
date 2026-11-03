@@ -13,6 +13,7 @@ const guideSlugs = slugsFrom("src/content/guides.ts");
 
 const pageTemplate = (slug) => `import type { Metadata } from "next";
 import { DocumentPage } from "@/components/document-page";
+import { imageAsset } from "@/content/images";
 import { pageBySlug } from "@/content/registry";
 import { pageMetadata } from "@/lib/seo";
 
@@ -21,7 +22,16 @@ const slug = "${slug}";
 export function generateMetadata(): Metadata {
   const page = pageBySlug(slug);
   if (!page) return {};
-  return pageMetadata({ title: page.title, description: page.description, path: \`/\${slug}\` });
+  const image = page.imageId ? imageAsset(page.imageId) : undefined;
+  return pageMetadata({
+    title: page.title,
+    description: page.description,
+    path: \`/\${slug}\`,
+    image:
+      image?.src
+        ? { url: image.src, width: image.width, height: image.height, alt: image.alt }
+        : undefined,
+  });
 }
 
 export default function Page() {

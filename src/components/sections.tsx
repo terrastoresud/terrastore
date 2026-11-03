@@ -68,9 +68,9 @@ function Block({ block }: { block: ContentBlock }) {
   return (
     <ol className="grid gap-x-10 gap-y-6 md:grid-cols-2">
       {block.items.map((step, index) => (
-        <li key={step.title}>
-          <p className="text-[0.68rem] font-medium tracking-[0.18em] text-accent">0{index + 1}</p>
-          <p className="mt-2 font-medium">{frTypo(step.title)}</p>
+        <li key={step.title} className="step">
+          <p className="step-index">0{index + 1}</p>
+          <p className="mt-3 text-xl font-medium">{frTypo(step.title)}</p>
           <p className="mt-2 leading-7 text-muted">{frTypo(step.text)}</p>
         </li>
       ))}
@@ -78,27 +78,50 @@ function Block({ block }: { block: ContentBlock }) {
   );
 }
 
+function SectionBody({ section }: { section: PageSection }) {
+  const blocks = (
+    <div className="space-y-6">
+      {section.blocks.map((block, blockIndex) => (
+        <Block key={`${section.id}-${blockIndex}`} block={block} />
+      ))}
+    </div>
+  );
+
+  if (section.layout === "split" && section.imageId) {
+    return (
+      <div className="mt-8 grid items-start gap-8 lg:grid-cols-12 lg:gap-12">
+        <div className="min-w-0 lg:col-span-6">
+          <Media id={section.imageId} plate sizes="(min-width: 1024px) 520px, 100vw" />
+        </div>
+        <div className="min-w-0 lg:col-span-6">{blocks}</div>
+      </div>
+    );
+  }
+
+  return (
+    <>
+      {section.imageId ? (
+        <Media id={section.imageId} plate className="mt-8" sizes="(min-width: 1024px) 1120px, 100vw" />
+      ) : null}
+      <div className="mt-8">{blocks}</div>
+    </>
+  );
+}
+
 export function Sections({ sections }: { sections: PageSection[] }) {
   return (
     <div>
       {sections.map((section, index) => (
-          <section key={section.id} aria-labelledby={section.id} className="rise border-t border-line py-12 md:py-16">
-            <p className="index">
-              <span className="rule" aria-hidden="true" />
-              {String(index + 1).padStart(2, "0")}
-            </p>
-            <h2 id={section.id} className="mt-4 max-w-[22ch] text-[1.7rem] leading-[1.15] font-medium md:text-4xl">
-              {frTypo(section.heading)}
-            </h2>
-            {section.imageId ? (
-              <Media id={section.imageId} plate className="mt-8" sizes="(min-width: 1024px) 1120px, 100vw" />
-            ) : null}
-            <div className="mt-8 space-y-6">
-              {section.blocks.map((block, blockIndex) => (
-                <Block key={`${section.id}-${blockIndex}`} block={block} />
-              ))}
-            </div>
-          </section>
+        <section key={section.id} aria-labelledby={section.id} className="rise border-t border-line py-10 sm:py-12 md:py-16">
+          <p className="index">
+            <span className="rule" aria-hidden="true" />
+            {String(index + 1).padStart(2, "0")}
+          </p>
+          <h2 id={section.id} className="mt-3 max-w-[22ch] text-[1.55rem] leading-[1.15] font-medium sm:mt-4 sm:text-[1.7rem] md:text-4xl">
+            {frTypo(section.heading)}
+          </h2>
+          <SectionBody section={section} />
+        </section>
       ))}
     </div>
   );
