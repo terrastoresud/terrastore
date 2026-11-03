@@ -120,7 +120,7 @@ export default function HomePage() {
 
         <section className="rise mt-14 min-w-0 md:mt-32" aria-labelledby="focus">
           <h2 id="focus" className="text-[1.7rem] leading-[1.15] font-medium md:text-4xl">
-            Cinq familles, un ordre clair
+            Six familles, un ordre clair
           </h2>
           <div className="family-rail">
             {families.map((item) => (

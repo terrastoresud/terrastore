@@ -218,12 +218,8 @@ export const secondaryPages: PageDoc[] = [
     related: [
       { href: "/pergola-bioclimatique", label: "Pergola bioclimatique", text: "Quand il faut aussi gérer la pluie avec des lames." },
       { href: "/pergola-retractable", label: "Couverture rétractable", text: "Rouvrir entièrement le ciel une fois la toile repliée." },
-<<<<<<< HEAD
-      { href: "/store-banne", label: "Store banne", text: "Projection depuis la façade seule." },
-=======
       { href: "/abri-voiture", label: "Abri voiture", text: "Ombrière de stationnement en console, pas une toile de terrasse." },
-      { href: "/store-banne", label: "Store banne", text: "Projection depuis la façade, sans points d'ancrage multiples." },
->>>>>>> 555fd5b (feat: add Abri voiture product page in the Carport family)
+      { href: "/store-banne", label: "Store banne", text: "Projection depuis la façade seule." },
       { href: "/parasols", label: "Parasols", text: "Ombre mobile, utile quand on veut pouvoir fermer par grand vent." },
       { href: "/parasol-deporte", label: "Parasol déporté", text: "Libérer le sol au centre sans ancrages périphériques." },
     ],
