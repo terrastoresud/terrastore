@@ -30,12 +30,20 @@ const families: {
     n: "01",
     icon: "carport",
     title: "Carports",
-    text: "Abri voiture aluminium, simple ou double, adossé ou autoportant. L’implantation se décide avec le portail et les portières.",
+    text: "Carport aluminium, simple ou double, adossé ou autoportant. L’implantation se décide avec le portail et les portières.",
     image: "carport-hero",
   },
   {
-    href: "/parasols",
+    href: "/abri-voiture",
     n: "02",
+    icon: "carport",
+    title: "Abris voiture",
+    text: "Ombrière en console, acier thermolaqué et couverture PVC. De la villa au parking d’entreprise, sans poteau gênant.",
+    image: "abri-residence",
+  },
+  {
+    href: "/parasols",
+    n: "03",
     icon: "parasol",
     title: "Parasols",
     text: "Systèmes contemporains, mât central ou déporté, pour la maison comme pour une terrasse professionnelle.",
@@ -43,7 +51,7 @@ const families: {
   },
   {
     href: "/stores",
-    n: "03",
+    n: "04",
     icon: "store",
     title: "Stores",
     text: "Store banne et store ZIP dehors. Enrouleur, vénitien et jour-nuit dedans. Chaque famille a sa page.",
@@ -51,7 +59,7 @@ const families: {
   },
   {
     href: "/pergola-bioclimatique",
-    n: "04",
+    n: "05",
     icon: "pergola",
     title: "Pergolas",
     text: "Lames orientables ou couverture rétractable, lorsque la terrasse doit rester en place toute la saison.",
@@ -59,7 +67,7 @@ const families: {
   },
   {
     href: "/voile-ombrage",
-    n: "05",
+    n: "06",
     icon: "sail",
     title: "Voiles d'ombrage",
     text: "Toile tendue sur mesure pour terrasses, riads, rooftops et piscines. Ancrages muraux ou poteaux acier, fixations inox.",
@@ -145,22 +153,43 @@ export default function HomePage() {
         </section>
 
         <section className="rise mt-16 border-t border-line pt-10 md:mt-24 md:pt-14" aria-labelledby="spot-carport">
-          <p className="index">
-            <span className="rule" aria-hidden="true" />
-            Carport
-          </p>
-          <h2 id="spot-carport" className="mt-4 max-w-[16ch] text-[1.7rem] leading-[1.15] font-medium md:text-4xl">
+          <h2 id="spot-carport" className="text-[1.7rem] leading-[1.15] font-medium md:text-4xl">
             Protéger la voiture sans fermer un garage
           </h2>
-          <Media id="carport-double" plate className="mt-8" sizes="(min-width: 1024px) 1120px, 100vw" />
-          <p className="mt-6 max-w-[62ch] leading-8 text-muted">
-            {frTypo(
-              "Le carport aluminium se lit comme un plan devant la villa. Simple ou double, il se cale sur le nombre de véhicules présents en même temps, sur le sens du portail et sur la place des poteaux — hors du débattement des portières.",
-            )}
-          </p>
-          <Link href="/carport-aluminium" className="mt-4 inline-flex min-h-11 items-center underline underline-offset-4">
-            Étudier un carport aluminium
-          </Link>
+          <div className="mt-8 grid gap-12 md:grid-cols-2 md:gap-10">
+            <div className="min-w-0">
+              <p className="index">
+                <span className="rule" aria-hidden="true" />
+                Carport aluminium
+              </p>
+              <h3 className="mt-3 text-2xl font-medium">Carport</h3>
+              <Media id="carport-double" plate className="mt-5" sizes="(min-width: 768px) 46vw, 100vw" />
+              <p className="mt-4 leading-7 text-muted">
+                {frTypo(
+                  "Structure aluminium devant la villa. Simple ou double, adossé ou autoportant, calé sur le portail et hors du débattement des portières.",
+                )}
+              </p>
+              <Link href="/carport-aluminium" className="mt-3 inline-flex min-h-11 items-center underline underline-offset-4">
+                Étudier un carport aluminium
+              </Link>
+            </div>
+            <div className="min-w-0">
+              <p className="index">
+                <span className="rule" aria-hidden="true" />
+                Abri voiture
+              </p>
+              <h3 className="mt-3 text-2xl font-medium">Abri voiture</h3>
+              <Media id="abri-residence" plate className="mt-5" sizes="(min-width: 768px) 46vw, 100vw" />
+              <p className="mt-4 leading-7 text-muted">
+                {frTypo(
+                  "Ombrière en console, acier thermolaqué et PVC anti-UV. De une place de villa à une rangée de parking, sans poteau gênant.",
+                )}
+              </p>
+              <Link href="/abri-voiture" className="mt-3 inline-flex min-h-11 items-center underline underline-offset-4">
+                Étudier un abri voiture
+              </Link>
+            </div>
+          </div>
         </section>
 
         <section className="rise mt-16 border-t border-line pt-10 md:mt-24 md:pt-14" aria-labelledby="spot-stores">

@@ -18,7 +18,8 @@ export const secondaryPages: PageDoc[] = [
     ctaText: "Une photo et la ville permettent souvent d'écarter deux solutions sur trois.",
     breadcrumbs: [{ name: "Solutions", href: "/solutions" }],
     related: [
-      { href: "/carport-aluminium", label: "Carports", text: "Stationnement ouvert, simple ou double." },
+      { href: "/carport-aluminium", label: "Carports", text: "Stationnement aluminium, simple ou double." },
+      { href: "/abri-voiture", label: "Abri voiture", text: "Ombrière en console, PVC, une à plusieurs places." },
       { href: "/parasols", label: "Parasols", text: "Ombre mobile de terrasse." },
       { href: "/stores", label: "Stores", text: "Façade, vitrage et pièces." },
       { href: "/pergola-bioclimatique", label: "Pergolas", text: "Terrasse structurée pour la saison." },
@@ -32,7 +33,8 @@ export const secondaryPages: PageDoc[] = [
           {
             type: "points",
             items: [
-              { title: "La voiture chauffe devant la maison", text: "On regarde le carport : places, portail, poteaux." },
+              { title: "La voiture chauffe devant la maison", text: "On compare carport aluminium et abri voiture en console, selon le dessin voulu." },
+              { title: "Un parking d'entreprise ou d'hôtel à ombrer", text: "L'abri voiture module les places sans poteau devant les portières." },
               { title: "La table ou le salon manque d'ombre mobile", text: "On compare parasol central et parasol déporté." },
               { title: "La terrasse est collée à la façade", text: "Le store banne part du mur et dégage le sol." },
               { title: "Le soleil rase la baie", text: "Le store ZIP descend devant le vitrage." },
@@ -66,11 +68,12 @@ export const secondaryPages: PageDoc[] = [
       { href: "/conseils/pergola-bioclimatique-ou-retractable", label: "Bioclimatique ou rétractable", text: "Le critère d'usage, pas de mode." },
       { href: "/store-zip", label: "Stores ZIP latéraux", text: "Fermer un côté sans maçonner." },
       { href: "/carport-aluminium", label: "Carport", text: "Ne pas confondre terrasse et stationnement." },
+      { href: "/abri-voiture", label: "Abri voiture", text: "Ombrière parking en console, distincte de la pergola de terrasse." },
     ],
     faqs: [
       { question: "Adossée ou autoportante ?", answer: "Adossée si la terrasse longe un mur capable de recevoir l'ouvrage. Autoportante si elle est au milieu du jardin, au bord d'une piscine éloignée de la façade, ou si le mur ne doit pas porter. Le relevé tranche." },
       { question: "La pergola est-elle étanche comme une pièce ?", answer: "Les lames fermées orientent l'eau vers les chéneaux lorsque le système est conçu pour cela. Ce n'est pas une véranda fermée. L'usage sous la pluie s'étudie avec le profil et les raccordements, sans promesse d'étanchéité absolue." },
-      { question: "Peut-elle servir de carport ?", answer: "Une pergola dimensionnée pour des personnes assises n'est pas automatiquement un abri voiture. Hauteur de passage, manœuvre et chocs de portières diffèrent. Le stationnement se traite sur la page carport." },
+      { question: "Peut-elle servir de carport ?", answer: "Une pergola dimensionnée pour des personnes assises n'est pas automatiquement un abri parking. Hauteur de passage, manœuvre et chocs de portières diffèrent. Le stationnement se traite sur les pages carport ou abri voiture." },
     ],
     sections: [
       {
@@ -215,7 +218,12 @@ export const secondaryPages: PageDoc[] = [
     related: [
       { href: "/pergola-bioclimatique", label: "Pergola bioclimatique", text: "Quand il faut aussi gérer la pluie avec des lames." },
       { href: "/pergola-retractable", label: "Couverture rétractable", text: "Rouvrir entièrement le ciel une fois la toile repliée." },
+<<<<<<< HEAD
       { href: "/store-banne", label: "Store banne", text: "Projection depuis la façade seule." },
+=======
+      { href: "/abri-voiture", label: "Abri voiture", text: "Ombrière de stationnement en console, pas une toile de terrasse." },
+      { href: "/store-banne", label: "Store banne", text: "Projection depuis la façade, sans points d'ancrage multiples." },
+>>>>>>> 555fd5b (feat: add Abri voiture product page in the Carport family)
       { href: "/parasols", label: "Parasols", text: "Ombre mobile, utile quand on veut pouvoir fermer par grand vent." },
       { href: "/parasol-deporte", label: "Parasol déporté", text: "Libérer le sol au centre sans ancrages périphériques." },
     ],
@@ -429,6 +437,7 @@ export const secondaryPages: PageDoc[] = [
     breadcrumbs: [{ name: "Professionnels", href: "/professionnels" }],
     related: [
       { href: "/carport-aluminium", label: "Carports", text: "Parkings de villa, d'hôtel ou de bureaux." },
+      { href: "/abri-voiture", label: "Abri voiture", text: "Ombrières modulaires pour parkings et concessions." },
       { href: "/parasol-professionnel", label: "Parasols professionnels", text: "Terrasses en exploitation." },
       { href: "/pergola-bioclimatique", label: "Pergolas", text: "Terrasses d'établissement." },
       { href: "/contact", label: "Contact projet", text: "Choisir « Projet professionnel » dans le formulaire." },
@@ -527,7 +536,7 @@ export const secondaryPages: PageDoc[] = [
           {
             type: "paragraphs",
             items: [
-              ["Les priorités sont le carport aluminium, les parasols contemporains et les stores, extérieurs comme intérieurs. Les pergolas et les voiles d'ombrage complètent l'offre lorsque le lieu les justifie."],
+              ["Les priorités sont le carport aluminium, l'abri voiture, les parasols contemporains et les stores, extérieurs comme intérieurs. Les pergolas et les voiles d'ombrage complètent l'offre lorsque le lieu les justifie."],
               ["L'intervention est nationale. Le siège est à Agadir, Cité Lagouira. Les pages de Marrakech, Casablanca, Rabat, Tanger et Essaouira décrivent un contexte de projet. Elles ne sont pas des adresses d'agences."],
             ],
           },

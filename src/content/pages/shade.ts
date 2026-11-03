@@ -8,10 +8,10 @@ export const shadePages: PageDoc[] = [
     kind: "product",
     title: "Carport aluminium sur mesure au Maroc | Terrastore",
     description:
-      "Carport et abri voiture aluminium au Maroc : simple ou double, adossé ou autoportant. Terrastore étudie l'implantation, les poteaux, l'allée et la pose.",
+      "Carport aluminium sur mesure au Maroc : simple ou double, adossé ou autoportant. Implantation, poteaux, allée et pose étudiés avec Terrastore.",
     h1: "Carport aluminium sur mesure au Maroc",
-    eyebrow: "Abri voiture",
-    lede: "Un carport protège les véhicules du soleil et des intempéries sans fermer un garage. En aluminium, il reste lisible devant une villa. La bonne configuration se décide sur le terrain : nombre de places, sens de circulation, portail, façade et évacuation de l'eau.",
+    eyebrow: "Carport aluminium",
+    lede: "Un carport aluminium protège les véhicules du soleil et des intempéries sans fermer un garage. La structure se lit comme un plan devant la villa. La bonne configuration se décide sur le terrain : nombre de places, sens de circulation, portail, façade et évacuation de l'eau.",
     primaryQuery: "carport aluminium Maroc",
     imageId: "carport-hero",
     serviceType: "Carport aluminium",
@@ -19,6 +19,7 @@ export const shadePages: PageDoc[] = [
     ctaText: "Envoyez la ville, le nombre de véhicules, une dimension approximative et une photo de l'entrée ou du stationnement.",
     breadcrumbs: [solutions, { name: "Carport aluminium", href: "/carport-aluminium" }],
     related: [
+      { href: "/abri-voiture", label: "Abri voiture", text: "Structure en console et couverture PVC : l'autre famille de stationnement couvert." },
       { href: "/conseils/comment-choisir-un-carport-aluminium", label: "Choisir un carport", text: "Les questions à trancher avant de comparer deux propositions." },
       { href: "/conseils/carport-adosse-ou-autoportant", label: "Adossé ou autoportant", text: "Quand la façade peut porter l'ouvrage, et quand il vaut mieux s'en détacher." },
       { href: "/conseils/carport-simple-ou-double", label: "Simple ou double", text: "Prévoir les portières, le passage et l'écart entre deux voitures." },
@@ -40,7 +41,7 @@ export const shadePages: PageDoc[] = [
           {
             type: "paragraphs",
             items: [
-              ["Le carport, ou abri voiture, couvre le stationnement sans le murer. On garde la ventilation, la vue sur le jardin ou la rue, et un accès direct à l'entrée. Devant une villa contemporaine, la structure aluminium se lit comme un plan horizontal : toiture, rive, poteaux."],
+              ["Le carport aluminium couvre le stationnement sans le murer. On garde la ventilation, la vue sur le jardin ou la rue, et un accès direct à l'entrée. Devant une villa contemporaine, la structure se lit comme un plan horizontal : toiture, rive, poteaux. Pour une ombrière en console à couverture PVC, voir l'", { href: "/abri-voiture", label: "abri voiture" }, "."],
               ["Il ne s'agit pas d'un modèle catalogue posé tel quel. La largeur utile dépend des voitures réelles, le sens de la toiture dépend de la pente du terrain et de l'endroit où l'eau peut sortir, et la position des poteaux dépend du chemin que l'on emprunte pour descendre du véhicule."],
             ],
           },
@@ -202,6 +203,207 @@ export const shadePages: PageDoc[] = [
             type: "paragraphs",
             items: [
               ["Inutile de remplir une liste de quinze champs. Ces quatre éléments permettent de dire si le carport est adossé ou autoportant, simple ou double, et ce qu'il faut vérifier sur place."],
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    slug: "abri-voiture",
+    kind: "product",
+    title: "Abri voiture sur mesure au Maroc | Terrastore",
+    description:
+      "Abri voiture et ombrière parking sur mesure au Maroc : structure en console, PVC anti-UV. Villas, entreprises, hôtels. Devis Terrastore.",
+    h1: "Abri voiture sur mesure au Maroc",
+    eyebrow: "Carports",
+    lede: "L'abri voiture en console ombre et protège les véhicules sans poteau devant les portières. Structure acier thermolaquée, couverture PVC haute résistance : de une place de villa à une rangée de parking d'entreprise, le module suit le site.",
+    primaryQuery: "abri voiture Maroc",
+    imageId: "abri-residence",
+    serviceType: "Abri voiture",
+    ctaLabel: "Demander un devis",
+    ctaHref: "/contact?projectType=Abri%20voiture",
+    heroContactLinks: true,
+    ctaTitle: "Étudier un abri voiture sur votre parking",
+    ctaText: "Indiquez la ville, le nombre de places et une photo de la zone. Nous lisons l'implantation avant toute fabrication.",
+    breadcrumbs: [
+      { name: "Carports", href: "/carport-aluminium" },
+      { name: "Abri voiture", href: "/abri-voiture" },
+    ],
+    benefitsTitle: "Ce que l'abri voiture apporte",
+    benefits: [
+      {
+        icon: "sun",
+        title: "Protection UV et chaleur",
+        text: "La toile tendue coupe le rayonnement direct sur la carrosserie et l'habitacle. Moins de chaleur accumulée, moins de dégradation des plastiques et de la peinture.",
+      },
+      {
+        icon: "rain",
+        title: "Protection pluie et grêle",
+        text: "La couverture PVC étanche évacue l'eau et limite les chocs de grêle. Ce n'est pas un garage fermé, mais un abri qui tient sous averse.",
+      },
+      {
+        icon: "architecture",
+        title: "Structure en console",
+        text: "Les poteaux restent derrière ou sur un seul côté. Aucun poteau gênant devant les portières ni dans la manœuvre d'entrée.",
+      },
+      {
+        icon: "fabric",
+        title: "Design moderne",
+        text: "Profils cintrés, teinte blanc ou anthracite, toile tendue : l'ouvrage se lit avec une villa contemporaine comme avec une façade d'hôtel.",
+      },
+      {
+        icon: "measure",
+        title: "Sur mesure, une à plusieurs places",
+        text: "Module simple, double, ou alignement pour un parking. La largeur et l'avancée se calent sur les véhicules et le sens de circulation.",
+      },
+      {
+        icon: "tools",
+        title: "Montage rapide",
+        text: "Après fondations et fabrication, la pose d'un module standard reste courte. Les délais précis figurent sur le devis, selon l'accès chantier.",
+      },
+    ],
+    galleryTitle: "Villas, parkings, hôtels et concessions",
+    gallery: [
+      { imageId: "abri-villa", category: "Villas & résidences privées" },
+      { imageId: "abri-residence", category: "Villas & résidences privées" },
+      { imageId: "abri-detail", category: "Résidences fermées" },
+      { imageId: "abri-parking", category: "Parkings d'entreprise" },
+      { imageId: "abri-clinique", category: "Cliniques & administrations" },
+      { imageId: "abri-hotel", category: "Hôtels" },
+      { imageId: "abri-concession", category: "Concessions & showrooms" },
+    ],
+    related: [
+      { href: "/carport-aluminium", label: "Carport aluminium", text: "Structure aluminium adossée ou autoportante, quand le dessin de villa prime." },
+      { href: "/voile-ombrage", label: "Voile d'ombrage", text: "Toile tendue pour terrasses et cours, pas pour le stationnement." },
+      { href: "/pergola-bioclimatique", label: "Pergola", text: "Ombre de terrasse à lames, distincte de l'abri parking." },
+      { href: "/professionnels", label: "Professionnels", text: "Parkings d'hôtel, clinique ou showroom avec l'équipe projet." },
+    ],
+    faqs: [
+      {
+        question: "Quel est le prix d'un abri voiture par place au Maroc ?",
+        answer:
+          "Le montant suit le nombre de places, l'avancée, la finition (blanc, anthracite ou teinte sur demande), les fondations et l'accès chantier. Sans relevé, une grille inventée n'a pas de sens. Une photo et le nombre de véhicules permettent une première estimation ; le devis suit l'étude.",
+      },
+      {
+        question: "L'abri voiture résiste-t-il au vent ?",
+        answer:
+          "La tenue dépend de l'exposition du site, des sections, des fondations et du système retenu. Un parking ouvert sur le littoral ne se traite pas comme une cour abritée. Terrastore ne publie pas de classe de vent générique : on la définit après lecture du lieu.",
+      },
+      {
+        question: "Quelle est la durée de vie d'un abri voiture ?",
+        answer:
+          "L'acier thermolaqué et la toile PVC haute résistance sont conçus pour durer plusieurs années sous le soleil marocain, sous réserve d'un entretien simple et d'une pose correcte. La durée exacte suit le système et l'exposition ; elle figure dans le dossier du projet, pas dans une promesse catalogue.",
+      },
+      {
+        question: "Faut-il une autorisation pour poser un abri voiture ?",
+        answer:
+          "Selon la commune, le règlement de copropriété ou le cahier des charges d'une résidence fermée, une déclaration ou un accord peut être exigé. Terrastore indique ce qu'il faut vérifier ; les démarches administratives restent à la charge du maître d'ouvrage.",
+      },
+      {
+        question: "Quel délai entre la commande et la pose ?",
+        answer:
+          "Après validation du relevé et des fondations, la fabrication puis le montage se calent sur la charge atelier et l'accès. Un module de villa et une rangée de parking d'entreprise n'ont pas le même planning. Le délai contractuel est écrit sur le devis.",
+      },
+      {
+        question: "Comment entretenir la couverture PVC ?",
+        answer:
+          "Un rinçage à l'eau claire et un contrôle périodique des tensions et des platines suffisent en général. Évitez les solvants agressifs. Les options LED et récupération d'eau se vérifient comme le reste de l'ouvrage.",
+      },
+      {
+        question: "Un seul abri peut-il couvrir plusieurs voitures ?",
+        answer:
+          "Oui. On module en simple, double face ou alignement continu. Le choix part des véhicules présents en même temps, du débattement des portières et du sens d'arrivée — pas d'un modèle catalogue figé.",
+      },
+    ],
+    sections: [
+      {
+        id: "technique",
+        heading: "Structure, couverture et options",
+        imageId: "abri-detail",
+        blocks: [
+          {
+            type: "points",
+            items: [
+              {
+                title: "Structure acier galvanisé thermolaqué",
+                text: "Blanc, anthracite ou teinte sur demande. Les profils cintrés portent la toile en console, sans poteau devant les portières.",
+              },
+              {
+                title: "Couverture PVC haute résistance",
+                text: "Toile anti-UV, étanche, tendue sur l'ossature. Elle ombre, limite la chaleur et évacue la pluie.",
+              },
+              {
+                title: "Avancée et largeur",
+                text: "Avancée jusqu'à environ 5,8 m selon le système. Largeur modulable : place simple, double, ou modules assemblés en ligne.",
+              },
+              {
+                title: "Fondations béton armé",
+                text: "Les poteaux s'ancrent dans des massifs dimensionnés pour le site. Une dalle trop mince ne tient pas la console.",
+              },
+              {
+                title: "Options",
+                text: "Éclairage LED intégré, récupération des eaux pluviales dans les poteaux, choix de couleur structure et toile.",
+              },
+            ],
+          },
+          {
+            type: "note",
+            title: "Sans performance inventée",
+            text: "Classe de vent, durée de vie publiée hors contexte et prix au mètre linéaire générique n'ont pas de place ici. Ces données suivent le relevé et le système retenu.",
+          },
+        ],
+      },
+      {
+        id: "comparaison",
+        heading: "Abri voiture vs carport aluminium",
+        blocks: [
+          {
+            type: "paragraphs",
+            items: [
+              [
+                "Les deux protègent le stationnement. Ils ne se dessinent pas de la même façon. L'abri voiture mise sur la console acier et la toile PVC : ombrière parking lisible, montage modulaire, peu de poteaux au sol devant les voitures. Le ",
+                { href: "/carport-aluminium", label: "carport aluminium" },
+                " privilégie une ossature aluminium calée sur la villa — adossée ou autoportante — avec une lecture plus architecturale de toiture et de rive.",
+              ],
+            ],
+          },
+          {
+            type: "comparison",
+            caption: "Deux réponses au même besoin de stationnement couvert.",
+            columns: ["Abri voiture", "Carport aluminium"],
+            rows: [
+              { label: "Structure", cells: ["Acier galvanisé thermolaqué, souvent en console", "Aluminium, adossé ou autoportant"] },
+              { label: "Couverture", cells: ["PVC haute résistance tendu", "Selon système : panneaux, toile ou autre"] },
+              { label: "Usage typique", cells: ["Villa, parking d'entreprise, hôtel, concession", "Villa et allée soignée devant la façade"] },
+              { label: "Point fort", cells: ["Modules, avancée, sans poteau gênant", "Dialogue menuiseries et plan de toiture"] },
+            ],
+          },
+        ],
+      },
+      {
+        id: "deroule",
+        heading: "Comment le projet avance",
+        blocks: [
+          {
+            type: "steps",
+            items: [
+              {
+                title: "Contact",
+                text: "Ville, nombre de places, photo du parking. Le type « Abri voiture » oriente déjà la lecture.",
+              },
+              {
+                title: "Étude du site",
+                text: "Relevé des cotes, sens de circulation, nature du sol et réseaux. On valide l'avancée, la largeur et les fondations.",
+              },
+              {
+                title: "Fabrication",
+                text: "Ossature thermolaquée et couverture PVC coupées pour le projet, options LED ou récupération d'eau si retenues.",
+              },
+              {
+                title: "Pose",
+                text: "Ancrage sur béton armé, assemblage des modules, tension de la toile et contrôle des hauteurs de passage.",
+              },
             ],
           },
         ],

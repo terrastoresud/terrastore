@@ -107,11 +107,15 @@ export function DocumentPage({ page, path }: { page: PageDoc; path: string }) {
           </div>
         </header>
         {page.benefits?.length ? (
+<<<<<<< HEAD
           <BenefitsGrid
             title={page.benefitsTitle ?? "Ce que la voile apporte"}
             lede={page.benefitsLede}
             items={page.benefits}
           />
+=======
+          <BenefitsGrid title={page.benefitsTitle ?? "Les points forts"} items={page.benefits} />
+>>>>>>> 555fd5b (feat: add Abri voiture product page in the Carport family)
         ) : null}
         {page.figures?.length ? <SolutionFigures title={page.figuresTitle ?? "En images"} items={page.figures} /> : null}
         {!page.galleryAfterSections && page.gallery?.length ? (

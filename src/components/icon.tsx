@@ -15,7 +15,8 @@ export type IconName =
   | "architecture"
   | "fabric"
   | "fixing"
-  | "tools";
+  | "tools"
+  | "rain";
 
 export function Icon({ name, className = "" }: { name: IconName; className?: string }) {
   const sized = /(?:^|\s)(?:size-|w-|h-)/.test(className);
@@ -49,6 +50,7 @@ export function Icon({ name, className = "" }: { name: IconName; className?: str
       {name === "fabric" ? <Fabric /> : null}
       {name === "fixing" ? <Fixing /> : null}
       {name === "tools" ? <Tools /> : null}
+      {name === "rain" ? <Rain /> : null}
     </svg>
   );
 }
@@ -227,6 +229,17 @@ function Tools() {
   return (
     <>
       <path d="M14.5 5.5a3.5 3.5 0 0 0-4.7 4.7L5.5 14.5 9.5 18.5l4.3-4.3a3.5 3.5 0 0 0 4.7-4.7L16 12l-2.5-2.5 1-4z" />
+    </>
+  );
+}
+
+function Rain() {
+  return (
+    <>
+      <path d="M6.5 10.5c0-3.2 2.5-5.5 5.5-5.5s5.5 2.3 5.5 5.5c1.4.2 2.5 1.4 2.5 2.9 0 1.6-1.3 2.9-2.9 2.9H7.2C5.7 16.3 4.5 15 4.5 13.4c0-1.5 1.1-2.7 2.5-2.9z" />
+      <path d="M9 17.5 8 20" />
+      <path d="M12 17.5v2.8" />
+      <path d="M15 17.5 16 20" />
     </>
   );
 }

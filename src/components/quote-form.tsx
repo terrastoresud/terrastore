@@ -18,6 +18,8 @@ const projetAliases: Record<string, (typeof projectTypes)[number]> = {
   "voile-ombrage": "Voile d'ombrage",
   voile: "Voile d'ombrage",
   carport: "Carport",
+  "abri-voiture": "Abri voiture",
+  abri: "Abri voiture",
   parasol: "Parasol",
   pergola: "Pergola",
   "store-exterieur": "Store extérieur",
